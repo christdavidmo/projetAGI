@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh; /* Assure que le body prend au moins la hauteur de la fenêtre */
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 40px;
+            background-color: rgba(250, 250, 239, 0.47);
+            height: 90px;
+            box-shadow: 0px 3px 2px rgba(49, 48, 48, 0.121); /* decalage horizontal decalage verticale flou couleur oppacité */
+        }
+
+
+
+        .logo-amicale img {
+            height: 90px;
+            width: auto;
+        }
+
+        .menu-burger {
+            display: none;
+            margin: 25px 0;
+        }
+
+        .fa-bars {
+            color: black;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        .menu-nav {
+            list-style: none;
+            display: flex;
+            padding: 20px 0px;
+        }
+
+
+
+        .menu-nav li {
+            list-style: none;
+            margin-right: 26px;
+            cursor: pointer;
+        }
+
+        .menu-nav a{
+            text-decoration: none;
+        }
+
+
+        .menu-nav li:hover {
+            color: rgb(234, 145, 47);
+        }
+
+        @media (max-width: 968px) {
+            nav {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 20px;
+            }
+
+            .logo-amicale img {
+                margin-right: 5px;
+            }
+
+            .menu-nav{
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0px;
+                width: auto;
+                height: auto;
+                border-radius: 4px;
+                padding: 10px 20px;
+                z-index: 1; /* Pour s'assurer qu'il est au-dessus des autres éléments */
+                background-color: rgb(234, 145, 47); /* Ajoute une couleur de fond */
+            }
+
+            .menu-active {
+                display: flex;
+            }
+
+            .menu-nav li {
+                color: white;
+                cursor: pointer;
+                padding-bottom: 9px;
+            }
+
+            .menu-nav li:hover {
+                color: rgb(75, 30, 11);
+            }
+
+            .menu-burger {
+                display: flex;
+            }
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+<nav th:fragment="navbar">
+
+    <div class="logo-amicale">
+        <img th:src="@{/images/logo-agi.jpg}" alt="logo_amicale">
+    </div>
+
+    <div class="menu-burger" id="menu-burger" onclick="toggleMenu()">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <ul class="menu-nav" id="menu">
+        <li> <a th:href="@{/}"> Accueil </a> </li>
+        <li> <a th:href="@{/public/aboutus}"> À propos</a> </li>
+        <li>Actualités</li>
+        <li>Contact</li>
+    </ul>
+
+</nav>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById("menu");
+        menu.classList.toggle("menu-active");
+    }
+</script>
+</body>
+</html>

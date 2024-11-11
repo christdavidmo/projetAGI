@@ -1,0 +1,76 @@
+.background-image{
+    background-image: url("/images/personnes.webp");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    height: 90vh;
+    width: auto;
+}
+
+
+.devise-agi{
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+
+    position: absolute;
+    top:40% ;
+    left: 45%;
+
+
+}
+
+
+.carrés{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+
+.carré{
+    width: 600PX;
+    height: 300PX;
+}
+
+.carré {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:20px;
+    padding-top:40px;
+}
+
+.carré a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.rouge{
+    background-color: rgb(186, 64, 64);
+}
+
+.bleu{
+    background-color: rgb(45, 105, 215);
+}
+
+.vert{
+    background-color: rgb(106, 220, 106);
+}
+
+.jaune{
+    background-color: yellow;
+}
+
+@media  (max-width: 968px){
+    .carrés{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+
+
+}

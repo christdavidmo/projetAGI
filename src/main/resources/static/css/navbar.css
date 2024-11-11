@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Assure que le body prend au moins la hauteur de la fenêtre */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+    background-color: rgba(250, 250, 239, 0.47);
+    height: 90px;
+    box-shadow: 0px 3px 2px rgba(49, 48, 48, 0.121); /* decalage horizontal decalage verticale flou couleur oppacité */
+}
+
+.logo-amicale img {
+    height: 90px;
+    width: auto;
+}
+
+.menu-burger {
+    display: none;
+    margin: 25px 0;
+}
+
+.fa-bars {
+    color: black;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.menu-nav {
+    list-style: none;
+    display: flex;
+    padding: 20px 0px;
+}
+
+.menu-nav li {
+    margin-right: 26px;
+    cursor: pointer;
+}
+
+.menu-nav a{
+    text-decoration: none;
+    color: black;
+}
+
+.menu-nav li:hover {
+    color: rgb(234, 145, 47);
+}
+
+@media only screen and (max-width: 600px) {
+    nav {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+
+    .logo-amicale img {
+        margin-right: 5px;
+    }
+
+    .menu-nav{
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0px;
+        width: auto;
+        height: auto;
+        border-radius: 4px;
+        padding: 10px 20px;
+        z-index: 1; /* Pour s'assurer qu'il est au-dessus des autres éléments */
+        background-color: rgb(234, 145, 47); /* Ajoute une couleur de fond */
+    }
+
+    .menu-active {
+        display: flex;
+    }
+
+    .menu-nav li {
+        color: white;
+        cursor: pointer;
+        padding-bottom: 9px;
+    }
+
+    .menu-nav li:hover {
+        color: rgb(75, 30, 11);
+    }
+
+    .menu-burger {
+        display: flex;
+    }
+}

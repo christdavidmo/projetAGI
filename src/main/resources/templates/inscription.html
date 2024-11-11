@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Formulaire Exemple</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        .form-container{
+            background-color: rgb(234, 145, 47);
+            padding: 4%;
+            border-radius: 5px;
+        }
+        .centered-form {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .form-container {
+            width: 400px; /* Ajustez la largeur ici */
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container centered-form">
+
+    <div class="form-container">
+
+        <form id="passwordForm" th:action="@{/enregistrement}" th:object="${user}" method="post">
+            <h2 class="text-center">Formulaire d'inscription</h2>
+
+            <div class="form-group">
+                <label for="login">Login</label>
+                <input type="text" class="form-control" id="login" name="login"  placeholder="Entrez votre login" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Nom">Nom </label>
+                <input type="text" class="form-control" id="Nom" name="Nom" placeholder="Entrez votre Nom " required>
+            </div>
+
+            <div class="form-group">
+                <label for="Prenoms">Prenoms</label>
+                <input type="text" class="form-control" id="Prenoms" name="Prenoms" placeholder="Entrez votre Prenom" required>
+            </div>
+
+            <div class="form-group">
+                <label for="motdepasse">Mot de passe</label>
+                <input type="password" class="form-control" id="motdepasse" name="password"  placeholder="Entrez votre mot de passe" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Confirm_motdepasse">Confirmer Mot de passe</label>
+                <input type="password" class="form-control" id="Confirm_motdepasse" name="Confirm_motdepasse"  placeholder="Entrez votre mot de passe" required>
+            </div>
+
+
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Sexe" id="Masculin" value="Masculin">
+                    <label class="form-check-label" for="Masculin" >
+                        Homme
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Sexe" id="Feminin" value="Feminin" checked>
+                    <label class="form-check-label" for="Feminin">
+                       Femme
+                    </label>
+                </div>
+
+            <button type="submit" class="btn btn-primary btn-block">S'inscrire</button>
+        </form>
+
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+
+    document.getElementById("passwordForm").addEventListener('submit',function (event){
+        event.preventDefault();
+
+        const password=document.getElementById("motdepasse").value;
+        const Confirm_motorcades= document.getElementById("Confirm_motdepasse").value;
+
+        if( password === Confirm_motorcades){
+            this.submit();
+        }else {
+            alert("le mot de passe ne correspond pas")
+        }
+    })
+
+</script>
+</body>
+</html>

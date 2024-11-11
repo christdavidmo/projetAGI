@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+<body>
+<footer th:fragment="footer">
+
+    <div class="left">
+
+        <p class="titre-contacter-left">
+            NOUS CONTACTER
+            <hr class="ligne-contact">
+        </p>
+
+
+        <div class="tab-container">
+            <!--  -->
+                <div class="contact-info">
+
+                    <div class="contact-item">
+                        <span class="contact-label">Adresse:</span> amicaledesgabonaisism@gmail.com
+                    </div>
+
+                    <div class="contact-item">
+                        <span class="contact-label">Téléphone:</span> 77 516 37 55
+                    </div>
+
+                    <div class="social-item">
+                        <span class="social-label">Instagram:</span> instagram
+                    </div>
+
+                    <div class="social-item">
+                        <span class="social-label">Facebook:</span> facebook
+                    </div>
+
+                    <div class="social-item">
+                        <span class="social-label">TikTok:</span> tiktok
+                    </div>
+
+                </div>
+
+        </div>
+
+    </div>
+
+
+        <div class="right">
+
+            <p class="titre-contacter-right">Restez à jour</p>
+            <p class="texte-contacter-right-1">Abonnez-vous à notre <br> newsletter pour être à jour</p>
+            <div class="Email-container">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="" required>
+            </div>
+            <button type="submit" class="subscribe-button" style="margin: 20px auto;"> Abonnez-vous</button>
+
+        </div>
+
+</footer>
+</body>
+</html>
