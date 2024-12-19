@@ -20,6 +20,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class SecurityServiceImpl implements SecurityService, UserDetailsService {
+
+
     private final UsersRepository usersRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
@@ -31,8 +33,9 @@ public class SecurityServiceImpl implements SecurityService, UserDetailsService 
 
     @Override
     public Users saveUser(String username, String password) {
+        Users user = usersRepository.findByLogin(username);
 
-        if(usersRepository.existsByLogin(username)) {
+        if(user != null) {
             throw new SecurityException("Username already exists");
         }
 
@@ -47,7 +50,11 @@ public class SecurityServiceImpl implements SecurityService, UserDetailsService 
 
 
     @Override
-    public Role saveRole(Role role) {
+    public Role saveRole(Role rolename) {
+        Role role = roleRepository.findByRolename(rolename);
+        if(role != null) {
+            throw new SecurityException("ce role existe déja");
+        }
         return roleRepository.save(role);
     }
 
@@ -56,6 +63,11 @@ public class SecurityServiceImpl implements SecurityService, UserDetailsService 
     public Role getRoleByName(String roleName) {
 
         return roleRepository.getByRolename(roleName);
+    }
+
+    @Override
+    public List<Role> getAllRoles() {
+        return roleRepository.findAll();
     }
 
     @Override
@@ -80,8 +92,9 @@ public class SecurityServiceImpl implements SecurityService, UserDetailsService 
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Users user = usersRepository.findByLogin(username);
 
+        Users user = usersRepository.findByLogin(username);
+        System.out.println(user);
         if( user == null) {
             throw new UsernameNotFoundException("Utilisateur non trouvé");
         }
@@ -95,3 +108,4 @@ public class SecurityServiceImpl implements SecurityService, UserDetailsService 
                 Collections.singletonList(new SimpleGrantedAuthority(user.getRoles().iterator().next().getRolename())));*/
     }
 }
+

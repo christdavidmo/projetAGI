@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" th:href="@{/css/activite.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/footer1.css}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <title>Title</title>
+
+    <style>
+
+        .filter_container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            margin: 20px 0;
+
+        }
+
+        form{
+            display: flex;
+            background-color: rgb(234, 145, 47);
+            padding: 30px 20px;
+            border-radius: 10px;
+        }
+
+        form:hover{
+            box-shadow: 0px 10px 11px rgb(0,0,0,0.2);
+        }
+
+        /* input[type="text"], input[type="number"]{
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            margin-right: 10PX;
+        } */
+
+        .filter_container-one ,.filter_container-two{
+            margin: 0 6px;
+        }
+
+        .filter_container label{
+            color: #090808;
+            font-size: 19px;
+            font-weight:  bold;
+
+        }
+
+        .filter_container input{
+            padding: 8px 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button{
+            padding: 8px 10px;
+            border-radius: 5px;
+            border: none;
+
+        }
+        button:hover{
+            color: white;
+            background-color: rgb(75, 30, 11);
+        }
+
+
+
+
+
+    </style>
+
+
+</head>
+<body>
+
+<div th:replace="~{layout/navbar/navbar :: navbar}"></div>
+
+
+    <div class="filter_container">
+
+        <form th:action="@{/public/activites}"  method="get" class="filter_form">
+
+            <div class="filter_container-one">
+                <label for="name">Nom</label>
+                <input type="text" name="name" id="name" th:value="${name}" placeholder="Nom de l'activitée">
+            </div>
+
+           <div class="filter_container-two">
+               <label for="year">Year</label>
+               <input type="number" name="year" id="year" th:value="${year}" placeholder="année de l'activitée">
+           </div>
+
+            <button type="submit">Filtrer</button>
+        </form>
+
+    </div>
+
+
+
+    <div th:if="${evenements.isEmpty()}">
+        <p> Aucun evenement disponible </p>
+    </div>
+
+
+    <div class="container">
+
+        <div th:each="evenement :${evenements}" class="event">
+            <div class="title" th:text="${evenement.title}"></div>
+            <p th:text="${evenement.description}"></p>
+        </div>
+
+    </div>
+
+
+
+<!-- Pagination -->
+<div class="pagination_container">
+
+    <ul class="pagination">
+        <!-- Lien vers la page précédente -->
+        <li th:if="${currentPage > 1}">
+            <a th:href="@{/public/activites(page=${currentPage - 1}, size=${6})}">Précédent</a>
+        </li>
+
+        <!-- Lien vers chaque page -->
+        <li th:each="i : ${#numbers.sequence(1, pages)}">
+            <a th:href="@{/public/activites(page=${i}, size=${6})}"
+               th:text="${i}"
+               th:class="${currentPage == i} ? 'active' : ''"></a>
+        </li>
+
+        <!-- Lien vers la page suivante -->
+        <li th:if="${currentPage < pages }">
+            <a th:href="@{/public/activites(page=${currentPage + 1}, size=${6})}">Suivant</a>
+        </li>
+    </ul>
+
+</div>
+<!-- Pagination -->
+
+
+
+<div th:replace="~{layout/footer/footer1 :: footer}"></div>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById("menu");
+        menu.classList.toggle("menu-active");
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

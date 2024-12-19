@@ -1,28 +1,18 @@
 package com.example.amicale.Security.Controllers;
 
-import com.example.amicale.Data.Entity.MemberCommunity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
 
-import com.example.amicale.Data.Entity.Users;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 public interface Security {
 
-    @GetMapping("/inscription")
-    public String inscription(Model model);
-
     @GetMapping("/login")
-    public String login(Model model);
+    String login(@AuthenticationPrincipal UserDetails user);
 
 
-    @PostMapping("/enregistrement")
-     public ResponseEntity<?>  enregistrement(@ModelAttribute MemberCommunity memberCommunity);
-
-    @PostMapping("/connexion")
-    public String  connexion(@ModelAttribute Users users, Model model);
+    @PostMapping("/login")
+    String HandleLogin(@RequestParam String login, @RequestParam String password, Model model);
 
 }

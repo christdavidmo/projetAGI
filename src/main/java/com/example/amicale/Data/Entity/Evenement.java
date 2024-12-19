@@ -1,8 +1,6 @@
 package com.example.amicale.Data.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +21,7 @@ public class Evenement extends Publication {
 
     private String Description;
 
-    @ManyToOne
-    private OfficeMember OfficeMember;
+    @ManyToOne (fetch = FetchType.LAZY)
+    @JoinColumn(name = "createur_id", nullable = false)
+    private Member createur; // le createur de l'evenement dans le bureau
 }

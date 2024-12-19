@@ -1,0 +1,84 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+
+    background-color: rgba(250, 250, 239, 0.47);
+    box-shadow: 0 3px 5px rgb(0,0,0,0.1);
+    padding: 6px 4px;
+}
+
+
+nav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+nav ul li{
+    margin-right: 25px;
+}
+nav ul li:hover {
+    cursor: pointer;
+    color: rgb(234, 145, 47);
+}
+
+
+.logo-amicale img{
+    height: 90px;
+    width: auto;
+}
+
+
+.menu-burger {
+    display: none;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.fa-bars{
+    color: black;
+    font-size: 40px;
+}
+
+
+
+
+@media (max-width: 968px) {
+
+    .menu-burger{
+        display: flex;
+    }
+
+    .menu-nav{
+        display: none;
+        flex-direction: column;
+
+        position: absolute;
+        background-color:  rgb(234, 145, 47);
+
+        top: 60px;
+        right: 0px;
+        width: auto;
+        height: auto;
+        border-radius: 4px;
+        padding: 10px 20px;
+        z-index: 1; /* Pour s'assurer qu'il est au-dessus des autres éléments */
+    }
+
+    .menu-nav li{
+        padding-bottom: 10px;
+    }
+    .menu-nav li:hover{
+       color: white;
+    }
+
+    .menu-active{
+        display: flex;
+    }
+
+
+
+}

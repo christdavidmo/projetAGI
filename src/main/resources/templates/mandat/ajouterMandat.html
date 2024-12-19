@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandat</title>
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+            padding: 30px 0;
+
+        }
+        form{
+            flex-direction: column;
+            background-color: #b6b641;
+            display: inline-block;
+
+            padding: 20px;
+        }
+
+        .case{
+            margin: 10px 0;
+
+        }
+
+        .case label{
+            font-size: 28px;
+            text-transform: uppercase;
+        }
+
+        .case input{
+            outline-color: cornflowerblue;
+            padding: 8px;
+        }
+
+        .case-president{
+            display: flex;
+            align-items: center;
+        }
+        .case-president select{
+            padding: 8px;
+            margin-left: 10px;
+            outline-color: cornflowerblue;
+        }
+
+
+
+        .case-date{
+            display: flex;
+            align-items: center;
+        }
+        .case-date input, .case-date label{
+            margin-right: 10px;
+        }
+
+
+        .case-roles{
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            margin-bottom: 10px;
+
+            text-align: left;
+        }
+        .case-roles span{
+            font-size: 28px;
+        }
+
+        .case-roles select{
+            padding: 10px;
+            outline-color: cornflowerblue;
+        }
+
+        button{
+           font-size: 20px;
+
+        }
+
+        button:hover{
+            color: white;
+            border: none;
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="form-container">
+
+        <form action="" th:action="@{/mandat/enregistrement}" method="post">
+
+           <div class="case-president case">
+               <label for="president">President : </label>
+               <select id="president" th:field="*{mandat.president}" >
+                   <option th:each="member :${members}"  th:value="${member.id}" th:text="${member.Nom}"></option>
+               </select>
+           </div>
+
+            <div class="case-date case">
+                <label for="DateDebut"> Date de Debut :</label>
+                <input type="date" id="DateDebut" name="dateDebut" required>
+
+                <label for="DateDeFin">Date de Fin :</label>
+                <input type="date" id="DateDeFin" name="dateFin">
+            </div>
+
+
+            <h3> Assigner les responsables de poles</h3>
+
+
+            <div th:each="role,iterStat :${roles}" class="case-roles-container">
+
+               <div class="case-roles">
+                   <label th:for="'role_' + ${iterStat.index}"></label>
+                   <span th:text="${role.rolename}"></span>
+
+                   <!-- Sélection d'un membre pour ce rôle -->
+                   <label th:for="'member_' + ${iterStat.index}"></label>
+
+                   <select th:id="'role_' + ${iterStat.index}" th:name="'roleIds[' + ${iterStat.index} + ']'">
+                       <option th:each="member : ${members}" th:value="${member.id}" th:text="${member.nom} + ' ' + ${member.prenoms}"></option>
+                   </select>
+               </div>
+                
+            </div>
+
+
+            <button type="submit">Envoyer</button>
+        </form>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(250, 250, 239, 0.47);
+    box-shadow: 0 3px 5px rgb(0,0,0,0.1);
+
+    padding: 3px 15px;
+}
+
+.logo-amicale img{
+    height: 15vh;
+    width: auto;
+}
+
+
+.menu-burger{
+    display: none;
+    cursor: pointer;
+}
+.fa-bars{
+    color: black;
+    font-size: 50px;
+}
+
+.menu-nav{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    cursor: pointer;
+}
+.menu-nav li{
+    margin-right: 25px;
+
+}
+.menu-nav  a{
+    text-decoration: none;
+    color: black;
+}
+.menu-nav li:hover{
+    color: rgb(234, 145, 47);
+}
+
+
+@media (max-width: 768px) {
+
+    .menu-burger{
+        display: block;
+    }
+
+    #nav-menu{
+        display: none;
+        position: absolute;
+        flex-direction: column;
+
+
+        right: 0px;
+        top: 90px;
+        height: auto;
+        width: auto;
+        border-radius: 5px;
+        background-color: rgb(234, 145, 47);
+        padding: 10px ;
+        z-index: 1;
+    }
+
+    #nav-menu li{
+        margin-bottom: 6px;
+    }
+
+    #nav-menu.show{
+        display: block;
+    }
+
+}

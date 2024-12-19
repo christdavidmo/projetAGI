@@ -1,0 +1,135 @@
+body{
+    margin: 0;
+}
+
+.text-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+
+
+    margin-bottom: 40px;
+}
+
+.text-container h1{
+    font-size: 2em;
+    margin-bottom: 2px ;
+}
+
+.text-container p{
+    font-size: 1.2em;
+}
+
+
+
+
+
+.formulaire-container{
+    display: flex;
+    margin-bottom: 20%;
+}
+/* =====================  partie 1   =====================  */
+
+.part-1{
+    flex:1;
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;/* centrer sur l'horizontal*/
+
+
+    border-right: 1px solid black;
+}
+
+.form-part-1{
+    background-color: #ffffff;
+}
+
+
+.row{
+    display: flex;
+    gap: 23px;
+}
+.groupe{
+margin-bottom: 40px;
+}
+
+.input-group,.input-group2{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group input{
+    color: black;
+    background-color:white;
+    padding: 13px 7px;
+    border: none;
+    border: 1px solid black;
+
+}
+
+.input-group2 textarea{
+    color: black;
+    background-color: white;
+    padding: 7px 6px;
+
+    border: none;
+    border: 1px solid black;
+    outline-color: black;
+}
+
+.form-part-1 button{
+    width: 100%;
+    background-color: rgb(234, 145, 47);
+    border: none;
+    padding: 13px 0;
+
+}
+
+.form-part-1 button:hover{
+    color: white;
+    background-color: rgb(75, 30, 11);
+}
+
+
+
+/* =====================  partie 2   =====================  */
+
+.part-2{
+    flex: 1;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.tabe-container{
+    background-color: white;
+    border-spacing: 50px;
+}
+
+.tabe-container p{
+    font-size: 20px;
+}
+
+.fa-solid{
+   font-size: 38px;
+}
+
+.fa-brands{
+    color: black;
+    margin-right: 3px;
+}
+
+
+
+
+/*   ========================  */
+
+.image-container{
+    background-image: url("/");
+}

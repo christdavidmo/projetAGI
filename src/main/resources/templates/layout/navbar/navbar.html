@@ -116,7 +116,9 @@
 <nav th:fragment="navbar">
 
     <div class="logo-amicale">
-        <img th:src="@{/images/logo-agi.jpg}" alt="logo_amicale">
+        <a th:href=@{/}>
+            <img th:src="@{/images/logo-agi.jpg}" alt="logo_amicale">
+        </a>
     </div>
 
     <div class="menu-burger" id="menu-burger" onclick="toggleMenu()">
@@ -126,8 +128,8 @@
     <ul class="menu-nav" id="menu">
         <li> <a th:href="@{/}"> Accueil </a> </li>
         <li> <a th:href="@{/public/aboutus}"> À propos</a> </li>
-        <li>Actualités</li>
-        <li>Contact</li>
+        <li><a th:href="@{/public/activites}"> Activités</a></li>
+        <li><a th:href="@{/public/contact}" > Contact</a></li>
     </ul>
 
 </nav>

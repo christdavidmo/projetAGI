@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" th:href="@{/css/navbarOffice.css}">
+    <link rel="stylesheet" th:href="@{/css/gestionOffice.css}">
+
+    <script th:src="@{/js/navbarOffice.js}"></script>
+
+    <title>Title</title>
+</head>
+<body>
+
+<div th:replace="~{layout/navbar/navbarOffice :: navbar-office}" >  </div>
+
+<h1> la gestion se passe içi</h1>
+
+
+    <div class="container-1">
+
+        <div class="container-utilisateur case">
+            <p> gestion des <br> utilisateurs</p>
+            <button type="submit">voir plus</button>
+        </div>
+
+
+        <div class="ligne-verticale"></div>
+
+
+        <div class="container-contenu case">
+            <p> gestion du <br> contenu </p>
+            <button type="submit">voir plus</button>
+        </div>
+
+    </div>
+
+
+</body>
+</html>

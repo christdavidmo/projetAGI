@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+
+
+        .main-content {
+            margin-left: 250px; /* Décalage à gauche pour laisser de la place à la sidebar */
+            padding: 20px;
+            background-color: #ecf0f1;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        /* Table des utilisateurs */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        table td button {
+            padding: 5px 10px;
+            margin: 0 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-modifier {
+            background-color: #f39c12;
+            color: white;
+        }
+
+        .btn-bloquer {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .btn-supprimer {
+            background-color: #95a5a6;
+            color: white;
+        }
+
+        /* Bouton Ajouter utilisateur */
+        .btn-ajouter {
+            background-color: #2ecc71;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn-ajouter:hover {
+            background-color: #27ae60;
+        }
+
+
+
+
+
+        /* Style du modal */
+        .modal {
+            display: none; /* Par défaut, le modal est caché */
+            position: fixed;
+            z-index: 1; /* Place le modal au-dessus des autres éléments */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4); /* Fond sombre en arrière-plan */
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        form input, form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+
+
+
+
+
+
+
+
+/* =================================== */
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            background-color: rgb(75, 30, 11);
+            /*background-image: linear-gradient(to right, rgb(234, 145, 47,0.7), rgb(75, 30, 11));
+
+             */
+            /* Permet de passer à la ligne suivante sur petit écran, si nécessaire */
+            flex-wrap: wrap;
+            padding:  30px 120px;
+        }
+
+        .footer-newsletter,
+        .footer-contact,
+        .footer-rs {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            /* flex: 1;  Chaque <ul> prendra une proportion égale de l'espace */
+        }
+
+        .footer-newsletter {
+            margin-right: 20px;
+        }
+
+        .footer-contact {
+            margin-right: 20px;
+        }
+
+        .footer-rs {
+            margin-right: 0;
+        }
+
+        /* Espacement entre les items dans chaque <ul>
+        .footer-newsletter li,
+        .footer-contact li,
+        .footer-rs li {
+            color: white;
+            margin-bottom: 30px; /* Espacer les éléments de chaque liste
+        }*/
+
+
+
+        /* Style pour les input et bouton */
+        .input-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .input-container input{
+            color: white;
+            padding: 10px;
+            background-color: rgb(75, 30, 11);
+            border: none;
+            outline: none;
+
+            border-bottom: 2px solid rgb(234, 145, 47);
+        }
+
+        .Email-container label{
+            font-size: 15px;
+            margin-right: 0;
+        }
+
+        .subscribe-button {
+            background-color: rgb(234, 145, 47);
+            color: white;
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-left: 0;
+        }
+
+        .subscribe-button:hover {
+            background-color: #45a049;
+        }
+
+        .footer-newsletter li{
+            font-size: 19px;
+        }
+        .footer-contact li{
+            font-size: 21px;
+        }
+        .footer-rs li{
+            cursor: pointer;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        /* Media Query pour les écrans de moins de 768px (mobile) */
+        @media screen and (max-width: 768px) {
+            /* Aligner les éléments verticalement sur les petits écrans */
+            .footer-container {
+                padding:  30px 50px;
+                flex-direction: column;
+                align-items: flex-start; /* Aligner à gauche */
+            }
+
+            /* Chaque <ul> doit occuper toute la largeur disponible */
+            .footer-newsletter,
+            .footer-contact,
+            .footer-rs {
+                width: 100%;
+                text-align: left; /* Aligner tous les éléments à gauche */
+                margin-bottom: 20px; /* Espacement entre chaque section */
+            }
+
+            /* Espacement entre les éléments de chaque liste */
+            .footer-newsletter li,
+            .footer-contact li,
+            .footer-rs li {
+                margin-bottom: 15px;
+            }
+
+            /* S'assurer que le formulaire occupe toute la largeur */
+            .input-container {
+                width: 100%; /* L'input et le bouton occuperont toute la largeur disponible */
+                gap: 10px;
+            }
+
+            /* Largeur de l'input et du bouton */
+            .Email-container input {
+                width: 70%; /* Largeur de l'input */
+                padding: 10px;
+            }
+
+            .subscribe-button {
+                width: 30%; /* Largeur du bouton */
+                padding: 10px;
+            }
+
+            /* Assurer que les liens réseaux sociaux sont en ligne sur mobile */
+            .footer-rs li {
+                display: inline-block; /* Affichage horizontal sur mobile */
+                margin-right: 10px; /* Espacement entre les liens */
+            }
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+
+
+
+
+
+
+<div class="main-content">
+    <h1>Gestion des utilisateurs</h1>
+    <button class="btn-ajouter">Ajouter un utilisateur</button>
+
+    <!-- Table des utilisateurs -->
+    <table class="user-list">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Jean Dupont</td>
+            <td>jean.dupont@example.com</td>
+            <td>Actif</td>
+            <td>
+                <button class="btn-modifier">Modifier</button>
+                <button class="btn-bloquer">Bloquer</button>
+                <button class="btn-supprimer">Supprimer</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Marie Claire</td>
+            <td>marie.claire@example.com</td>
+            <td>Inactif</td>
+            <td>
+                <button class="btn-modifier">Modifier</button>
+                <button class="btn-bloquer">Bloquer</button>
+                <button class="btn-supprimer">Supprimer</button>
+            </td>
+        </tr>
+        <!-- Ajoute d'autres utilisateurs ici -->
+        </tbody>
+    </table>
+</div>
+
+
+
+<!-- Formulaire de modification (Modal) -->
+<div id="modal-modifier" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Modifier l'utilisateur</h2>
+        <form id="form-modifier">
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" name="nom" required><br><br>
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="status">Status :</label>
+            <select id="status" name="status">
+                <option value="actif">Actif</option>
+                <option value="inactif">Inactif</option>
+            </select><br><br>
+
+            <button type="submit" class="btn-modifier-submit">Sauvegarder</button>
+        </form>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!--  la nav bar
+ <footer class="footer-container"> */
+
+
+    <ul class="footer-newsletter">
+        <li><strong>Newsletter</strong> </li>
+
+        <li class="text-2">Restez au courant de toutes les <br>
+            nouveautés sur l'amicale</li>
+
+        <li>
+
+            <div class="Email-container">
+
+                <label for="email">E-mail*</label>
+
+                <div class="input-container">
+                    <input type="text" name="email" id="email" placeholder="votre E-mail" required>
+                    <button type="submit" class="subscribe-button">Rejoindre</button>
+                </div>
+
+            </div>
+
+        </li>
+
+    </ul>
+
+    <ul class="footer-contact">
+        <li> <strong>Parlez-nous</strong> </li>
+        <li>77 516 37 55 <br> 77 516 37 55</li>
+        <li>@amicaledesgabonaisism</li>
+    </ul>
+
+    <ul class="footer-rs">
+        <li>INSTAGRAM</li>
+        <li>FACEBOOK</li>
+        <li>TIKTOK</li>
+    </ul>
+
+</footer>  -->
+
+<script !src="">
+
+    document.querySelectorAll('.btn-modifier').forEach(button => {
+        button.addEventListener('click', function() {
+            alert("Modification de l'utilisateur");
+            // Ajoute ici ton code pour modifier l'utilisateur
+        });
+    });
+
+    document.querySelectorAll('.btn-bloquer').forEach(button => {
+        button.addEventListener('click', function() {
+            alert("Blocage de l'utilisateur");
+            // Ajoute ici ton code pour bloquer l'utilisateur
+        });
+    });
+
+    document.querySelectorAll('.btn-supprimer').forEach(button => {
+        button.addEventListener('click', function() {
+            if (confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?")) {
+                alert("Utilisateur supprimé");
+                // Ajoute ici ton code pour supprimer l'utilisateur
+            }
+        });
+    });
+
+    document.querySelector('.btn-ajouter').addEventListener('click', function() {
+        alert("Ajouter un utilisateur");
+        // Ouvre un formulaire pour ajouter un nouvel utilisateur
+    });
+
+
+
+
+
+
+    // Ouvrir le modal de modification
+    document.querySelectorAll('.btn-modifier').forEach(button => {
+        button.addEventListener('click', function() {
+            const userId = this.getAttribute('data-user-id');
+            // Récupérer les informations de l'utilisateur pour préremplir le formulaire (ici, exemple statique)
+            if (userId === '1') {
+                document.getElementById('nom').value = 'Jean Dupont';
+                document.getElementById('email').value = 'jean.dupont@example.com';
+                document.getElementById('status').value = 'actif';
+            } else if (userId === '2') {
+                document.getElementById('nom').value = 'Marie Claire';
+                document.getElementById('email').value = 'marie.claire@example.com';
+                document.getElementById('status').value = 'inactif';
+            }
+
+            // Afficher le modal
+            document.getElementById('modal-modifier').style.display = 'block';
+        });
+    });
+
+
+
+    // Fermer le modal
+    document.querySelector('.close').addEventListener('click', function() {
+        document.getElementById('modal-modifier').style.display = 'none';
+    });
+
+
+
+    // Soumettre le formulaire
+    document.getElementById('form-modifier').addEventListener('submit', function(e) {
+        e.preventDefault(); // Empêche la soumission classique du formulaire
+
+        // Récupérer les nouvelles valeurs du formulaire
+        const nom = document.getElementById('nom').value;
+        const email = document.getElementById('email').value;
+        const status = document.getElementById('status').value;
+
+        // Envoi des données via AJAX (ou fetch)
+        console.log("Nouvelle valeur pour l'utilisateur : ", { nom, email, status });
+
+        // Fermer le modal après soumission
+        document.getElementById('modal-modifier').style.display = 'none';
+
+        // Optionnel : tu peux mettre à jour la ligne dans la table avec les nouvelles valeurs
+    });
+
+</script>
+
+</body>
+</html>

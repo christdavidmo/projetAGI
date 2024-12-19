@@ -1,0 +1,139 @@
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(75, 30, 11);
+    /*background-image: linear-gradient(to right, rgb(234, 145, 47,0.7), rgb(75, 30, 11));
+
+     */
+    /* Permet de passer à la ligne suivante sur petit écran, si nécessaire */
+    flex-wrap: wrap;
+    padding:  60px 120px;
+}
+
+.footer-newsletter,
+.footer-contact,
+.footer-rs {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    /* flex: 1;  Chaque <ul> prendra une proportion égale de l'espace */
+}
+
+.footer-newsletter {
+    margin-right: 20px;
+}
+
+.footer-contact {
+    margin-right: 20px;
+}
+
+.footer-rs {
+    margin-right: 0;
+}
+
+/* Espacement entre les items dans chaque <ul> */
+.footer-newsletter li,
+.footer-contact li,
+.footer-rs li {
+    color: white;
+    margin-bottom: 30px; /* Espacer les éléments de chaque liste */
+}
+
+
+
+/* Style pour les input et bouton */
+.input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-container input{
+    color: white;
+    padding: 10px;
+    background-color: rgb(75, 30, 11);
+    border: none;
+    outline: none;
+
+    border-bottom: 2px solid rgb(234, 145, 47);
+}
+
+.Email-container label{
+    font-size: 15px;
+    margin-right: 0;
+}
+
+.subscribe-button {
+    background-color: rgb(234, 145, 47);
+    color: white;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-left: 0;
+}
+
+.subscribe-button:hover {
+    background-color: #45a049;
+}
+
+.footer-newsletter li{
+    font-size: 19px;
+}
+.footer-contact li{
+    font-size: 21px;
+}
+.footer-rs li{
+    cursor: pointer;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/* Media Query pour les écrans de moins de 768px (mobile) */
+@media screen and (max-width: 768px) {
+    /* Aligner les éléments verticalement sur les petits écrans */
+    .footer-container {
+        padding:  30px 50px;
+        flex-direction: column;
+        align-items: flex-start; /* Aligner à gauche */
+    }
+
+    /* Chaque <ul> doit occuper toute la largeur disponible */
+    .footer-newsletter,
+    .footer-contact,
+    .footer-rs {
+        width: 100%;
+        text-align: left; /* Aligner tous les éléments à gauche */
+        margin-bottom: 20px; /* Espacement entre chaque section */
+    }
+
+    /* Espacement entre les éléments de chaque liste */
+    .footer-newsletter li,
+    .footer-contact li,
+    .footer-rs li {
+        margin-bottom: 15px;
+    }
+
+    /* S'assurer que le formulaire occupe toute la largeur */
+    .input-container {
+        width: 100%; /* L'input et le bouton occuperont toute la largeur disponible */
+        gap: 10px;
+    }
+
+    /* Largeur de l'input et du bouton */
+    .Email-container input {
+        width: 70%; /* Largeur de l'input */
+        padding: 10px;
+    }
+
+    .subscribe-button {
+        width: 30%; /* Largeur du bouton */
+        padding: 10px;
+    }
+
+    /* Assurer que les liens réseaux sociaux sont en ligne sur mobile */
+    .footer-rs li {
+        display: inline-block; /* Affichage horizontal sur mobile */
+        margin-right: 10px; /* Espacement entre les liens */
+    }
+}

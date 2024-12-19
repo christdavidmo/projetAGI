@@ -7,7 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Date;
+import java.time.LocalDate; // Import de LocalDate
+import java.util.List;
 
 @Entity
 @Table(name = "publications")
@@ -25,5 +26,13 @@ public class Publication extends AbstractEntity{
     @Column(nullable = false)
     protected String author;
 
-    protected Date datePublication ;
+    protected LocalDate datePublication ;
+
+
+    // Méthodes pour obtenir les dates formatées
+    public String getDatePublicationFormatted() {
+        return datePublication != null ? datePublication.toString() : null; // Utilisation de toString pour le format "yyyy-MM-dd"
+    }
+
+
 }

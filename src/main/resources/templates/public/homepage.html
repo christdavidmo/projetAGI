@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" th:href="@{/css/accueil.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{css/footer1.css}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Home</title>
+</head>
+<body>
+
+<div th:replace="~{layout/navbar/navbar :: navbar}"></div>
+
+    <div class="background-image">
+        <div class="texte-devise-agi">
+            <p> Vivre <br>
+                Reussir <br>
+                Ensemble <br>
+            </p>
+        </div>
+    </div>
+
+
+<div class="carrés">
+
+    <div class="carré vert">
+
+        <a th:href="@{/public/aboutus}">
+
+            <p>
+                Qui sommes nous <br>
+                En savoir plus
+
+            </p>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </a>
+
+
+    </div>
+
+
+    <div class="carré jaune">
+
+        <a th:href="@{/public/activites}">
+
+            <p>
+                Nos Activités <br>
+                En savoir plus
+
+            </p>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </a>
+    </div>
+
+
+    <div class="carré bleu">
+        <a th:href="@{/public/historique/bureau}">
+
+            <p>
+                Notre Historique <br>
+                En savoir plus
+            </p>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </a>
+
+    </div>
+
+    <!--  <div class="carré jaune">
+         <a href="http://">
+
+             <p>Qui sommes nous</p>
+
+             <p>En savoir plus</p>
+
+             <i class="fa-solid fa-arrow-right"></i>
+         </a>
+     </div> -->
+
+ </div>
+
+
+ <div class="background-image-2">
+
+       <p class="title-background-image-2">L'amicale c'est aussi </p>
+
+       <div class="line1">
+
+           <div class="line1-photo1 cadre"></div>
+
+           <div class="line1-photo2 cadre">
+               <h2> top </h2>
+               <p>La meilleure façon <br>
+                   de prédire  l’avenir <br>
+                   est de le créer .</p>
+           </div>
+
+           <div class="line1-photo3 cadre"></div>
+
+       </div>
+
+       <div class="line2">
+
+             <div class="line2-photo1 cadre">
+                 <h2> top </h2>
+                 <p>
+                     Se réunir est un début, <br>
+                     rester  ensemble est  <br>
+                     un progrès, travailler  <br>
+                     ensemble est la réussite.
+                 </p>
+             </div>
+
+             <div class="line2-photo2 cadre"></div>
+
+             <div class="line2-photo3 cadre">
+                 <h2><strong>TOP</strong></h2>
+                     <p>
+                     Se réunir est un début, <br>
+                     rester  ensemble est  <br>
+                     un progrès, travailler  <br>
+                     ensemble est la réussite.
+                     </p>
+             </div>
+
+         </div>
+
+ </div>
+
+
+ <div th:replace="~{layout/footer/footer1 :: footer}"></div>
+ <!--  <div th:replace="~{layout/footer/footer :: footer}"></div> -->
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById("menu");
+        menu.classList.toggle("menu-active");
+    }
+</script>
+
+</body>
+</html>

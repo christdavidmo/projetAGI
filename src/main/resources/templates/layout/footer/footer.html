@@ -3,9 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/footer.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
+
+    <style>
+        footer{
+            display: flex;
+            background-color: rgb(75, 30, 11);
+            width: 80%;
+            height: 400px;
+            margin: 0 auto;
+            margin-bottom: 50px;
+        }
+
+        .left{
+            background-color: rgb(234, 145, 47);
+            flex: 2;
+
+        }
+
+        .titre-contacter-left{
+            font-size: 27px;
+            color: white;
+            margin-left: 3%;
+
+        }
+
+        .ligne-contact{
+            border: none;
+            height: 1px;
+            width: 80%;
+            margin: -17px auto;
+            background-color: rgb(245, 243, 243);
+
+        }
+
+
+        .tab-container{
+
+            display: flex;                /* Active Flexbox */
+            justify-content: center;     /* Centre le texte horizontalement */
+            align-items: center;         /* Centre le texte verticalement */
+            margin: 60px ;
+            flex-direction: column;
+        }
+
+        .contact-item,.social-item{
+            color: rgb(75, 30, 11);
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .contact-label,.social-label{
+            font-weight: bold;
+            padding-right: 4px;
+        }
+
+
+
+
+
+
+
+        .right{
+            background-color: rgb(75, 30, 11);
+            flex: 1;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+
+            margin: 14px;
+        }
+
+        .titre-contacter-right{
+            font-size: 27px;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+
+
+        }
+
+        .texte-contacter-right-1{
+            color: white;
+            font-size: 20px;
+            text-align: center;
+
+
+        }
+
+
+
+
+        .Email-container{
+            position: relative;
+            margin-top: 30px;
+        }
+
+        label{
+            position: absolute;
+            left: 35%; /* Positionne le label */
+            top: -20px; /* Positionne le label au-dessus du champ */
+            font-size: 20px; /* Taille du texte */
+            color: white; /* Couleur du texte du label */
+            transition: 0.2s; /* Transition douce */
+        }
+
+        input {
+            color: white;
+            border: none; /* Pas de bordure */
+            border-bottom: 2px solid rgb(234, 145, 47); /* Ligne en bas */
+            outline: none; /* Pas de contour lors de la sélection */
+            background-color: rgb(75, 30, 11);;
+
+            padding: 10px 20px;
+        }
+
+        input:focus {
+            border-bottom: 2px solid rgb(234, 145, 47); /* Changement de couleur lors de la sélection */
+        }
+
+        button{
+            margin: 50px auto;
+
+            border: none;
+            outline: none;
+            background-color:  rgb(75, 30, 11);
+            cursor: pointer;
+
+
+            color: white;
+
+        }
+
+        .subscribe-button{
+            font-size: 20px;
+        }
+
+        button:hover{
+            color: rgb(234, 145, 47);
+        }
+
+
+
+        @media (max-width: 968px) {
+
+            .tab-container{
+
+                display: flex;               /* Active Flexbox */
+                justify-content: center;     /* Centre le texte horizontalement */
+                align-items: center;         /* Centre le texte verticalement */
+                margin: 60px ;
+
+                flex-direction: column;
+
+                text-align: left;
+            }
+
+            footer{
+
+                flex-direction: column;
+            }
+
+            .left, .right {
+                flex: 0 0 100%; /* Sur mobile, les divs occupent toute la largeur disponible */
+
+            }
+
+
+
+        }
+    </style>
 </head>
 <body>
 <footer th:fragment="footer">

@@ -15,7 +15,7 @@ public class UsersFixtures implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        securityService.saveUser("messi","passer1234");
-        securityService.saveUser("Neymar","passer1234");
+        securityService.saveUser("messi","passer");
+        securityService.saveUser("Neymar","passer");
     }
 }

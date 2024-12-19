@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" th:href="@{/css/navbarPresident.css}">
+  <link rel="stylesheet" th:href="@{/css/detailgestionPresident.css}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    .container-filter-name{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 29px 0;
+    }
+
+    .filter_form_name{
+      display: flex;
+      background-color: rgb(234, 145, 47);
+      justify-content: center;
+      align-items: center;
+      width: 400px;
+      height: 90px;
+
+      border-radius: 10px;
+
+      /*padding: 30px 20px;
+      border-radius: 10px;*/
+    }
+
+    .container-filter-name label{
+      color: #090808;
+      font-size: 20px;
+      font-weight:  bold;
+
+    }
+
+    .container-filter-name input{
+      padding: 8px 10px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .container-filter-name button ,.container-filter-name text-filter_form_name{
+      margin: 0 6px;
+    }
+
+    .container-filter-name text-filter_form_name{
+      display: flex;
+      align-items: center;
+    }
+    .container-filter-name button{
+      padding: 8px 10px;
+      border-radius: 5px;
+      border: none;
+    }
+    .container-filter-name button:hover{
+      color: white;
+      background-color: rgb(75, 30, 11);
+    }
+
+
+
+
+
+
+  </style>
+
+  <title>Title</title>
+
+</head>
+<body>
+<div th:replace="~{layout/navbar/navbarPresident :: navbar-office}" >  </div>
+
+
+
+  <div class="container-filter-name">
+
+    <form th:action="@{/president/gestion/detail}" class="filter_form_name" method="get">
+
+      <div class="text-filter_form_name">
+        <label for="NomAChercher">Nom</label>
+        <input type="text" name="Nom" th:value="${Nom}" id="NomAChercher" placeholder="nom de la personne">
+      </div>
+
+      <button type="submit">Chercher</button>
+
+    </form>
+
+  </div>
+
+
+
+<div class="main-containt">
+
+    <button type="submit" class="containt-btn-add" id="btn-ajout">
+        Ajouter un utilisateur
+    </button>
+
+
+ <table class="tb-gestion-container">
+
+    <thead>
+
+      <tr>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Matricule</th>
+        <th>Action</th>
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+        <tr th:each="member :${members}">
+          <td th:text="${member.nom}" ></td>
+          <td th:text="${member.prenoms}"></td>
+          <td th:text="${member.matricule}"></td>
+
+          <td>
+
+
+              <button class="btn-modifier"
+                      th:data-id="${member.id}"
+                      th:data-nom="${member.nom}"
+                      th:data-prenoms="${member.prenoms}"
+                      th:data-sexe="${member.sexe}"
+                      th:data-email="${member.email}"
+                      th:data-matricule="${member.matricule}">
+                Modifier
+              </button>
+
+
+                  <!-- Si le membre est actif, afficher le bouton "Bloquer" -->
+                  <button th:if="${member.statut == T(com.example.amicale.Data.Enumeration.Statut).ACTIF }"
+                          th:action="@{/president/toogleblock/{id}(id=${member.id}) }"
+                          th:data-id="${member.id}"
+                          class="btn-bloquer">
+                      Bloquer
+                  </button>
+
+                  <!-- Si le membre est actif, afficher le bouton "Bloquer" -->
+                  <button type="submit" th:if="${member.statut == T(com.example.amicale.Data.Enumeration.Statut).BLOQUE}"
+                            th:action="@{/president/toogleblock/{id}(id=${member.id}) }"
+                            th:data-id="${member.id}"
+                          class="btn-debloquer">
+                      Debloquer
+                  </button>
+
+
+             <!--  <button class="btn-bloquer" method="post"
+                      th:data-id="${member.id}">
+                Bloquer
+              </button> -->
+
+              <button class="btn-supprimer"
+                        th:data-id="${member.id}">
+                Supprimer
+              </button>
+          </td>
+
+        </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
+
+
+<!-- Pagination -->
+<div class="pagination_container">
+
+  <ul class="pagination">
+    <!-- Lien vers la page précédente -->
+    <li th:if="${currentPage > 1}">
+      <a th:href="@{/president/gestion/detail(page=${currentPage - 1}, size=${8})}">Précédent</a>
+    </li>
+
+    <!-- Lien vers chaque page -->
+    <li th:each="i : ${#numbers.sequence(1, pages)}">
+      <a th:href="@{/president/gestion/detail(page=${i}, size=${8})}"
+         th:text="${i}"
+         th:class="${currentPage == i} ? 'active' : ''"></a>
+    </li>
+
+    <!-- Lien vers la page suivante -->
+    <li th:if="${currentPage < pages }">
+      <a th:href="@{/president/gestion/detail(page=${currentPage + 1}, size=${8})}">Suivant</a>
+    </li>
+  </ul>
+
+</div>
+<!-- Pagination -->
+
+
+    <div  class="contain-form-add" id="form-add-id" >
+
+        <div class="form-add-contain">
+
+            <div class="contain-modal-text">
+                <h2>Ajout utilisateur </h2>
+                <span class="close" id="close-form-add">&times;</span>
+            </div>
+
+           <form th:action="@{/president/gestion/detail/save}"  method="post" class="form-add-user">
+               <label for="N-nom">Nom </label>
+               <input type="text" name="nom" id="N-nom" required>
+
+               <label for="P-prenoms">Prenoms</label>
+               <input type="text" name="prenoms" id="P-prenoms">
+
+               <label for="E-mail">E-mail</label>
+               <input type="text" name="email" id="E-mail">
+
+               <label for="M-matricule">Matricule</label>
+               <input type="text" name="matricule" id="M-matricule">
+
+               <label for="S-sexe">Sexe</label>
+               <select name="sexe" id="S-sexe">
+                   <option value="masculin">masculin</option>
+                   <option value="feminin">feminin</option>
+               </select>
+
+               <div class="form-add-user-button">
+                   <button type="submit">Envoyer</button>
+               </div>
+           </form>
+
+       </div>
+
+    </div>
+
+
+
+
+    <div class="modal" id="modal-modifier">
+
+        <div class="contain-modal">
+
+
+          <div class="contain-modal-text">
+            <h2>Modification utilisateur </h2>
+            <span class="close" id="close-modal-modification">&times;</span>
+          </div>
+
+
+          <form th:action="@{/president/modifier/member}"  method="post" class="form-modal-modifier">
+
+            <input type="hidden" id="userId" name="id" />
+
+            <div class="values-container">
+              <label for="nom">Nom :</label>
+              <input type="text" id="nom" name="nom" required>
+
+              <label for="prenoms">Prenoms :</label>
+              <input type="text" name="prenoms" id="prenoms">
+
+                <label for="sexe">Sexe :</label>
+                <input type="text" name="sexe" id="sexe">
+
+              <label for="email">Email :</label>
+              <input type="email" name="email" id="email">
+
+              <label for="matricule">Matricule :</label>
+              <input type="text" name="matricule" id="matricule">
+            </div>
+
+            <div class="btn-save-form-modal">
+              <button type="submit">Envoyer</button>
+            </div>
+
+          </form>
+
+        </div>
+
+    </div>
+
+
+
+
+<script !src="">
+
+    // ============== btn ajout du haut ===========================
+    var btn_add = document.getElementById("btn-ajout");
+
+    btn_add.addEventListener('click',function (){
+        document.getElementById("form-add-id").style.display = 'block';
+    })
+    // ============== btn ajout du haut ===========================
+
+
+    // ===============  fermeture du modal ===============
+
+    var modal = document.getElementById("modal-modifier");
+    var close_modal = document.getElementById("close-modal-modification");
+
+    var modal_user = document.getElementById("form-add-id");
+    var close_modal_user = document.getElementById("close-form-add");
+
+    function closeModal(){
+        modal.style.display = "none";
+    }
+    close_modal.addEventListener('click',function (){
+        closeModal();
+    })
+
+
+    function CloseModalUser(){
+        modal_user.style.display ="none";
+    }
+    close_modal_user.addEventListener('click',function (){
+        CloseModalUser();
+    })
+
+
+    window.addEventListener('click',function (event){
+    if(event.target === modal){
+      closeModal();
+    }
+    if (event.target === modal_user ){
+        CloseModalUser();
+    }
+  })
+
+  // ===============  fermeture du modal ===============
+
+
+
+    //===================  bouton modifier ===================
+  document.querySelectorAll('.btn-modifier').forEach(button =>{
+
+      button.addEventListener('click',function () {
+        // je récupère d'abord les infos
+        const id = this.getAttribute('data-id');
+        const nom = this.getAttribute('data-nom');
+        const prenoms = this.getAttribute('data-prenoms');
+        const sexe = this.getAttribute('data-sexe');
+        const email = this.getAttribute('data-email');
+        const matricule = this.getAttribute('data-matricule');
+
+
+        document.getElementById('nom').value = nom ;
+        document.getElementById('prenoms').value = prenoms ;
+        document.getElementById('sexe').value = sexe ;
+        document.getElementById('email').value = email ;
+        document.getElementById('matricule').value = matricule ;
+        document.getElementById('userId').value = id; // Ajouter l'ID caché
+
+
+      document.getElementById("modal-modifier").style.display ='block';
+      })
+
+  } )
+
+    //===================  bouton modifier ===================
+
+
+
+    //===================  bouton bloquer ===================
+
+    document.querySelectorAll('.btn-bloquer').forEach(button => {
+        button.addEventListener('click', function() {
+            const memberId = this.getAttribute('data-id');  // Récupère l'ID du membre depuis l'attribut data-id
+
+            // Envoi de la requête AJAX pour bloquer le membre
+            fetch(`/president/toogleblock/${memberId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: memberId })  // Envoie l'ID du membre
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert("Membre bloqué avec succès !");
+                        location.reload();  // Recharge la page pour voir les changements
+                    } else {
+                        alert("Une erreur est survenue.");
+                    }
+                })
+                .catch(error => {
+                    alert("Erreur lors de l'envoi de la requête.");
+                });
+        });
+    });
+
+
+    document.querySelectorAll('.btn-debloquer').forEach(button => {
+        button.addEventListener('click', function() {
+            const memberId = this.getAttribute('data-id');  // Récupère l'ID du membre depuis l'attribut data-id
+
+            // Envoi de la requête AJAX pour bloquer le membre
+            fetch(`/president/toogleblock/${memberId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: memberId })  // Envoie l'ID du membre
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert("Membre débloqué avec succès !");
+                        location.reload();  // Recharge la page pour voir les changements
+                    } else {
+                        alert("Une erreur est survenue.");
+                    }
+                })
+                .catch(error => {
+                    alert("Erreur lors de l'envoi de la requête.");
+                });
+        });
+    });
+    //===================  bouton bloquer ===================
+
+
+
+    //===================  bouton supprimer ===================
+    document.querySelectorAll('.btn-supprimer').forEach(button => {
+        button.addEventListener('click', function() {
+            const memberId = this.getAttribute('data-id');  // Récupère l'ID du membre depuis l'attribut data-id
+
+            // Demande de confirmation avant de supprimer
+            const confirmDelete = confirm("Êtes-vous sûr de vouloir supprimer ce membre ?");
+            if (confirmDelete) {
+                // Envoi de la requête AJAX pour supprimer le membre
+                fetch(`/president/delete/${memberId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ id: memberId })  // Envoie l'ID du membre
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            alert("Membre supprimé avec succès !");
+                            location.reload();  // Recharge la page pour voir les changements
+                        } else {
+                            alert("Une erreur est survenue.");
+                        }
+                    })
+                    .catch(error => {
+                        alert("Erreur lors de l'envoi de la requête.");
+                    });
+            }
+        });
+    });
+    //===================  bouton supprimer ===================
+
+
+
+
+</script>
+
+
+</body>
+</html>

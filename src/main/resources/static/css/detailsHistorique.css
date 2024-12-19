@@ -1,0 +1,65 @@
+body{
+    margin: 0;
+}
+
+.texte-detail-bureau{
+    margin-top: 60px;
+    padding: 10px;
+}
+
+.texte-detail-bureau p{
+    text-align: center;
+    font-size: 25px;
+    line-height: 1.6;
+}
+
+
+.member-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5% 0;
+
+    flex-wrap: wrap;
+    gap: 20px; /* Espace entre les éléments */
+}
+
+
+.M-container{
+    display: flex;
+    justify-content: flex-end; /* Aligner les éléments au bas du parent */
+    flex-direction: column;
+
+    background-color: chocolate;
+
+    border-radius: 5px;
+    border-bottom-left-radius: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* horizontal verticale flou ; couleur= 1,2,3 ,opacite */
+
+
+    position: relative;
+    height: 530px;
+    width: 400px;
+
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+.M-container-info{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+
+    padding: 15px 20px;
+    border-radius: 5px;
+
+    border-bottom-right-radius: 80px;
+    border-bottom-left-radius: 20px;
+}
+
+
+

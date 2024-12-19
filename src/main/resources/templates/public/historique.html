@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/footer1.css}">
+    <link rel="stylesheet" th:href="@{/css/historique.css}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+
+
+    </style>
+</head>
+<body>
+
+<!--  la nav bar  -->
+<div th:replace="~{layout/navbar/navbar :: navbar}"></div>
+
+
+    <div class="background-image"> </div>
+
+    <div class="texte-message-bureau">
+        <p> Depuis sa création, notre amicale a vu défiler de nombreux présidents à sa tête, <br>
+            chacun apportant sa touche personnelle et son engagement pour la faire grandir et <br>
+            rayonner.Grâce à leur dévouement et à leur vision, notre belle amicale a su s'épanouir <br>
+            et devenir une communauté forte et solidaire. <br>
+
+            Vous trouverez ci-dessous une présentation des différents bureaux qui ont marqué l'histoire <br>
+            de notre amicale. Chaque bureau a laissé une empreinte unique, contribuant à bâtir les fondations <br>
+            solides sur lesquelles repose notre organisation aujourd'hui. </p>
+    </div>
+
+
+
+
+
+<div class="President-container">
+
+    <div class="P-container" th:each="mandat : ${lesmandats}"
+         th:style="|background-image: url(@{${mandat.president.PhotoUrl != null ? mandat.president.PhotoUrl : '/images/no-user-image.jpg'}});|">
+
+        <a th:href="@{/public/detail/historique/bureau/{id}(id=${mandat.id})}">
+            <div class="info-container">
+
+                <div  class="president-name">
+                    <strong>Nom :</strong>   <span th:text="${mandat.president.Nom}"></span>  <br>
+                    <strong>Prenom :</strong> <span th:text="${mandat.president.Prenoms}"></span>
+                </div>
+
+                <div  class="mandate-date">
+                  <strong> Debut du mandat : </strong>  <span th:text="${mandat.dateDebutFormatted}"></span>
+                </div>
+
+                <div  class="mandate-date">
+                    <strong> Fin du mandat : </strong>  <span th:text="${mandat.DateFinFormatted}"></span>
+                </div>
+
+            </div>
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="pagination_container">
+
+    <ul class="pagination">
+        <!-- Lien vers la page précédente -->
+        <li th:if="${currentPage > 1}">
+            <a th:href="@{/public/historique/bureau(page=${currentPage - 1}, size=${3})}">Précédent</a>
+        </li>
+
+        <!-- Lien vers chaque page -->
+        <li th:each="i : ${#numbers.sequence(1, pages)}">
+            <a th:href="@{/public/historique/bureau(page=${i}, size=${3})}"
+               th:text="${i}"
+               th:class="${currentPage == i} ? 'active' : ''"></a>
+        </li>
+
+        <!-- Lien vers la page suivante -->
+        <li th:if="${currentPage < pages }">
+            <a th:href="@{/public/historique/bureau(page=${currentPage + 1}, size=${3})}">Suivant</a>
+        </li>
+    </ul>
+
+</div>
+
+
+
+
+
+<!--  -->
+
+
+    <div th:replace="~{layout/footer/footer1 :: footer}"></div>
+    <!--  <div th:replace="~{layout/footer/footer :: footer}"></div> -->
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            menu.classList.toggle("menu-active");
+        }
+    </script>
+
+
+</body>
+
+</html>

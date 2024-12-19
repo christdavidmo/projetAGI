@@ -1,18 +1,10 @@
 package com.example.amicale.Data.Fixtures;
 
-import com.example.amicale.Data.Entity.Actualite;
-import com.example.amicale.Data.Entity.OfficeMember;
-import com.example.amicale.Data.Entity.Role;
 import com.example.amicale.Data.Repository.ActualiteRepository;
 import com.example.amicale.Data.Repository.RoleRepository;
 import com.example.amicale.Data.Services.ActualiteService;
-import com.example.amicale.Data.Services.OfficeMemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
-
-import java.sql.Date;
-import java.util.List;
 
 
 //@Component
@@ -21,14 +13,13 @@ public class ActualiteFixture implements CommandLineRunner {
 
     private final ActualiteRepository actualiteRepository;
     private final ActualiteService actualiteService;
-    private final OfficeMemberService officeMemberService;
     private final RoleRepository roleRepository;
 
 
     @Override
     public void run(String... args) throws Exception {
 
-        // Récupérer les rôles existants
+        /* Récupérer les rôles existants
         //prend le role du president , plus de liste
         List<Role> roles = roleRepository.findAll();
 
@@ -43,7 +34,7 @@ public class ActualiteFixture implements CommandLineRunner {
             for (Role role : roles) {
 
                 // Cherchez un OfficeMember qui a ce rôle
-                List<OfficeMember> membersWithRole = officeMemberService.getOfficeMemberByRole(role);
+                //List<OfficeMember> membersWithRole = officeMemberService.getOfficeMemberByRole(role);
 
                 if (!membersWithRole.isEmpty()) {
 
@@ -63,7 +54,7 @@ public class ActualiteFixture implements CommandLineRunner {
 
             }
 
-        }
+        }*/
     }
 
 }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .form-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        form {
+            background-color: rgb(234, 145, 47);
+            padding: 20px;
+
+        }
+        .profile-image {
+            max-height: 500px;
+            max-width: 100%;
+            object-fit: cover; /* Garde le ratio d'image sans déformer */
+
+        }
+    </style>
+</head>
+<body>
+
+
+<h1> formulaire pour changer les photos</h1>
+
+    <div class="form-container">
+
+
+        <div>
+            <form th:action="@{/member/{id}/uploadPhoto(id=${member.id})}" method="post" enctype="multipart/form-data">
+
+                <label for="photo">PHOTO</label>
+                <input type="file" name="photo" id="photo">
+                <button type="submit">Envoyer</button>
+
+            </form>
+        </div>
+
+
+        <div class="form-img">
+            <img th:if="${member.PhotoUrl != null}" th:src="@{${member.PhotoUrl}}"  alt="member photo" class="profile-image">
+            <img th:if="${member.PhotoUrl == null}" th:src="@{/images/no-user-image.jpg}" alt="default member photo" class="profile-image">
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>

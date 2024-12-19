@@ -1,0 +1,61 @@
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.container-1{
+    display: flex;
+    padding: 0 40px;
+    margin: 20px 0px;
+}
+.case{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 50vh;
+    border-radius: 5px;
+}
+
+.case a{
+    text-decoration: none;
+    color: black;
+}
+.case p{
+    font-size: 40px;
+}
+
+.case button{
+    font-size: 25px;
+    padding: 5px 13px;
+    border: none;
+    border-radius: 5px;
+}
+
+.case button:hover{
+    color: white;
+    background-color: dodgerblue;
+}
+
+.ligne-verticale{
+    height: 100%;
+    width: 30px;
+    background-color: white;
+}
+
+.container-utilisateur{
+    flex: 1;
+    background-color: red;
+}
+.container-utilisateur:hover{
+    box-shadow: 0px 10px 11px rgb(0,0,0,0.2);
+}
+.container-contenu{
+    flex: 1;
+    background-color: #b6b641;
+}
+.container-contenu:hover{
+    box-shadow: 0px 10px 11px rgb(0,0,0,0.2);
+}
+

@@ -15,11 +15,16 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Role extends AbstractEntity {
+    
     @Column(nullable = false, unique = true)
     private String rolename;
 
     @OneToMany (fetch = FetchType.LAZY, mappedBy = "role")
     List<Users> users;
+
+    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
+    private List<Member> members;  // Liste des membres ayant ce rôle
+
 
     public Role(String rolename) {
         this.rolename = rolename;

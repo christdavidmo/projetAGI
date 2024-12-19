@@ -2,12 +2,10 @@ package com.example.amicale.Security.Data.Fixtures;
 
 import com.example.amicale.Data.Entity.Role;
 import com.example.amicale.Data.Repository.RoleRepository;
-import com.example.amicale.Security.Services.SecurityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,15 +18,26 @@ public class RoleFixtures implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        List<String> Roles= Arrays.asList( "Responsable_Com", "Responsable_Pedagie",
-                                            "Responsable_Sport","Responsable_Trésorie",
-                                            "President","Vice-President", "Secretaire-Génerale",
-                                            "MemberCommunity","OfficeMember");
+        // Liste des rôles à insérer dans la base de données
+        List<String> roles = Arrays.asList(
+                "MemberCommunity","OfficeMember",
+                "Responsable_Communication", "Responsable_Pedagogie",
+                "Responsable_Sport", "Responsable_Tresorie",
+                "President", "Vice_President", "Secretaire_Generale"
 
-        Roles.forEach(role -> {
-            if(roleRepository.findByRolename(role) == null) {
-                Role newRole = new Role(role);
-                roleRepository.save(newRole);
+        );
+
+        // Pour chaque rôle, vérifier s'il existe, sinon le créer et l'enregistrer
+        roles.forEach(roleName -> {
+            Role role = roleRepository.findByRolename(roleName); // Recherche du rôle dans la base
+
+            // Si le rôle n'existe pas, on le crée et l'enregistre
+            if (role == null) {
+                role = new Role();
+                role.setRolename(roleName); // Assurez-vous d'avoir un setter pour le nom du rôle
+                role.setActive(true);
+                roleRepository.save(role);  // Sauvegarde du rôle dans la base de données
+                System.out.println("Rôle " + roleName + " ajouté.");
             }
         });
 

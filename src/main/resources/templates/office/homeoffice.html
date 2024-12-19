@@ -1,12 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" th:href="@{/css/navbarOffice.css}">
+    <link rel="stylesheet" th:href="@{/css/homeOffice.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script th:src="@{/js/navbarOffice.js}"></script>
+
+
     <title>Title</title>
 </head>
 <body>
 
-<h1> office home </h1>
+<div th:replace="~{layout/navbar/navbarOffice :: navbar-office}" >  </div>
+
+
+
+<div class="block1">
+
+    <div class="block1-partie1">
+        <p> le bien-être et le développement de notre communauté.  <br>
+            Chaque membre du bureau apporte son expertise,sa passion  <br>
+            et son engagement pour faire de notre amicale un lieu de <br>
+            partage et de solidarité.
+        </p>
+    </div>
+
+    <div class="block1-partie2"></div>
+
+</div>
 
 </body>
 </html>

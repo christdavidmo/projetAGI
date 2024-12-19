@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page_d'erreur</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .image-container{
+            /* height: 200px;
+            background-image: url("/images/erreur.png");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat; */
+
+            margin-bottom: 20Px;
+        }
+
+
+        .container-message{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .part-one{
+            flex: 1;
+
+            font-size: 80px;
+            font-weight: bold;
+            text-align: center;
+            color: red;
+
+            border-right: solid black 1px;
+
+        }
+
+        .part-two{
+            font-size: 30px;
+            flex: 1;
+            text-align: center;
+        }
+
+        @media (max-width: 969px) {
+            .container-message{
+                flex-direction: column;
+                padding: 30px;
+            }
+
+            .part-one{
+                border-right: none;
+            }
+
+            .part-two{
+                font-size: 20px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+        <div class="image-container"></div>
+
+        <div class="container-message">
+
+            <div class="part-one">
+                <p> Erreur 404</p>
+            </div>
+
+            <div class="part-two">
+                <p>
+                    <strong> Oups ! Page non trouvée </strong>. La page que vous recherchez <br>
+                    est introuvable. Revenez à l'accueil pour continuer votre navigation.
+                </p>
+            </div>
+
+        </div>
+
+
+</body>
+</html>

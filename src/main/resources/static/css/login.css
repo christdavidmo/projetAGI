@@ -1,0 +1,96 @@
+body{
+    margin: 0;
+}
+
+.formulaire-title{
+    text-align: center;
+}
+
+.formulaire-title p{
+    font-size: 45px;
+
+}
+
+
+
+.formulaire-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+form {
+    background-color: rgb(191, 115, 32);
+
+    border-radius: 6px;
+    box-shadow: 0px 12px 11px rgba(0, 0, 0, 0.3);
+
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+
+    max-width: 500px; /* Limiter la largeur du formulaire */
+    width: 100%; /* Largeur automatique selon le contenu */
+    box-sizing: border-box; /* Inclure les padding dans la largeur totale */
+
+    display: flex;
+    flex-direction: column;
+}
+
+.form-check{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.form-check label{
+    font-size: 25px;
+    margin-bottom: 9px;
+}
+
+.form-check input{
+    width: 90%;
+    padding: 10px 12px;
+    font-size: 16px;
+    outline: none;
+
+}
+.btn{
+    margin-top: 15px;
+}
+button{
+    padding: 8px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover{
+    border: none;
+    outline: none;
+    color: white;
+    background-color: #123f95;
+}
+
+
+@media (max-width: 767px) {
+
+    form{
+        padding: 30px;
+        width: 80%;
+    }
+
+    .form-check label{
+        font-size: 20px;
+    }
+
+    .form-check input{
+        font-size: 15px;
+        padding: 8px 10px;
+    }
+
+}
+
+

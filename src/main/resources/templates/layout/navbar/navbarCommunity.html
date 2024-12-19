@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" th:href="@{/css/navbarCommunity.css}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script th:src="@{/js/navbarCommunity.js}" defer></script>
+
+
+  <title>Title</title>
+</head>
+<body>
+
+
+
+  <nav th:fragment="navbarCommunity">
+
+      <div class="logo-amicale">
+        <a>
+          <img th:src="@{/images/logo-agi.jpg}" alt="logo">
+        </a>
+      </div>
+
+      <div class="menu-burger"  id="menu-burger" onclick="toggleMenu()">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+
+
+      <ul class="menu-nav" id="menu">
+        <li> Accueil</li>
+        <li> Manuels</li>
+        <li> À propos</li>
+        <li> Activités</li>
+      </ul>
+
+  </nav>
+
+
+
+</body>
+</html>

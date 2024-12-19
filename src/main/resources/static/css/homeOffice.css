@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.block1{
+    display: flex;
+    width: 100%;
+}
+
+.block1-partie1{
+    flex: 2;
+    // background-color: #b6b641;
+    height: 50vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.block1-partie1 p{
+    font-size: 25px;
+}
+
+.block1-partie2{
+    flex: 1;
+    height: 50vh;
+
+
+    background-image: url("/images/ensemblePng.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+

@@ -109,7 +109,7 @@ input {
     border: none; /* Pas de bordure */
     border-bottom: 2px solid rgb(234, 145, 47); /* Ligne en bas */
     outline: none; /* Pas de contour lors de la sélection */
-    background-color: rgb(75, 30, 11);;
+    background-color: rgb(75, 30, 11);
 
     padding: 10px 20px;
 }
