@@ -9,6 +9,7 @@ import com.example.amicale.Security.Services.SecurityService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +17,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.Date;
 import java.time.LocalDate;
 
-//@Component
+@Order(2)
+
+@Component
 @RequiredArgsConstructor
 public class MemberFixtures implements CommandLineRunner {
 

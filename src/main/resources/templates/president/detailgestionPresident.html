@@ -139,6 +139,7 @@
                   <button th:if="${member.statut == T(com.example.amicale.Data.Enumeration.Statut).ACTIF }"
                           th:action="@{/president/toogleblock/{id}(id=${member.id}) }"
                           th:data-id="${member.id}"
+
                           class="btn-bloquer">
                       Bloquer
                   </button>
