@@ -235,46 +235,16 @@ body{
 }
 
 
-@media only screen and (max-width: 430px) {
-    .carrés {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-
-    .background-image-2 {
-        padding: 0;
-        margin: 0;
-    }
-
-    .line2, .line1 {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .line1-photo1, .line1-photo2, .line1-photo3,
-    .line2-photo1, .line2-photo2, .line2-photo3 {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-    }
-
-    .line1-photo1, .line1-photo3, .line2-photo2 {
+/* Pour les grands écrans, on garde le background fixé */
+@media only screen and (min-width: 430px) {
+    .line1-photo1, .line1-photo2, .line1-photo3, .line2-photo1, .line2-photo2, .line2-photo3 {
         background-attachment: fixed;
     }
+}
 
-    .line1-photo2 p, .line2-photo1 p, .line2-photo3 p {
-        font-size: 20px;
-        color: white;
-        margin-left: 20px;
-    }
-
-    .line1-photo2 h2, .line2-photo1 h2, .line2-photo3 h2 {
-        color: white;
-        margin-left: 20px;
-
-        font-size: 30px;
-        font-weight: bold;
-        text-transform: uppercase;
+/* Pour les petits écrans (iPhone 15 et autres), on n'applique pas background-fixed */
+@media only screen and (max-width: 430px) {
+    .line1-photo1, .line1-photo2, .line1-photo3, .line2-photo1, .line2-photo2, .line2-photo3 {
+        background-attachment: scroll; /* On utilise scroll ou on le supprime */
     }
 }
