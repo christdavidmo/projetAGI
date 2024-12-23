@@ -1,27 +1,52 @@
-
+body{
+    margin: 0;
+    padding: 0;
+}
 
 .container{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10%; /* Espace entre les éléments */
+    gap: 5%; /* Espace entre les éléments */
     padding: 8px;
 }
 
 .event{
     display: flex;
-    align-items: center;
-    justify-content: center;
+
     flex-direction: column;
     background-color: #f9f9f9;
     border-radius: 8px;
-    padding: 10px;
     box-sizing: border-box;
 
     /* Taille par défaut des éléments */
-    width: 25%;  /* Par défaut 3 éléments par ligne */
+    width: 25%;
+    height: 300px;
     margin: 10px 0 ;
+
+
+    justify-content: flex-end;
+
+    background-image: url("/images/fete.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
+
+.event a{
+    text-decoration: none;
+}
+.title-activity{
+
+    background: rgb(36, 115, 36);
+    padding: 15px 20px;
+    color: white;
+    border-radius: 5px;
+}
+
+
+
+
 
 .pagination_container{
     display: flex;
@@ -52,6 +77,25 @@
 .pagination a:hover{
     color: white;
     background-color: rgb(234, 145, 47);
+}
+
+@media (max-width: 769px ) {
+
+
+    .container{
+        gap: 3%; /* Espace entre les éléments */
+        padding: 4px;
+    }
+
+    .event{
+
+        /* Taille par défaut des éléments */
+        width: 45%;
+        height: 300px;
+        margin: 10px 0 ;
+
+    }
+
 }
 
 

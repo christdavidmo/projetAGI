@@ -125,8 +125,14 @@
     <div class="container">
 
         <div th:each="evenement :${evenements}" class="event">
-            <div class="title" th:text="${evenement.title}"></div>
-            <p th:text="${evenement.description}"></p>
+
+            <a href="http://">
+                <div class="title-activity" >
+                    <strong>Titre:</strong> <span th:text="${evenement.title}"> </span> <br>
+                    <span  th:text="${evenement.description}"></span>
+                </div>
+            </a>
+
         </div>
 
     </div>

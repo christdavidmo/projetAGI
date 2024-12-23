@@ -8,7 +8,9 @@ import lombok.Setter;
 
 
 import java.time.LocalDate; // Import de LocalDate
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Entity
@@ -40,5 +42,11 @@ public class Mandat extends AbstractEntity{
 
     public String getDateFinFormatted() {
         return dateFin != null ? dateFin.toString() : null; // Utilisation de toString pour le format "yyyy-MM-dd"
+    }
+
+    public List<Member> getMembers() {
+        return memberMandatRoles != null ? memberMandatRoles.stream()
+                .map(MemberMandatRole:: getMember)
+                .collect(Collectors.toList()) : new ArrayList<Member>();
     }
 }

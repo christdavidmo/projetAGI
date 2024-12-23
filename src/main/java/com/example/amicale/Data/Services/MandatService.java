@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface MandatService {
     Page<Mandat> GetAllMandat(Pageable pageable);
-   List<Member> GetMandatById(Long MandatId);
+    List<Member> GetMandatById(Long MandatId);
 }

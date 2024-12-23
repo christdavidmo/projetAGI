@@ -72,8 +72,8 @@ body{
     background-position: center;
     position: relative; /* Nécessaire pour positionner le contenu à l'intérieur */
 
-    height: 560px;
-    width: 400px;
+    height: 460px;
+    width: 340px;
 }
 
 .P-container a{
@@ -145,6 +145,36 @@ body{
         font-size: 16px;
         line-height: 1.5;
     }
+
+    .President-container{
+        flex-wrap: wrap;
+    }
+
+    .P-container{
+        height: 260px;
+        width: 185px;
+        margin: 4px 4px;
+    }
+
+    .info-container .president-name,.info-container .mandate-date{
+        font-size: 10px;
+    }
+
+    .info-container{
+
+
+        padding: 15px 15px;
+        border-radius: 5px;
+
+        border-bottom-right-radius: 60px;
+        border-bottom-left-radius: 20px;
+
+    }
+
+
+
+
+
 
 
 

@@ -2,6 +2,7 @@ package com.example.amicale.Data.Services.Impl;
 
 import com.example.amicale.Data.Entity.Mandat;
 import com.example.amicale.Data.Entity.Member;
+import com.example.amicale.Data.Entity.MemberMandatRole;
 import com.example.amicale.Data.Repository.MandatRepository;
 import com.example.amicale.Data.Services.MandatService;
 import lombok.AllArgsConstructor;
@@ -30,10 +31,13 @@ public class MandateServiceImpl implements MandatService {
     @Override
     public List<Member> GetMandatById(Long MandatId) {
 
+        //verifie d'abord si le mandat existe
         Mandat mandat = mandatRepository.findById(MandatId).get();
 
         if( mandat != null){
-            return null ;
+            List<Member> members = mandat.getMemberMandatRoles().stream()
+                    .map(MemberMandatRole::getMember).toList();
+            return members ;
         }
         return null;
     }

@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.Date;
 import java.time.LocalDate;
 
-//@Order(2)
+@Order(2)
 
 //@Component
 @RequiredArgsConstructor
@@ -46,10 +46,10 @@ public class MemberFixtures implements CommandLineRunner {
         memberCommunityRole = roleRepository.getReferenceById(memberCommunityRole.getId());
 
 
-        for (int i = 0; i <= 20; i++) {
+        for (int i = 0; i <= 5; i++) {
             Member member = new Member();
 
-            member.setNom("nom" + i);
+            member.setNom("NAME" + i);
             member.setPrenoms("prenoms" + i);
             member.setEmail("email" + i);
 

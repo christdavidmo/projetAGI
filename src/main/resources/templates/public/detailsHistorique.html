@@ -38,8 +38,6 @@
 
     <div class="member-container">
 
-
-
         <div th:each="member: ${members}" class="M-container"
              th:style="| background-image: url(@{${member.PhotoUrl != null ? member.PhotoUrl : '/images/no-user-image.jpg'}}  ) |">
 
@@ -48,11 +46,11 @@
                    <strong> Nom : <span th:text="${member.nom}"></span> </strong>
                </div>
 
-               <div class="membre_nom">
+               <div class="membre_prenom">
                    <strong> Prenoms : <span th:text="${member.prenoms}"></span> </strong>
                </div>
 
-               <div class="membre_nom">
+               <div class="membre_poste">
                    <strong> Poste : <span th:text="${member.role.rolename}"></span> </strong>
                </div>
 

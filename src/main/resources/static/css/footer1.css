@@ -2,9 +2,7 @@
     display: flex;
     justify-content: space-between;
     background-color: rgb(75, 30, 11);
-    /*background-image: linear-gradient(to right, rgb(234, 145, 47,0.7), rgb(75, 30, 11));
-
-     */
+    /*background-image: linear-gradient(to right, rgb(234, 145, 47,0.7), rgb(75, 30, 11));*/
     /* Permet de passer à la ligne suivante sur petit écran, si nécessaire */
     flex-wrap: wrap;
     padding:  60px 120px;
@@ -13,10 +11,11 @@
 .footer-newsletter,
 .footer-contact,
 .footer-rs {
+
     list-style-type: none;
     padding: 0;
     margin: 0;
-    /* flex: 1;  Chaque <ul> prendra une proportion égale de l'espace */
+
 }
 
 .footer-newsletter {
@@ -35,14 +34,15 @@
 .footer-newsletter li,
 .footer-contact li,
 .footer-rs li {
+    list-style: none;
     color: white;
-    margin-bottom: 30px; /* Espacer les éléments de chaque liste */
+    margin-bottom: 30px;
 }
 
 
 
 /* Style pour les input et bouton */
-.input-container {
+.footer-newsletter .input-container {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -85,7 +85,7 @@
 }
 .footer-rs li{
     cursor: pointer;
-    font-size: 35px;
+    font-size: 30px;
     font-weight: bold;
 }
 
@@ -133,7 +133,8 @@
 
     /* Assurer que les liens réseaux sociaux sont en ligne sur mobile */
     .footer-rs li {
-        display: inline-block; /* Affichage horizontal sur mobile */
+       display: flex;
+        flex-direction: column;
         margin-right: 10px; /* Espacement entre les liens */
     }
 }
