@@ -19,7 +19,7 @@ import java.time.LocalDate;
 
 @Order(2)
 
-@Component
+//@Component
 @RequiredArgsConstructor
 public class MemberFixtures implements CommandLineRunner {
 

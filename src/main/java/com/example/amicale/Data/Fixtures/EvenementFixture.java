@@ -18,7 +18,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Order(4)
-@Component
+//@Component
 @RequiredArgsConstructor
 public class EvenementFixture implements CommandLineRunner {
 
