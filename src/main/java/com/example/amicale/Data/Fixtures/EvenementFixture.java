@@ -10,13 +10,15 @@ import com.example.amicale.Data.Repository.UsersRepository;
 import com.example.amicale.Data.Services.EvenementService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
-//@Component
+@Order(4)
+@Component
 @RequiredArgsConstructor
 public class EvenementFixture implements CommandLineRunner {
 
