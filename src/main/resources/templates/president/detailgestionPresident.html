@@ -136,7 +136,7 @@
 
 
                   <!-- Si le membre est actif, afficher le bouton "Bloquer" -->
-                  <button th:if="${member.statut == T(com.example.amicale.Data.Enumeration.Statut).ACTIF }"
+                  <button th:if="${member.statut.name() == 'ACTIF' }"
                           th:action="@{/president/toogleblock/{id}(id=${member.id}) }"
                           th:data-id="${member.id}"
 
@@ -145,7 +145,7 @@
                   </button>
 
                   <!-- Si le membre est actif, afficher le bouton "Bloquer" -->
-                  <button type="submit" th:if="${member.statut == T(com.example.amicale.Data.Enumeration.Statut).BLOQUE}"
+                  <button type="submit" th:if="${member.statut.name() == 'BLOQUE'}"
                             th:action="@{/president/toogleblock/{id}(id=${member.id}) }"
                             th:data-id="${member.id}"
                           class="btn-debloquer">

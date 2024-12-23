@@ -8,6 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/navbar.css}">
     <link rel="stylesheet" th:href="@{css/footer1.css}">
 
+    <script th:src="@{/js/publichomepage.js}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Home</title>
 </head>
@@ -89,63 +90,71 @@
  </div>
 
 
- <div class="background-image-2">
 
-       <p class="title-background-image-2">L'amicale c'est aussi </p>
 
-       <div class="line1">
 
-           <div class="line1-photo1 cadre"></div>
 
-           <div class="line1-photo2 cadre">
-               <h2> top </h2>
-               <p>La meilleure façon <br>
-                   de prédire  l’avenir <br>
-                   est de le créer .</p>
-           </div>
 
-           <div class="line1-photo3 cadre"></div>
+<div class="block-square-container-deux">
 
-       </div>
+   <div class="container-title-block-square"> <p class="title-block-square-container-deux">L'amicale c'est aussi </p> </div>
 
-       <div class="line2">
+    <div class="ligne-un-container">
 
-             <div class="line2-photo1 cadre">
-                 <h2> top </h2>
-                 <p>
-                     Se réunir est un début, <br>
-                     rester  ensemble est  <br>
-                     un progrès, travailler  <br>
-                     ensemble est la réussite.
-                 </p>
-             </div>
+        <div class="block-square vert"> </div>
 
-             <div class="line2-photo2 cadre"></div>
+        <div class="block-square jaune">
 
-             <div class="line2-photo3 cadre">
-                 <h2><strong>TOP</strong></h2>
-                     <p>
-                     Se réunir est un début, <br>
-                     rester  ensemble est  <br>
-                     un progrès, travailler  <br>
-                     ensemble est la réussite.
-                     </p>
-             </div>
+            <h2> top </h2>
+            <p>La meilleure façon <br>
+                de prédire  l’avenir <br>
+                est de le créer .</p>
 
-         </div>
+        </div>
 
- </div>
+        <div class="block-square bleu"> </div>
+
+    </div>
+
+
+    <div class="ligne-deux-container">
+
+        <div class="block-square rouge">
+            <h2> top </h2>
+            <p>
+                Se réunir est un début, <br>
+                rester  ensemble est  <br>
+                un progrès, travailler  <br>
+                ensemble est la réussite.
+            </p>
+        </div>
+
+
+        <div class="block-square marron"></div>
+
+
+        <div class="block-square violet">
+            <h2>top</h2>
+            <p>
+                Se réunir est un début, <br>
+                rester  ensemble est  <br>
+                un progrès, travailler  <br>
+                ensemble est la réussite.
+            </p>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
 
 
  <div th:replace="~{layout/footer/footer1 :: footer}"></div>
  <!--  <div th:replace="~{layout/footer/footer :: footer}"></div> -->
 
-<script>
-    function toggleMenu() {
-        const menu = document.getElementById("menu");
-        menu.classList.toggle("menu-active");
-    }
-</script>
 
 </body>
 </html>

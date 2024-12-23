@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <head>
 <style >
+  body{
+    padding: 0;
+    margin: 0;
+  }
 
   .tableau{
     display: flex ;
@@ -83,13 +89,115 @@
     font-size: 12px;
   }
 
+  .block-square-container-deux{
+    margin: 300px 0;
+    padding: 0;
+  }
+  .ligne-un-container{
+    flex: 1;
+    display: flex;
+  }
+
+  .block-square{
+    width: 600PX;
+    height: 400PX;
+  }
+
+  .block-square h2{
+    margin-left: 30px;
+    margin-top: 40px;
+
+    font-size: 40px;
+    text-transform: uppercase;
+  }
+
+  .block-square p{
+    margin-left: 30px;
+    font-size: 30px;
+  }
+
+  .block-square.vert{
+    background-image: url("/images/woman.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .block-square.jaune{
+    background-color:  #247324;
+  }
+
+  .block-square.bleu{
+    background-color: #5a1f91;
+    background-image: url("/images/womans - Copie.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+
+  .ligne-deux-container{
+    display: flex;
+    flex: 1;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4); /* horizontal verticale flou ; couleur= 1,2,3 ,opacite */
+
+  }
+
+  .block-square.rouge{
+    background-color: #b6b641;
+  }
+
+  .block-square.marron{
+    background-color: rgba(75, 30, 11, 0.42);
+    background-image: url("/images/sportwoman - Copie.jpeg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .block-square.violet{
+    background-color:  #123f95;
+  }
+
+
+  @media(max-width: 768px) {
+
+
+    .ligne-un-container,.ligne-deux-container{
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .jaune, .rouge, .violet{
+      height: 300PX;
+    }
+
+    .block-square h2{
+      margin-left: 30px;
+      margin-top: 40px;
+
+      font-size: 35px;
+      text-transform: uppercase;
+    }
+
+    .block-square p{
+      margin-left: 30px;
+      font-size: 25px;
+    }
+
+
+
+  }
+
 </style>
   <title></title>
 
 </head>
 
 <body>
-<table class="tableau"  cellpadding="90">
+
+
+  <!--  <table class="tableau"  cellpadding="90">
   <tbody>
   <tr>
     <td   id="cold1"> <button>click me !</button>
@@ -136,6 +244,64 @@
 
   </tbody>
 
-</table>
+</table> -->
+
+
+
+
+  <div class="block-square-container-deux">
+
+    <div class="ligne-un-container">
+
+      <div class="block-square vert"> </div>
+
+      <div class="block-square jaune">
+
+        <h2> top </h2>
+        <p>La meilleure façon <br>
+          de prédire  l’avenir <br>
+          est de le créer .</p>
+
+      </div>
+
+      <div class="block-square bleu"> </div>
+
+    </div>
+
+
+    <div class="ligne-deux-container">
+
+      <div class="block-square rouge">
+        <h2> top </h2>
+        <p>
+          Se réunir est un début, <br>
+          rester  ensemble est  <br>
+          un progrès, travailler  <br>
+          ensemble est la réussite.
+        </p>
+      </div>
+
+
+      <div class="block-square marron"></div>
+
+
+      <div class="block-square violet">
+        <h2>top</h2>
+        <p>
+          Se réunir est un début, <br>
+          rester  ensemble est  <br>
+          un progrès, travailler  <br>
+          ensemble est la réussite.
+        </p>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+
 </body>
 </html>

@@ -24,7 +24,7 @@ nav {
 }
 
 .fa-bars {
-    color: black;
+    color: rgb(75, 30, 11);
     font-size: 40px;
     cursor: pointer;
 }
@@ -64,14 +64,14 @@ nav {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 60px;
+        top: 70px;
         right: 0px;
         width: auto;
         height: auto;
         border-radius: 4px;
         padding: 10px 20px;
         z-index: 1; /* Pour s'assurer qu'il est au-dessus des autres éléments */
-        background-color: rgb(234, 145, 47); /* Ajoute une couleur de fond */
+        background-color: rgb(36, 115, 36); /* Ajoute une couleur de fond */
     }
 
     .menu-active {
@@ -79,10 +79,16 @@ nav {
     }
 
     .menu-nav li {
-        color: white;
         cursor: pointer;
-        padding-bottom: 9px;
+        padding-bottom: 10px;
     }
+
+    .menu-nav a{
+        color: #ffffff;
+    }
+
+
+
 
     .menu-nav li:hover {
         color: rgb(75, 30, 11);

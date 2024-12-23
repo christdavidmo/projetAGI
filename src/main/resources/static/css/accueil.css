@@ -11,20 +11,46 @@ body{
     background-size: cover;
 
     height: 90vh;
-    width: auto;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 
-
+    position: relative;
+    overflow: hidden; /* je cache le texte lorsque il est en dehors de la vue */
 }
 
 
 .texte-devise-agi P{
-
     color: white;
     font-size: 50px;
     font-weight: bold;
+
+    position: relative;
+    animation: viens-ici 2s ease-out forwards;
+    opacity: 0;
+    transform: translateX(100%);
+
+    text-align: left;
+}
+
+@keyframes viens-ici {
+
+    0%{
+        /* il commence invisible */
+        opacity: 0;
+
+        /* il est hors d ela vue */
+        transform: translateX(100%);
+    }
+
+    100%{
+        opacity: 1;
+
+        /* position initiale  au centre de la div */
+        transform: translateX(0);
+    }
+
 }
 
 
@@ -43,208 +69,255 @@ body{
 
     width: 600PX;
     height: 400PX;
+
 }
 
 .carré a {
     text-decoration: none;
-    color: black;
+    display: flex;
+    flex-direction: column;
+
 }
 
-.carré p{
+.carré a P{
     color: white;
-    font-size: 28px;
+    //background-color: rgba(255, 255, 255, 0.69);
+    //border-radius: 10px;
+    //background-color: #ffffff;
+    //display: inline-block;
+    //padding: 10px 20px;
+    font-size: 28px
 }
+
 
 
 .fa-solid{
     color: white;
-    font-size: 15px;
+    font-size: 25px;
 }
 
 .rouge{
     background-color: rgb(186, 64, 64);
 }
 
+
+
 .bleu{
-    background-color: #123f95;
+    background-color: rgb(18,69,149);
+    //background-color: #123f95;
+    position: relative;
+    z-index: 1;
 }
+.bleu::before{
+    position: absolute;
+    //background-image: url("/images/equipe1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    opacity: 0.5;
+    content: '';
+
+    top:0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
 
 .vert {
     position: relative;
-    background-color: rgba(36, 115, 36, 0.9); /* Couleur en avant avec opacité */
-    height: 400px; /* Assure-toi que l'élément ait une hauteur */
-    z-index: 1; /* La couleur sera au-dessus de l'image */
+    z-index: 1; /* pour mettre La couleur sera au-dessus de l'image */
+    background-color: rgba(36, 115, 36);
+}
+.vert::before{
+    //background-image: url("/images/team.jpg");
+    z-index: -1;
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    content: '';
+    opacity: 0.3;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 
 
 .jaune{
-    background-color: #b6b641;
+    background-color: rgb(182,182,65);
+    //background-color: #b6b641;
+    position: relative;
+    z-index: 1;
+}
+.jaune::before{
+    //background-image: url("/images/equipe3.jpg");
+    z-index: -1;
+    position: absolute;
+    opacity: 0.3;
+    content: '';
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 
-.background-image-2{
-    /* background-image: url("/images/personnes.webp");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; */
+/* ================================================    */
 
-    height: 160vh;
-    width: auto;
-
-    display: flex;
-    flex-direction: column;
-    padding: 30px 40px ;
-    margin-bottom: 50px;
-
-    background-color: #ffffff;
-
+.block-square-container-deux{
+    margin: 60px 0;
+    padding: 0 50px;
 }
 
-.title-background-image-2{
-    color: black;
-    font-size: 30px;
-    margin-bottom: 30px;
+.title-block-square-container-deux{
+    font-size: 40px;
 }
 
-.line1{
-    display: flex;
+.ligne-un-container{
     flex: 1;
-    flex-direction: row;
+    display: flex;
 }
 
-.line1-photo1, .line1-photo2, .line1-photo3{
-    flex: 1;
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+.block-square{
+    width: 600PX;
+    height: 400PX;
 }
 
-
-.line1-photo1{
-    background-color: red;
-    background-image: url("/images/woman.jpg");
-}
-
-
-.line1-photo2{
-    background-color:  #247324;
-
-}
-.line1-photo2 p, .line2-photo1 p, .line2-photo3 p{
-    font-size: 30px;
-    color: white;
-    margin-left: 20px;
-}
-
-.line1-photo2 h2, .line2-photo1 h2, .line2-photo3 h2{
-    color: white;
-    margin-left: 20px;
+.block-square h2{
+    margin-left: 30px;
+    margin-top: 40px;
 
     font-size: 40px;
-    font-weight: bold;
     text-transform: uppercase;
 }
 
+.block-square p{
+    margin-left: 30px;
+    font-size: 30px;
+}
 
+.block-square.vert{
+    background-image: url("/images/woman.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
-.line1-photo3{
-    background-color:  #123f95;
-    background-image: url("/images/womans.webp");
+.block-square.jaune{
+    background-color:  #247324;
+}
+
+.block-square.bleu{
+    background-color: #5a1f91;
+    background-image: url("/images/womans - Copie.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 
-
-
-.line2{
+.ligne-deux-container{
     display: flex;
     flex: 1;
-    flex-direction: row;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4); /* horizontal verticale flou ; couleur= 1,2,3 ,opacite */
 
 }
-.line2-photo1 , .line2-photo2 , .line2-photo3{
-    flex: 1;
 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-}
-
-.line2-photo1{
+.block-square.rouge{
     background-color: #b6b641;
 }
 
-
-.line2-photo2{
-    background-color: #5a1f91;
-    background-image: url("/images/sportwoman.jpeg");
+.block-square.marron{
+    background-color: rgba(75, 30, 11, 0.42);
+    background-image: url("/images/sportwoman - Copie.jpeg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-.line2-photo3{
+.block-square.violet{
     background-color:  #123f95;
 }
 
 
+/* ====================================================== */
 
 
-@media  (max-width: 968px){
+
+
+@media  (max-width: 768px){
+
+    .background-image{
+        background-attachment: scroll;
+    }
     .carrés{
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 23px;
+    }
+
+
+
+    .block-square-container-deux{
+        margin:  0;
+        padding: 0;
+
+    }
+
+    .container-title-block-square{
+        display: flex;
+        justify-content: center;
+
+    }
+    .title-block-square-container-deux{
+        text-align: center;
+        font-size: 24px;
+        text-transform: uppercase;
+
+
+        padding: 10px 18px;
+        display: inline-block;
+
+        background-color: white;
+        color:  #247324;
+        //border: black 1px solid;
+        border-radius: 35px;
+        box-shadow: 0 7px 6Px rgb(0,0,0,0.2);
+
+    }
+
+    .ligne-un-container,.ligne-deux-container{
         flex-wrap: wrap;
         justify-content: center;
     }
 
-
-    .background-image-2{
-        padding: 0;
-        margin: 0;
+    .block-square.jaune, .block-square.rouge, .block-square.violet{
+        height: 300PX;
     }
 
-    .line2, .line1{
-        display: flex;
-        flex-direction: column;
-    }
+    .block-square h2{
+        margin-left: 30px;
+        margin-top: 40px;
 
-    .line1-photo1, .line1-photo2, .line1-photo3 ,
-    .line2-photo1 , .line2-photo2 , .line2-photo3{
-        width: 100%; height: 100%; margin: 0;
-    }
-
-    .line1-photo1, .line1-photo3 , .line2-photo2{
-        background-attachment: fixed;
-    }
-
-    .line1-photo2 p, .line2-photo1 p, .line2-photo3 p{
-        font-size: 20px;
-        color: white;
-        margin-left: 20px;
-    }
-
-    .line1-photo2 h2, .line2-photo1 h2, .line2-photo3 h2{
-        color: white;
-        margin-left: 20px;
-
-        font-size: 30px;
-        font-weight: bold;
+        font-size: 35px;
         text-transform: uppercase;
     }
 
-}
-
-
-/* Pour les grands écrans, on garde le background fixé */
-@media only screen and (min-width: 430px) {
-    .line1-photo1, .line1-photo2, .line1-photo3, .line2-photo1, .line2-photo2, .line2-photo3 {
-        background-attachment: fixed;
+    .block-square p{
+        margin-left: 30px;
+        font-size: 25px;
     }
+
+
+
+
+
+
 }
 
-/* Pour les petits écrans (iPhone 15 et autres), on n'applique pas background-fixed */
-@media only screen and (max-width: 430px) {
-    .line1-photo1, .line1-photo2, .line1-photo3, .line2-photo1, .line2-photo2, .line2-photo3 {
-        background-attachment: scroll; /* On utilise scroll ou on le supprime */
-    }
-}
+
