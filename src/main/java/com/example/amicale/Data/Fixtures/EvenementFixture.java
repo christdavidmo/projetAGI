@@ -18,7 +18,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Order(4)
-//@Component
+@Component
 @RequiredArgsConstructor
 public class EvenementFixture implements CommandLineRunner {
 
@@ -44,7 +44,9 @@ public class EvenementFixture implements CommandLineRunner {
         } else {
 
             List<String> photoName = List.of(
-                    "equipe2.jpg","equipe3.jpg"
+                    "student1.jpg","student3.jpg",
+                    "equipe2.jpg","equipe3.jpg",
+                    "student.jpg","student5.jpg","student4.jpg"
             );
 
             // Créer des événements pour chaque membre avec le rôle Responsable_Communication

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/footer1.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <script th:src="@{/js/navbarCommunity.js}" defer></script>
+
+
+    <title>Title</title>
+
+    <style>
+
+        body{
+            margin: 0;
+            padding: 0;
+        }
+
+        .container{
+            background-color: rgba(0, 0, 0, 0.9);
+            height: 70vh;
+            width: auto;
+
+            margin:  0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            z-index: 1;
+            position: relative;
+        }
+
+        .container::before{
+            position: absolute;
+            z-index: -1;
+            content: '';
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            opacity: 0.4;
+            background-image: url("/images/us2.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .contenu{
+            background-color: rgb(255, 255, 255,0.7);
+            height: 340px;
+            width: 400px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .contenu-contenu{
+            background-color: rgb(234, 145, 47);
+            text-align: center;
+
+        }
+
+        .contenu-contenu p{
+            align-items: center;
+            font-size: 16px;
+            color: rgb(9, 8, 8);
+        }
+
+
+
+
+
+        .size-image{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            gap: 1%;
+
+           margin-top: 30px;
+        }
+
+
+        .size-image span{
+            background-color: #b6b641;
+            padding: 2px 10px;
+        }
+
+
+
+
+        .container-images{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 3%;
+
+        }
+
+        .contenu-container-images{
+            margin: 20px 0px;
+        }
+
+        .contenu-container-images img{
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* agrandir un peu lors d'un survol */
+        .real-photo:hover{
+            transform: scale(1.05);
+        }
+
+
+
+        @media (max-width: 768px) {
+
+            .container{
+
+                height: 50vh;
+                margin:  0px;
+
+                padding:0  45px;
+
+            }
+
+
+            .contenu-contenu{
+                padding: 2px 6px;
+            }
+            .contenu-contenu p{
+                align-items: center;
+                font-size: 14px;
+            }
+
+            .contenu-container-images{
+                width: 45%;
+            }
+
+        }
+
+    </style>
+</head>
+<body>
+
+<div th:replace="~{layout/navbar/navbar :: navbar}"></div>
+
+    <div class="container">
+
+        <div class="contenu">
+
+            <div  class="contenu-contenu">
+                <p> Les moments de fête et de plaisir que  nous passons  <br>
+                    ensemble à l'université sont inoubliables et remplis  <br>
+                     de joie  et de camaraderie.
+                   </p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="size-image"> Total d'image(S) <span th:text="${nbrImages}"></span> </div>
+
+    <div  class="container-images">
+
+        <div th:each="photo :${photos}"  class="contenu-container-images">
+            <img th:src="@{${photo.path}}" th:alt='image' class="real-photo">
+        </div>
+
+    </div>
+
+<div th:replace="~{layout/footer/footer1 :: footer}"></div>
+
+
+</body>
+</html>

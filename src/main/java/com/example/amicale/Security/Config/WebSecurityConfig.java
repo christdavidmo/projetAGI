@@ -81,7 +81,7 @@ public class WebSecurityConfig {
                 )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/", "/public/**", "/connexion","/mandat/**").permitAll()
-                        .requestMatchers("/css/**", "/images/**", "/js/**", "/webjars/**").permitAll()// Permet l'accès aux pages publiques
+                        .requestMatchers("/css/**", "/images/**", "/js/**", "/webjars/**").permitAll()
                         .requestMatchers("/office/**","/member/**","/president/**").hasAuthority("President")
                         .requestMatchers("/community/**").hasAuthority("MemberCommunity")
                         .anyRequest().authenticated()

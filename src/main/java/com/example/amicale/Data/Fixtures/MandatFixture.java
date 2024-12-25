@@ -21,7 +21,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Order(3)
-//@Component
+@Component
 @AllArgsConstructor
 public class MandatFixture implements CommandLineRunner {
 

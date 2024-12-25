@@ -3,8 +3,10 @@ package com.example.amicale.web.controller.impl;
 import com.example.amicale.Data.Entity.Evenement;
 import com.example.amicale.Data.Entity.Mandat;
 import com.example.amicale.Data.Entity.Member;
+import com.example.amicale.Data.Entity.Photo;
 import com.example.amicale.Data.Services.EvenementService;
 import com.example.amicale.Data.Services.MandatService;
+import com.example.amicale.Data.Services.PhotoServices;
 import com.example.amicale.web.controller.PublicController;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -22,6 +24,7 @@ public class PublicControllerImpl implements PublicController {
 
     private final EvenementService evenementService;
     private final MandatService mandatService;
+    private final PhotoServices photoServices;
 
 
     @Override
@@ -58,6 +61,17 @@ public class PublicControllerImpl implements PublicController {
         return "public/activite";
     }
 
+    @Override
+    public String detailactivitesView(Model model,
+                                      @PathVariable Long id) {
+
+        List<Photo> AllImages = photoServices.getAllToEvenement(id);
+
+        model.addAttribute("nbrImages", AllImages.size());
+        model.addAttribute("photos", AllImages);
+
+        return "public/detailsActivite";
+    }
 
 
     @Override

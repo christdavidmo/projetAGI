@@ -126,7 +126,7 @@
 
         <div th:each="evenement :${evenements}" class="event">
 
-            <a href="http://">
+            <a th:href="@{/public/activites/{id}/detail(id=${evenement.id})}">
                 <div class="title-activity" >
                     <strong>Titre:</strong> <span th:text="${evenement.title}"> </span> <br>
                     <span  th:text="${evenement.description}"></span>

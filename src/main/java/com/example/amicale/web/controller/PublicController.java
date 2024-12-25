@@ -16,6 +16,8 @@ public interface PublicController {
     public String activitesView(Model model ,@RequestParam(defaultValue = "1") int page
                                             ,@RequestParam(defaultValue = "6") int size
                                             ,@RequestParam(required = false) String name);
+    @GetMapping("/public/activites/{id}/detail")
+    public String detailactivitesView(Model model ,@PathVariable Long id);
 
     @GetMapping("/public/contact")
     public String contactView();
