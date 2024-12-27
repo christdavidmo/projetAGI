@@ -53,6 +53,8 @@ body{
     justify-content: center;
     align-items: center;
     margin-bottom: 2%;
+
+    flex-wrap: wrap;
 }
 
 
@@ -73,7 +75,7 @@ body{
     position: relative; /* Nécessaire pour positionner le contenu à l'intérieur */
 
     height: 460px;
-    width: 340px;
+    width: 25%;
 }
 
 .P-container a{
@@ -152,7 +154,7 @@ body{
 
     .P-container{
         height: 260px;
-        width: 185px;
+        width: 44%;
         margin: 4px 4px;
     }
 
@@ -166,7 +168,7 @@ body{
         padding: 15px 15px;
         border-radius: 5px;
 
-        border-bottom-right-radius: 60px;
+        border-bottom-right-radius: 40px;
         border-bottom-left-radius: 20px;
 
     }
