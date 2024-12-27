@@ -75,14 +75,60 @@ body{
 }
 
 .icone {
-    font-size: 50px; /* Taille de l'icône */
+    font-size: 50px;
     margin-bottom: 15px;
     color: #333;
 }
 
-/* Textes sous les icônes */
 .objectif p {
-    font-size: 16px;
+    font-size: 25px;
     line-height: 1.6;
+}
+
+
+/* Media Query pour les écrans de largeur maximale 768px (tablette et mobile) */
+@media screen and (max-width: 768px) {
+    .container {
+        margin: 0 20px;
+        padding: 20px;
+    }
+
+    .texte1 {
+        font-size: 30px;
+    }
+
+    .texte2 {
+        font-size: 16px;
+    }
+
+
+
+    .objectifs_title{
+        font-size: 30px;
+    }
+
+    .objectif {
+        width: 45%;
+        margin: 10px 5px;
+    }
+
+    .container2 {
+        gap: 5px;
+    }
+
+    .objectif p {
+        font-size: 14px;
+    }
+
+
+
+
+}
+
+
+
+/* Media Query pour les écrans de largeur maximale 480px (mobiles en portrait) */
+@media screen and (max-width: 480px) {
+
 }
 

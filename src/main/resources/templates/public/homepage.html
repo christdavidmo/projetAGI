@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" th:href="@{/css/accueil.css}">
-    <link rel="stylesheet" th:href="@{/css/navbar.css}">
     <link rel="stylesheet" th:href="@{css/footer1.css}">
 
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <script th:src="@{/js/navbarCommunity.js}"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <title>Home</title>
 </head>
 <body>
@@ -154,11 +157,6 @@
  <div th:replace="~{layout/footer/footer1 :: footer}"></div>
  <!--  <div th:replace="~{layout/footer/footer :: footer}"></div> -->
 
-<script>
-    function toggleMenu() {
-        const menu = document.getElementById("menu");
-        menu.classList.toggle("menu-active");
-    }
-</script>
+
 </body>
 </html>

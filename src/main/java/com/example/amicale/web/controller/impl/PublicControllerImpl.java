@@ -105,7 +105,7 @@ public class PublicControllerImpl implements PublicController {
 
     @Override
     public String testView() {
-        return "public/cvcheryl";
+        return "public/test2";
     }
 
     @Override

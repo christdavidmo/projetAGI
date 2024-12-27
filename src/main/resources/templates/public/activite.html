@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" th:href="@{/css/activite.css}">
+
     <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <script th:src="@{/js/navbarCommunity.js}"></script>
+
     <link rel="stylesheet" th:href="@{/css/footer1.css}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -101,12 +104,12 @@
         <form th:action="@{/public/activites}"  method="get" class="filter_form">
 
             <div class="filter_container-one ">
-                <label for="name">Nom</label>
+                <label for="name"> Nom</label>
                 <input type="text" name="name" id="name" th:value="${name}" placeholder="Nom de l'activitée">
             </div>
 
            <div class="filter_container-two ">
-               <label for="year">Year</label>
+               <label for="year">Année</label>
                <input type="number" name="year" id="year" th:value="${year}" placeholder="année de l'activitée">
            </div>
 
@@ -168,12 +171,7 @@
 
 <div th:replace="~{layout/footer/footer1 :: footer}"></div>
 
-<script>
-    function toggleMenu() {
-        const menu = document.getElementById("menu");
-        menu.classList.toggle("menu-active");
-    }
-</script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

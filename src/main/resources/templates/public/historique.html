@@ -6,6 +6,8 @@
     <title>Title</title>
 
     <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <script th:src="@{/js/navbarCommunity.js}"></script>
+
     <link rel="stylesheet" th:href="@{/css/footer1.css}">
     <link rel="stylesheet" th:href="@{/css/historique.css}">
 
@@ -101,12 +103,7 @@
     <div th:replace="~{layout/footer/footer1 :: footer}"></div>
     <!--  <div th:replace="~{layout/footer/footer :: footer}"></div> -->
 
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById("menu");
-            menu.classList.toggle("menu-active");
-        }
-    </script>
+
 
 
 </body>

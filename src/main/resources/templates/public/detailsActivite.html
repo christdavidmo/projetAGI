@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <script th:src="@{/js/navbarCommunity.js}"></script>
+
     <link rel="stylesheet" th:href="@{/css/footer1.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -50,7 +53,11 @@
         }
 
         .contenu{
-            background-color: rgb(255, 255, 255,0.7);
+            //background-image: url("/images/fete2.webp");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            //background-color: rgb(255, 255, 255,0.7);
             height: 340px;
             width: 400px;
 
@@ -60,7 +67,7 @@
         }
 
         .contenu-contenu{
-            background-color: rgb(234, 145, 47);
+            background-color: rgb(36 ,115 ,36 );
             text-align: center;
 
         }
@@ -68,7 +75,7 @@
         .contenu-contenu p{
             align-items: center;
             font-size: 16px;
-            color: rgb(9, 8, 8);
+            color: rgb(255, 255, 255);
         }
 
 
@@ -118,6 +125,30 @@
         }
 
 
+        .myModal{
+            display: none;
+
+            position: fixed;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            z-index: 1;
+            top:0;
+            left: 0;
+
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(0 ,0 ,0 ,0.7);
+            text-align: center;
+        }
+
+        #close-modal-image{
+            font-size: 60px;
+            color: white;
+            cursor: pointer;
+        }
+
+
 
         @media (max-width: 768px) {
 
@@ -143,6 +174,14 @@
                 width: 45%;
             }
 
+
+
+            .myModal img{
+                width: 90%;         /* L'image prend 90% de la largeur du modal */
+                max-height: 80%;    /* L'image ne dépasse pas 80% de la hauteur du modal */
+                object-fit: contain; /* Préserve les proportions de l'image */
+            }
+
         }
 
     </style>
@@ -166,18 +205,57 @@
     </div>
 
 
+
+
+
     <div class="size-image"> Total d'image(S) <span th:text="${nbrImages}"></span> </div>
 
     <div  class="container-images">
 
         <div th:each="photo :${photos}"  class="contenu-container-images">
-            <img th:src="@{${photo.path}}" th:alt='image' class="real-photo">
+            <img th:src="@{${photo.path}}" th:alt='image' class="real-photo" onclick="OpenModal(this)">
         </div>
 
     </div>
 
+
+
+
+
+
+    <div class="myModal" id="myModal">
+        <span  class="close" id="close-modal-image" onclick="CloseModal()" > &times;</span>
+        <img id="modalimage" src="" alt="image_en_grand">
+    </div>
+
+
+
+
+
 <div th:replace="~{layout/footer/footer1 :: footer}"></div>
 
+<script>
+    function OpenModal(img){
+        var mymodal = document.getElementById("myModal");
+        var modalimage = document.getElementById("modalimage")
+
+        mymodal.style.display="flex";
+        modalimage.src = img.src ;
+    }
+
+
+    function CloseModal(){
+        var mymodal = document.getElementById("myModal");
+        mymodal.style.display ="none";
+    }
+
+    window.onclick = function (event){
+        var mymodal = document.getElementById("myModal");
+        if( event.target == mymodal ){
+            mymodal.style.display="none";
+        }
+    }
+</script>
 
 </body>
 </html>
