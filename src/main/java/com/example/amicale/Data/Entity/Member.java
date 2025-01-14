@@ -53,4 +53,6 @@ public class Member extends Users{
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Statut statut = Statut.ACTIF ; // valeur par d"faut ;
+
+
 }

@@ -12,6 +12,9 @@ public interface PublicController {
     @GetMapping("/public/aboutus")
     public String aboutusView();
 
+    @GetMapping("/public/aboutus/more")
+    public String aboutusAgiEnPlusView();
+
     @GetMapping("/public/activites")
     public String activitesView(Model model ,@RequestParam(defaultValue = "1") int page
                                             ,@RequestParam(defaultValue = "6") int size
@@ -36,4 +39,10 @@ public interface PublicController {
 
     @GetMapping("/public/error")
     public String ErrorView();
+
+    @GetMapping("/public/ressource")
+    public String ressourceView(Model model );
+
+    @GetMapping("/public/ressource/{ecole}")
+    public String ressourceByEcoleView(Model model,@PathVariable String ecole );
 }

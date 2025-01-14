@@ -8,6 +8,7 @@ import com.example.amicale.Data.Repository.MemberRepository;
 import com.example.amicale.Data.Repository.RoleRepository;
 import com.example.amicale.Data.Repository.UsersRepository;
 import com.example.amicale.Data.Services.MemberService;
+import com.example.amicale.web.dto.MemberDto;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -37,6 +39,14 @@ public class MemberServiceImpl implements MemberService {
 
         List<Member> memberRole= memberRepository.findMemberByRole(role1);
         return memberRole;
+    }
+
+    @Override
+    public List<Member> SeachMember(String nom) {
+        if( nom == null ){
+            return null;
+        }
+        return memberRepository.findMemberByNomIgnoreCase(nom);
     }
 
     @Override
@@ -102,6 +112,11 @@ public class MemberServiceImpl implements MemberService {
         }
     }
 
+    @Override
+    public Member getMemberById(Long id) {
+        return memberRepository.findMemberById(id);
+    }
+
 
     @Override
     public Member saveMember(Member member) {
@@ -116,7 +131,10 @@ public class MemberServiceImpl implements MemberService {
         return memberRepository.save(member);
     }
 
-
+    @Override
+    public Member getMemberByNomEtPrenoms(String nom, String prenom) {
+        return memberRepository.findMemberByNomAndPrenoms(nom,prenom);
+    }
 
 
     @Override
@@ -128,7 +146,9 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public List<Member> getAllMembers() {
         return memberRepository.findAll();
+
     }
+
 
     @Override
     public Page<Member> getAllMembersWithPageable(Pageable pageable) {
@@ -144,5 +164,16 @@ public class MemberServiceImpl implements MemberService {
          }
          return memberRepository.findAll(pageable);
 
+    }
+
+    //====================================
+
+    @Override
+    public List<MemberDto> getAllMemberDto() {
+
+        List<Member> members = memberRepository.findAll();
+        return members.stream()
+                .map(member -> new MemberDto(member.getId(), member.getNom(), member.getPrenoms()))
+                .collect(Collectors.toList());
     }
 }

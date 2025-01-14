@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/navbarPresident.css}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Title</title>
+</head>
+
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+    }
+
+    .container-btn-add-image{
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0;
+        cursor: pointer;
+    }
+
+    .container-btn-add-image button{
+        padding: 10px;
+        font-size: 20px;
+
+        border: none;
+        color: white;
+        background-color: #247324;
+    }
+
+    .container-btn-add-image button:hover{
+        background-color: #2980b9;
+    }
+
+    .parent-container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+
+        margin: 30px 0;
+    }
+    .child-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40%;
+
+    }
+
+
+    .container-image{
+        border: solid #b6b641 2px;
+        display: flex;
+        flex-direction: column;
+
+    }
+    .container-image:hover{
+        box-shadow: 5px 10px 11px rgb(0,0,0,0.2);
+    }
+    .container-image img{
+        height: 100%;
+        width: 100%;
+    }
+
+    .container-btn-delete{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container-btn-delete button{
+        width: 100%;
+        background-color: #123f95;
+        color: white;
+        border: none;
+        font-size: 20px;
+
+        padding: 15px 0;
+        cursor: pointer;
+    }
+
+    .container-btn-delete button:hover{
+        background-color: #a52d2d;
+        color: white;
+    }
+
+
+
+    .parent-modal-container{
+        display: none;
+        height: 100vh;
+        width: 100%;
+        background-color: rgb(0,0,0,0.5);
+
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+
+</style>
+<body>
+<div th:replace="~{layout/navbar/navbarPresident :: navbar-office}" >  </div>
+
+
+    <div class="container-btn-add-image" id="container-btn-add-image">
+        <button  type="submit">Ajouter une image</button>
+    </div>
+
+    <div class="parent-container">
+
+        <div class="child-container" th:each="image:${images}">
+
+            <div class="container-image">
+                  <div class="container-btn-delete">
+                      <button type="submit">Supprimer</button>
+                  </div>
+                <img th:src="@{'/uploads/' + ${image.path}}" alt="Image de l'événement">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="parent-modal-container" id="parent-modal-container">
+
+        <div class="modal-container">
+            <form th:action="@{/image/add/{idEvenement}(idEvenement=${evenement.id}) }" method="post" enctype="multipart/form-data">
+                <label for="file">Choisir une image à télécharger :</label>
+                <input type="file" name="file" id="file" accept="image/*" required />
+                <button type="submit">Télécharger l'image</button>
+            </form>
+        </div>
+
+    </div>
+
+
+<script >
+    var btn_add_image = document.getElementById("container-btn-add-image");
+    btn_add_image.addEventListener('click',function (){
+        document.getElementById("parent-modal-container").style.display="block";
+    })
+
+</script>
+
+
+</body>
+</html>

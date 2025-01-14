@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" th:href="@{/css/navbarPresident.css}">
+    <title>Title</title>
+</head>
+
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+    }
+
+    .year-mandat ,.btn-add-member-in-mandat{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .btn-add-member-in-mandat{
+        margin-bottom: 10px;
+    }
+
+    .btn-add-member-in-mandat button{
+        font-size: 14px;
+        padding: 7px 8px;
+        background-color: darkgreen;
+        color: white;
+        border: none;
+        border-radius: 5px;
+
+        text-transform: uppercase;
+    }
+    .btn-add-member-in-mandat button:hover{
+        box-shadow: 0 6px 10px rgb(0,0,0,0.2);
+    }
+
+
+
+    .container-table-member{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .table-member{
+        width: 50%;
+        height: 40vh;
+    }
+    .table-member thead{
+        background-color: #2980b9;
+        text-align: center;
+        color: white;
+    }
+    .table-member th{
+        font-size: 20px;
+    }
+    .table-member tbody{
+        text-align: center;
+        background-color: rgb(236, 240, 241);
+    }
+
+
+    .parent-modal-container{
+        display: none;
+        background-color: rgb(0,0,0,0.3);
+
+        height: 100vh;
+        width: 100%;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        position: fixed;
+        overflow: auto;
+    }
+
+    .modal-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #f39c12;
+
+        top: 50%;
+        left: 50%;
+        position: fixed;
+        transform: translate(-50%, -50%); /* Centrer le modal à la fois horizontalement et verticalement */
+
+        height: 40vh;
+        /*padding: 20px 30px;*/
+        width: 300px;
+        max-width: 380px;
+    }
+
+    .form-modal-container{
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+<body>
+
+
+<div th:replace="~{layout/navbar/navbarPresident :: navbar-office}" >  </div>
+
+
+
+  <!--   <div class="year-mandat">
+        <p class="paragraphe_1"> Année de debut du mandat :   <span th:text="${mandat.dateDebut}"></span> </p>
+        <p class="paragraphe_2"> Année de fin du mandat :     <span th:text="${mandat.dateFin}"></span> </p>
+    </div> -->
+
+
+    <div class="btn-add-member-in-mandat" id="btn-add-member-in-mandat">
+        <button type="submit">Ajouter un membre dans ce mandat</button>
+    </div>
+
+
+<div class="container-table-member">
+    <table class="table-member">
+        <thead>
+            <tr>
+                <th> Nom</th>
+                <th> Poste</th>
+                <th> Modification poste</th>
+                <th> Supprimer</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr th:each="membersWithRole :${membersWithRoles}">
+                <td th:text="${membersWithRole.member.nom}"> </td>
+                <td th:text="${membersWithRole.role.rolename}"></td>
+
+                <td>
+
+                    <form th:action="@{/member/{idMandat}/changeRole(idMandat=${mandat}) }" method="post">
+                        <input type="hidden" name="idMember" th:value="${membersWithRole.member.id}" />
+                        <input type="hidden" name="currentRoleId" th:value="${membersWithRole.role.id}" />
+
+                        <select name="idRole">
+                            <option th:each="role : ${AllRoles}" th:value="${role.id}" th:text="${role.rolename}" ></option>
+                        </select>
+
+                        <button type="submit">Changer le Poste</button>
+                    </form>
+
+                </td>
+
+                <td>
+
+                    <form th:action="@{/member/{idMandat}/DeleteMemberInMandat(idMandat=${mandat})}" method="post">
+                        <input type="hidden"  name="idMember" th:value="${membersWithRole.member.id}">
+                        <button type="submit">Supprimer</button>
+                    </form>
+                   
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+
+
+<div class="parent-modal-container" id="parent-modal-container">
+
+    <div class="modal-container">
+
+            <form class="form-modal-container"  th:action="@{/member/{idMandat}/SaveMemberInMandat(idMandat=${mandat})}" method="post">
+
+               <input type="text" name="seachByNom" id="seachByNom" placeholder="chercher avec le nom" oninput="filterMembers()">
+               <select id="memberSelect" name="idmember" >
+                   <option  th:each="AllMember: ${AllMembers}" th:value="${AllMember.id}" th:text="${AllMember.nom}"></option>
+               </select>
+
+                <select name="idRole">
+                    <option th:each="role : ${AllRoles}" th:value="${role.id}" th:text="${role.rolename}" ></option>
+                </select>
+               <button type="submit">Ajouter</button>
+
+           </form>
+
+       <button id="close_btn-add-member-in-mandat" type="submit">Fermer</button>
+   </div>
+
+</div>
+
+
+
+<script>
+
+        var btn_ajout_member_in_mandat = document.getElementById("btn-add-member-in-mandat");
+        btn_ajout_member_in_mandat.addEventListener('click',function (){
+            document.getElementById("parent-modal-container").style.display ="block";
+        })
+
+        var close_modal_ajout_member_in_mandat = document.getElementById("close_btn-add-member-in-mandat");
+        close_modal_ajout_member_in_mandat.addEventListener('click',function (){
+            document.getElementById("parent-modal-container").style.display ="none";
+        })
+
+        // Filtrer les membres en fonction du texte saisi
+        function filterMembers() {
+            var searchInput = document.getElementById("seachByNom").value.toLowerCase();
+            var memberSelect = document.getElementById("memberSelect");
+            var options = memberSelect.getElementsByTagName("option");
+
+            for (var i = 0; i < options.length; i++) {
+                var optionText = options[i].textContent.toLowerCase();
+                if (optionText.includes(searchInput)) {
+                    options[i].style.display = "block";
+                } else {
+                    options[i].style.display = "none";
+                }
+            }
+        }
+
+
+</script>
+
+</body>
+</html>

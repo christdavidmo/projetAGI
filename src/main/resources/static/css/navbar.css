@@ -64,11 +64,38 @@ nav {
     color: rgb(234, 145, 47);
 }
 
-@media only screen and (max-width: 768px) {
+.btn-connexion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 60%;
+}
+
+.btn-connexion button{
+    font-size: 18px;
+    border: none;
+    color: white;
+    padding: 8px 8px;
+    border-radius: 5px;
+    background-color: #123f95;
+
+}
+
+.btn-connexion button:hover{
+    background-color:rgb(36, 115, 36) ;
+}
+
+
+
+@media screen and (max-width: 768px) and (orientation: portrait) {
+
+    nav {
+        padding: 10px 10px;
+    }
+
 
     .menu-nav{
         display: none;
-
     }
     .menu-nav.active{
         display: flex;
@@ -86,6 +113,10 @@ nav {
         background-color: rgb(36 ,115 ,36 );
         margin: 0;
 
+    }
+
+    .btn-connexion{
+        margin-left: 20%;
     }
 
     .menu-burger{
@@ -107,6 +138,8 @@ nav {
         cursor: pointer;
 
     }
-
+    /* Règles pour le mode paysage */
+    @media screen and (max-width: 768px) and (orientation: landscape) {
+    }
 
 }

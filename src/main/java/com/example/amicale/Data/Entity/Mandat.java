@@ -49,4 +49,14 @@ public class Mandat extends AbstractEntity{
                 .map(MemberMandatRole:: getMember)
                 .collect(Collectors.toList()) : new ArrayList<Member>();
     }
+
+
+    public boolean isMemberAlreadyAssigned(String nom, String prenoms) {
+        // Vérifie si un membre avec ce nom et ce prénom existe déjà dans les rôles du mandat
+        return memberMandatRoles != null && memberMandatRoles.stream()
+                .anyMatch(memberMandatRole ->
+                        memberMandatRole.getMember().getNom().equals(nom) &&
+                                memberMandatRole.getMember().getPrenoms().equals(prenoms));
+    }
+
 }

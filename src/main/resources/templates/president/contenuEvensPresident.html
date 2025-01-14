@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/navbarPresident.css}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Title</title>
+
+
+
+    <style>
+
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px 0;
+        }
+
+
+        table{
+            border-collapse: collapse;
+            text-align: center;
+
+            width: 70%;
+        }
+
+        table thead{
+            background-color: rgb(18, 63, 149);
+            color: white;
+            text-transform: uppercase;
+            text-align: center;
+
+
+        }
+
+        table tbody{
+            background-color: rgb(236, 240, 241);
+        }
+
+        table td{
+            padding: 15px;
+        }
+
+        table th{
+            padding: 15px;
+        }
+
+
+
+        /* =================== pagination ======================== */
+        .pagination_container{
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+
+            margin-bottom: 35px;
+        }
+
+        .pagination {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .pagination li{
+            margin-right: 6px;
+        }
+
+        .pagination a {
+            color: black;
+            text-decoration: none;
+            padding: 4px 6px;
+            border: 1px rgb(75, 30, 11) solid;
+            border-radius: 3px;
+        }
+
+        .pagination a:hover{
+            color: white;
+            background-color: rgb(234, 145, 47);
+        }
+        /* =================== pagination ======================== */
+
+
+
+
+    </style>
+
+
+</head>
+<body>
+<div th:replace="~{layout/navbar/navbarPresident :: navbar-office}" >  </div>
+
+
+
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Lieu</th>
+                    <th>Description</th>
+                    <th>Details</th>
+                </tr>
+
+            </thead>
+
+                <tbody>
+                    <tr th:each="evenement :${evenements}" >
+                        <td th:text="${evenement.title}"></td>
+                        <td th:text="${evenement.lieu}"></td>
+                        <td th:text="${evenement.description}"></td>
+                        <td>
+                            <a th:href="@{/president/contenu/evenement/{idEvenement}/detail(idEvenement=${evenement.id})}">
+                            <button type="submit"> Details</button>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+
+        </table>
+    </div>
+
+
+
+
+
+<!-- Pagination -->
+<div class="pagination_container">
+
+    <ul class="pagination">
+        <!-- Lien vers la page précédente -->
+        <li th:if="${currentPage > 1}">
+            <a th:href="@{/president/contenu/evenement(page=${currentPage - 1}, size=${6})}">Précédent</a>
+        </li>
+
+        <!-- Lien vers chaque page -->
+        <li th:each="i : ${#numbers.sequence(1, pages)}">
+            <a th:href="@{/president/contenu/evenement(page=${i}, size=${8})}"
+               th:text="${i}"
+               th:class="${currentPage == i} ? 'active' : ''"></a>
+        </li>
+
+        <!-- Lien vers la page suivante -->
+        <li th:if="${currentPage < pages }">
+            <a th:href="@{/president/contenu/evenement(page=${currentPage + 1}, size=${6})}">Suivant</a>
+        </li>
+    </ul>
+
+</div>
+<!-- Pagination -->
+
+</body>
+</html>

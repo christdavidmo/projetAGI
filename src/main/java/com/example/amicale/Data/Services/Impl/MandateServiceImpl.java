@@ -12,7 +12,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -29,16 +33,55 @@ public class MandateServiceImpl implements MandatService {
     }
 
     @Override
+    public Mandat saveMandat(Mandat mandat) {
+        return mandatRepository.save(mandat);
+    }
+
+    @Override
+    public Mandat getMandatById(Long id) {
+        return mandatRepository.findById(id).orElse(null);
+    }
+
+    @Override
     public List<Member> GetMandatById(Long MandatId) {
 
-        //verifie d'abord si le mandat existe
-        Mandat mandat = mandatRepository.findById(MandatId).get();
-
-        if( mandat != null){
-            List<Member> members = mandat.getMemberMandatRoles().stream()
-                    .map(MemberMandatRole::getMember).toList();
-            return members ;
+        // Vérifie si le mandat existe de manière sécurisée
+        Optional<Mandat> mandatOptional = mandatRepository.findById(MandatId);
+        if (!mandatOptional.isPresent()) {
+            throw new IllegalArgumentException("Mandat avec cet ID non trouvé");
         }
-        return null;
+        Mandat mandat = mandatOptional.get();
+
+        // Si la liste des rôles de membre est vide, retourner une liste vide
+        if (mandat.getMemberMandatRoles() == null || mandat.getMemberMandatRoles().isEmpty()) {
+            return new ArrayList<>();
+        }
+
+        // Récupérer la liste des membres associés à ce mandat
+        return mandat.getMemberMandatRoles().stream()
+                .map(MemberMandatRole::getMember)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Member> getMemberWithRoles(Long MandatId) {
+        // Récupérer les rôles des membres pour un mandat spécifique
+        List<MemberMandatRole> roles = mandatRepository.findMandatById(MandatId);
+
+        // Récupérer les membres à partir des rôles et les retourner
+        return roles.stream()
+                .map(MemberMandatRole::getMember)
+                .collect(Collectors.toList());
+
+    }
+
+
+    @Override
+    public Page<Mandat> GetMandatByDate(LocalDate dateDebut, Pageable pageable) {
+
+        if(dateDebut != null && dateDebut.isAfter(LocalDate.now())){
+            return mandatRepository.findByDateDebutContaining(dateDebut,pageable);
+        }
+        return mandatRepository.findAll(pageable);
     }
 }

@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" th:href="@{/css/navbarPresident.css}">
-    <link rel="stylesheet" th:href="@{/css/homePresident.css}">
     <link rel="stylesheet" th:href="@{/css/gestionPresident.css}">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Title</title>
 </head>
 <body>
@@ -28,15 +27,39 @@
       </div>
 
 
-      <div class="ligne-verticale"></div>
+
 
 
       <div class="container-contenu case">
-        <p> gestion du <br> contenu </p>
-        <button type="submit">voir plus</button>
+
+          <a th:href="@{/president/contenu/evenement}" >
+              <p> gestion du <br> contenu </p>
+              <button type="submit">voir plus</button>
+          </a>
       </div>
 
   </div>
+
+
+
+    <div class="container-2">
+
+        <div class="container-mandat case">
+            <a th:href="@{/president/mandat}">
+                <p> Gestion des <br> Mandats</p>
+                <button> voir plus</button>
+            </a>
+        </div>
+
+
+
+        <div class="container-rien case">
+            <a th:href="@{/ressource}">
+                <p>Ressources <br> Académiques</p>
+                <button> voir plus</button>
+            </a>
+        </div>
+    </div>
 
 </body>
 </html>

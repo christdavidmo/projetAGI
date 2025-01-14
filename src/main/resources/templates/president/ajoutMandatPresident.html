@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" th:href="@{/css/navbarPresident.css}">
+    <!-- Inclure le CSS de Select2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
+
+    <script th:src="@{/js/navbarOffice.js}"></script>
+    <title>Title</title>
+</head>
+
+<style>
+    .container-form-mandat{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: #247324;
+    }
+
+    .form-mandat{
+        background-color: rgb(250, 242, 242);
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+    }
+
+    .case-mandat{
+        background-color: #2980b9;
+    }
+    .case-president{
+        background-color: #247324;
+    }
+    .case-president{
+        background-color: #a38261;
+    }
+
+    .case-communication{
+        background-color: #800a0a;
+    }
+    .case-pedagogie{
+        background-color: #cf7171;
+    }
+    .case-sport{
+        background-color: rgba(75, 30, 11, 0.42);
+    }
+    .case-tresorie{
+        background-color: #5a1f91;
+    }
+    .case-sg{
+        background-color: #736824;
+    }
+
+    .case{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        height: 38vh;
+        width: 38%;
+    }
+
+    .case p{
+        font-size: 20px;
+        text-decoration: underline;
+    }
+
+    .sous-case{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .prenoms{
+        margin-top: 10px;
+    }
+    .sous-case label{
+        font-size: 20px;
+        margin-bottom: 4px;
+    }
+    .sous-case input{
+        margin-bottom: 10px;
+        padding: 6px;
+        font-size: 13px;
+        border: none;
+        border-radius: 4px;
+    }
+</style>
+<body>
+
+
+<div th:replace="~{layout/navbar/navbarPresident :: navbar-office}" >  </div>
+
+<h1> Ajout d'un nouveau Mandat </h1>
+
+<div class="container-form-mandat">
+
+    <form class="form-mandat" id="form-mandat" method="post" action="">
+
+        <!--  -->
+        <div class="case-mandat case">
+            <p>Année</p>
+           <div class="sous-case">
+               <label for="Date-Debut">Année Début Mandature</label>
+               <input type="date" name="Date_debut" id="Date-Debut" placeholder="Date Debut">
+               <label for="Date_Fin">Année Fin Mandature</label>
+               <input type="date" name="Date_Fin" id="Date_Fin" placeholder="Date Fin">
+           </div>
+        </div>
+        <!--  -->
+
+
+        <!-- case-president  -->
+        <div class="case-president case">
+            <p>President</p>
+            <div class="text-case-president sous-case">
+
+                <label for="president-nom">Nom</label>
+                <select class="member-select" name="president-nom" id="president-nom">
+                    <option value="">Sélectionner un nom</option>
+                </select>
+
+                <label class="prenoms" for="president-prenoms">Prénoms</label>
+                <input type="text" name="president-prenoms" id="president-prenoms" placeholder="Prénoms" readonly>
+
+            </div>
+        </div>
+        <!-- case-president  -->
+
+
+        <!-- case-vice-president  -->
+        <div class="case-vice-president case">
+            <p>Vice Président</p>
+           <div class="text-vice-president sous-case">
+
+               <label for="vice-president-nom">Nom</label>
+               <select class="member-select" name="vice-president-nom" id="vice-president-nom">
+                   <option value="">Sélectionner un nom</option>
+               </select>
+
+               <label  class="prenoms" for="vice-president-prenoms">Prénoms</label>
+               <input type="text" name="vice-president-prenoms" id="vice-president-prenoms" placeholder="Prénoms" readonly>
+
+           </div>
+        </div>
+        <!-- case-vice-president  -->
+
+
+        <!-- case-communication -->
+        <div class="case-communication case">
+            <p>Pole-Communication</p>
+            <div class="text-case-communication sous-case">
+
+                <label for="Pole-Communication-nom">Nom</label>
+                <select class="member-select" name="Pole-Communication-nom" id="Pole-Communication-nom">
+                    <option value="">Sélectionner un nom</option>
+                </select>
+
+                <label class="prenoms" for="Pole-Communication-prenoms">Prenoms</label>
+                <input type="text" name="Pole-Communication-prenoms" id="Pole-Communication-prenoms" placeholder="Prénoms" readonly>
+
+            </div>
+        </div>
+        <!-- case-communication  -->
+
+        <!-- case-pedagogie  -->
+        <div class="case-pedagogie case">
+            <p>Pole-Pédagogie</p>
+          <div class="text-case-pedagogie sous-case">
+
+              <label for="Pole-pedagogie-nom">Nom</label>
+              <select class="member-select" name="Pole-pedagogie-nom" id="Pole-pedagogie-nom">
+                  <option value="">Sélectionner un nom</option>
+              </select>
+
+              <label class="prenoms" for="Pole-pedagogie-prenoms">Prenoms</label>
+              <input type="text" name="Pole-pedagogie-prenoms" id="Pole-pedagogie-prenoms" placeholder="Prénoms" readonly>
+
+          </div>
+        </div>
+        <!-- case-pedagogie  -->
+
+        <!-- case-sport  -->
+        <div class="case-sport case" >
+
+            <p>Pole-Sport</p>
+           <div class="text-case-sport sous-case">
+
+               <label for="Pole-sport-nom">Nom</label>
+               <select class="member-select" name="Pole-sport-nom" id="Pole-sport-nom">
+                   <option value="">Sélectionner un nom</option>
+               </select>
+
+               <label class="prenoms"  for="Pole-sport-prenoms">Prenoms</label>
+               <input type="text" name="Pole-sport-prenoms" id="Pole-sport-prenoms" placeholder="Prénoms" readonly>
+
+           </div>
+
+        </div>
+        <!-- case-sport -->
+
+
+        <!--  -->
+        <div class="case-tresorie case">
+            <p>Pole-Trésorie</p>
+           <div class="text-case-tresorie sous-case">
+
+               <label for="Pole-Tresorie-nom">Nom</label>
+               <select class="member-select" name="Pole-Tresorie-nom" id="Pole-Tresorie-nom">
+                   <option value="">Sélectionner un nom</option>
+               </select>
+
+               <label class="prenoms"  for="Pole-Tresorie-prenoms">Prenoms</label>
+               <input type="text" name="Pole-Tresorie-prenoms" id="Pole-Tresorie-prenoms"  placeholder="Prénoms" readonly>
+
+           </div>
+        </div>
+        <!--  -->
+
+
+        <!--  -->
+        <div class="case-sg case">
+            <p>Sécrétaire Générale</p>
+           <div class="text-case-sg sous-case">
+
+               <label for="sg-nom">Nom</label>
+               <select class="member-select" name="sg-nom" id="sg-nom">
+                   <option value="">Sélectionner un nom</option>
+               </select>
+
+               <label  class="prenoms" for="sg-prenoms">Prenoms</label>
+               <input type="text" name="sg-prenoms" id="sg-prenoms" placeholder="Prénoms" readonly>
+
+           </div>
+        </div>
+        <!--  -->
+
+
+        <!--  -->
+        <div class="case">
+            <button type="submit">Créer</button>
+        </div>
+        <!--  -->
+
+    </form>
+</div>
+
+
+
+
+<!-- Inclure jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Inclure le script Select2 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        var members = []; // Tableau pour stocker les membres récupérés
+
+        // Charger tous les membres depuis l'API
+        $.ajax({
+            url: '/member/all',  // URL pour récupérer tous les membres
+            method: 'GET',
+            success: function(data) {
+                members = data; // Sauvegarder les membres récupérés
+                // Ajouter les options dans tous les selects ayant la classe 'member-select'
+                $('.member-select').each(function() {
+                    var $select = $(this);
+                    members.forEach(function(member) {
+                        $select.append(new Option(member.nom, member.id));
+                    });
+                });
+
+                // Initialiser Select2 pour chaque champ select après avoir ajouté les options
+                $('.member-select').select2({
+                    placeholder: "Sélectionner un membre",
+                    allowClear: true,
+                    minimumInputLength: 1,  // Minimum de caractères avant de commencer à chercher
+                });
+            }
+        });
+        // Lorsque le nom est sélectionné, remplir le champ Prénom
+        $('.member-select').on('change', function() {
+            var memberId = $(this).val();  // Récupérer l'ID du membre sélectionné
+            var prenomInput = $(this).closest('.sous-case').find('input[type="text"]');  // Trouver le champ prénom associé
+
+            if (memberId) {
+                // Rechercher dans la liste des membres locaux pour obtenir les prénoms
+                var member = members.find(function(m) {
+                    return m.id === parseInt(memberId); // Trouver le membre avec cet ID
+                });
+
+                if (member) {
+                    prenomInput.val(member.prenoms);  // Remplir le champ prénom
+                }
+            } else {
+                // Si aucun membre n'est sélectionné, vider le champ prénom
+                prenomInput.val('');
+            }
+        });
+
+        // Soumettre le formulaire via AJAX
+        $('#form-mandat').submit(function(event) {
+            event.preventDefault(); // Empêcher la soumission traditionnelle du formulaire
+
+            // Créer un objet avec les rôles et les membres associés
+            var mandatData = {
+                Date_debut: $('#Date-Debut').val(),
+                Date_Fin: $('#Date_Fin').val(),
+            };
+
+            // Récupérer les IDs des membres sélectionnés dans l'ordre des rôles
+            var roles = [
+                "president-nom",
+                "vice-president-nom",
+                "Pole-Communication-nom",
+                "Pole-pedagogie-nom",
+                "Pole-sport-nom",
+                "Pole-Tresorie-nom",
+                "sg-nom"
+            ];
+
+            // Pour chaque rôle, récupérer l'ID du membre sélectionné
+            roles.forEach(function(role) {
+                var memberId = $('#' + role).val();  // Récupérer l'ID du membre sélectionné pour ce rôle
+                if (memberId) {
+                    mandatData[role] = memberId;  // Ajouter l'ID du membre au mandatData
+                }
+            });
+
+            // Afficher l'objet mandatData dans la console (facultatif)
+            console.log(mandatData);
+
+            // Envoyer les données avec AJAX
+            $.ajax({
+                url: '/mandat/save',  // URL pour enregistrer le mandat
+                method: 'POST',
+                data: mandatData,  // Envoi des données sérialisées
+                success: function(response) {
+                    alert('Mandat créé avec succès!');
+                    // Réinitialiser le formulaire ou rediriger l'utilisateur
+                    $('#form-mandat')[0].reset();
+                },
+                error: function() {
+                    alert('Une erreur est survenue lors de la création du mandat.');
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

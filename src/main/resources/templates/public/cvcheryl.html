@@ -1,390 +1,241 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<style >
-  body{
-    padding: 0;
-    margin: 0;
-  }
-
-  .tableau{
-    display: flex ;
-
-  }
-
-  .tr{
-    display: flex;
-  }
-  .td{
-    display: flex ;
-
-    position: relative ;
-    justify-content: flex-end;
-
-    justify-content: center;
-    align-items: center;
-  }
-
-  #cold1{
-    background-color:  yellow;
-
-  }
-
-  #cold2{
-    background-color: orange;
-  }
-  #cold3{
-    background-color: red;
-  }
-  #cold4{
-    background-color: purple;
-  }
-  #cold5{
-    background-color: blue;
-  }
-  #cold6{
-    background-color: green;
-  }
-  #cold7{
-    background-color: gray;
-  }
-  #cold8{
-    background-color: white;
-  }
-
-  #e{
-    background-color: purple;
-  }
-  #u{
-    color: black;
-  }
-  #bouton2{
-    border: 6px white double;
-  }
-  button{
-
-
-
-    border: 2px solid white ;
-    padding: 10px 20px ;
-    border-radius: 60px ;
-    background:none ;
-    color: white;
-
-    font-size: 12px ;
-
-
-
-  }
-
-  .text{
-
-
-    color: white ;
-    position: absolute;
-    bottom: 10px;
-    font-size: 12px;
-  }
-
-  .block-square-container-deux{
-    margin: 300px 0;
-    padding: 0;
-  }
-  .ligne-un-container{
-    flex: 1;
-    display: flex;
-  }
-
-  .block-square{
-    width: 600PX;
-    height: 400PX;
-  }
-
-
-  .block-square.vert{
-    background-image: url("/images/woman.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-
-  .block-square.jaune{
-    background-color:  #247324;
-  }
-
-  .block-square.bleu{
-    background-color: #5a1f91;
-    background-image: url("/images/womans - Copie.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-
-
-  .ligne-deux-container{
-    display: flex;
-    flex: 1;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4); /* horizontal verticale flou ; couleur= 1,2,3 ,opacite */
-
-  }
-
-  .block-square.rouge{
-    background-color: #b6b641;
-  }
-
-  .block-square.marron{
-    background-color: rgba(75, 30, 11, 0.42);
-    background-image: url("/images/sportwoman - Copie.jpeg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-
-  .block-square.violet{
-    background-color:  #123f95;
-  }
-
-
-
-  nav{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-  }
-
-  .logo-amicale img{
-      width: 100px;
-  }
-
-  .menu-nav{
-      display: flex;
-      list-style: none;
-  }
-
-  ul li{
-      padding: 20px;
-  }
-  ul li a{
-      list-style: none;
-      text-decoration: none;
-  }
-
-  .menu-burger{
-     display: none;
-    margin-right: 20px;
-  }
-  .menu-burger i{
-      font-size: 50px;
-  }
-
-
-  @media(max-width: 768px) {
-
-
-    .ligne-un-container,.ligne-deux-container{
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .jaune, .rouge, .violet{
-      height: 300PX;
-    }
-
-
-
-
-
-
-      .menu-nav{
-          display: none;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          top: 0;
-          left: 0;
-          z-index: 1000;
-          position: fixed;
-          height: 100%;
-          width: 100%;
-          background-color: #247324;
-      }
-
-      .menu-nav a{
-          color: white;
-          font-size: 28px;
-      }
-      .menu-burger{
-          z-index: 1001;
-          display: flex;
-
-      }
-
-      .menu-active{
-              display: flex;
-      }
-
-
-
-
-
-
-  }
-
-</style>
-  <title> essaie</title>
-
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+<style type="text/css">
+    /* box-sising permet de définir comment les dimentions d'un élément html sont calculé */
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:"poppins",sans-serif
+    }
+    body{
+        /* background-size permet de définir la taille de l'image d'arriére plan et
+        -avec cover l'image remplit tout l'élémnent quitte à être rogné
+        -avec contain l'image est entiére visible mais elle peut ne pas remplir tout l'élément
+        -avec Auto l'image conserve ses dimensions originale sans rédimentionnement
+        -avec Dimensin fixe ont peut spécifier une largeur/hauteur précise */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height:100vh;
+        background:url(https://images7.alphacoders.com/134/thumb-1920-1348024.png) no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    .wrapper{
+        /* backdrop-filter permet d'appliquer des effets graphiques
+        (comme flous,des contrastes,etc..) à la zone d'arriére-plan visible à travers
+        un élément semi-transparant
+        -blur(px),Ajoute un flou à l’arrière-plan (valeur en pixels).,
+        blur(10px)
+        -brightness(%),Ajuste la luminosité (100% = normal, moins = plus sombre, plus = plus lumineux).,
+        brightness(150%)
+        -contrast(%),Ajuste le contraste (100% = normal).,
+        contrast(200%)
+        -grayscale(%),Convertit en niveaux de gris (0% = normal, 100% = complètement gris).,
+        grayscale(50%)
+        -sepia(%),Ajoute une teinte sépia (0% = normal, 100% = complètement sépia).,
+        sepia(80%)
+        -opacity(%),Ajuste la transparence (0% = transparent, 100% = opaque).,
+        opacity(70%)
+        -hue-rotate(deg),Modifie la teinte (rotation de couleur, valeur en degrés).,
+        hue-rotate(90deg)
+        -saturate(%),Ajuste la saturation des couleurs (100% = normal, 0% = désaturé).,
+        saturate(200%)*/
+        width: 420px;
+        background: transparent;
+        border: 2px solid rgb(255,255,255, .2);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 0 10px rgb(0,0,0, .2);
+        color: #fff;
+        border-radius: 10px;
+        padding: 30px 40px;
+    }
+    .wrapper h1 {
+        font-size: 36px;
+        text-align: center;
+    }
+    .wrapper .input_box {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        margin: 30px 0;
+    }
+    /* Propriété,Description,Valeurs possibles
+    -Outline:Définit un contour autour de l’élément.,
+    outline: <style> <color> <width> (ex : outline: solid red 2px)
 
+    -Cursor:Modifie l’apparence du curseur.,
+    cursor: auto, pointer, crosshair, wait, text, move, not-allowed, help, etc.
+
+    -Text decoration:Applique des décorations au texte (souligné, barré, etc.).,
+    text-decoration: none, underline, line-through, overline, blink
+
+    -Font weight:Définit l’épaisseur de la police.,
+    font-weight: normal, bold, lighter, bolder, <valeur numérique de 100 à 900>
+
+    -Accents color:Définit la couleur des accents typographiques.,
+    accent-color: <color> (ex : accent-color: red)
+
+    -Transform:Applique des transformations géométriques à l’élément.,
+    transform: rotate(<angle>), scale(<x>, <y>), translate(<x>, <y>), skew(<x>, <y>) */
+    .input_box input {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: none;
+        outline: none;
+        border: 2px solid rgb(255,255,255, .2);
+        border-radius: 40px;
+        font-size: 16px;
+        color: #fff;
+        padding: 20px 45px 20px 20px ;
+    }
+    .input_box input::placeholder {
+        color: #fff;
+    }
+    .input_box i{
+        position: absolute;
+        right: 20px;
+        top: 50%;
+
+        font-size: 20px;
+    }
+    .wrapper .remember-forgot {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14.5px;
+        margin: -15px 0 15px;
+    }
+    .remember-forgot label input{
+        accent-color: #fff;
+        margin-right: 3px;
+    }
+    .remember-forgot a {
+        color: #fff;
+        text-decoration: none;
+    }
+    .remember-forgot a:hover{
+        text-decoration: underline;
+    }
+    .wrapper .btn {
+        width: 100%;
+        height: 45px;
+        background: #fff;
+        border: none;
+        outline: none;
+        border-radius: 40px;
+        box-shadow: 0 0 10px rgb(0,0,0, .1);
+        cursor: pointer;
+        font-size: 16px;
+        color: #333;
+        font-weight: 600;
+    }
+    .wrapper .register-link {
+        font-size: 14.5px;
+        text-align: center;
+        margin: 20px 0 15px;
+    }
+    .register-link p a {
+        color:#fff;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    .register-link p a:hover{
+        text-decoration: underline;
+    }
+
+    .remember-forgot{
+
+    }
+    .register-link{
+
+    }
+    /* 1. width (Largeur)
+
+    Propriété	    Description	                                                             Exemple
+    -auto	      Valeur par défaut. La largeur est déterminée par le contenu ou le parent.	width: auto;
+    -<valeur>	  Spécifie une largeur fixe en pixels (px), pourcentages (%), em, etc.	width: 200px;
+    -max-content  	La largeur est définie par le contenu le plus large possible sans le forcer à s’enrouler.	width: max-content;
+    -min-content	   La largeur est définie par le contenu le plus court possible (le texte ne s’enroule pas).	width: min-content;
+    -fit-content	Ajuste la largeur pour s’adapter au contenu mais ne dépasse pas les limites définies.	width: fit-content;
+
+    2. height (Hauteur)
+
+    Propriété	Description	Exemple
+    -auto	Valeur par défaut. La hauteur est définie par le contenu de l’élément.	height: auto;
+    -<valeur>	Spécifie une hauteur fixe en pixels (px), pourcentages (%), em, etc.	height: 150px;
+    -max-content	La hauteur est définie par la hauteur totale du contenu (sans limitation).	height: max-content;
+    -min-content	La hauteur est définie par le contenu minimum sans forcer l’enroulement.	height: min-content;
+    -fit-content	Ajuste la hauteur pour contenir le contenu tout en respectant les contraintes de dimensions parentales.	height: fit-content;
+
+    3. background (Arrière-plan)
+
+    Propriété	Description	Exemple
+    -background-color	Définit la couleur d’arrière-plan (valeurs : red, #ff0000, rgba(255, 0, 0, 0.5), etc.).	background-color: lightblue;
+    -background-image	Définit une image en arrière-plan (URL ou propriétés CSS comme linear-gradient).	background-image: url('image.jpg');
+    -background-size	Spécifie la taille de l’image d’arrière-plan (cover, contain, dimensions fixes).	background-size: cover;
+    -background-repeat	Définit si l’image est répétée (repeat, no-repeat, repeat-x, repeat-y).	background-repeat: no-repeat;
+    -background-position	Positionne l’image d’arrière-plan (top, center, left, valeurs spécifiques comme 50px 20px).	background-position: center;
+
+    4. padding (Marge intérieure)
+
+    Propriété	Description	Exemple
+    -padding	Ajoute un espace intérieur autour du contenu d’un élément (valeurs : px, %, etc.).	padding: 10px;
+    -padding-top	Définit la marge intérieure au haut de l’élément.	padding-top: 15px;
+    -padding-right	Définit la marge intérieure à droite.	padding-right: 20px;
+    -padding-bottom	Définit la marge intérieure au bas.	padding-bottom: 25px;
+    -padding-left	Définit la marge intérieure à gauche.	padding-left: 30px;
+
+    5. margin (Marge extérieure)
+
+    Propriété	Description	Exemple
+    -margin	Ajoute un espace extérieur autour d’un élément (valeurs : px, %, auto).	margin: 20px;
+    -margin-top	Définit la marge extérieure au haut.	margin-top: 10px;
+    -margin-right	Définit la marge extérieure à droite.	margin-right: 15px;
+    -margin-bottom	Définit la marge extérieure au bas.	margin-bottom: 20px;
+    -margin-left	Définit la marge extérieure à gauche.	margin-left: 25px;
+    -margin: auto	Centre un élément horizontalement (généralement utilisé avec display: block;).	margin: auto;
+
+    Différence clé entre padding et margin
+
+    Aspect	               Padding	                                                    Margin
+    Position	           Entre le contenu et la bordure.   	Entre la bordure de l’élément et les autres éléments.
+    Espace ajouté	       Affecte la taille de l’élément.	    N’affecte pas la taille de l’élément, mais son placement.
+      */
+</style>
 <body>
-
-
-  <!--  <table class="tableau"  cellpadding="90">
-  <tbody>
-  <tr>
-    <td   id="cold1"> <button>click me !</button>
-      <div class="text">SUBTLETY</div>
-    </td>
-
-    <td id="cold2"> <button id="bouton2">click me !</button>
-      <div class="text">DUBSTEP</div>
-    </td>
-
-
-    <td id="cold3">
-      <button>click me !</button>
-      <div class="text">TYPEWRITER</div>
-    </td>
-
-    <td id="cold4">
-      <button>click me !</button>
-      <div class="text">SOCIAL PRESSURE</div>
-    </td>
-  </tr>
-
-  <tr>
-    <td id="cold5">
-      <button>click me !</button>
-      <div class="text">HANDSY</div>
-    </td>
-
-    <td id="cold6">
-      <button>click me !</button>
-      <div class="text">YOU'RE</div>
-    </td>
-
-    <td id="cold7">
-      <button>click me!</button>
-      <div class="text">ENCOURAGEMENT</div>
-    </td>
-
-    <td id="cold8">
-      <button id="e">click me!</button>
-      <div id="u" class="text">ROUNBOW</div>
-    </td>
-  </tr>
-
-  </tbody>
-
-</table> -->
+<div class="wrapper">
+    <form action="#">
+        <h1>Login</h1>
+        <div class="input_box">
+            <input type="text" placeholder="Nom" required>
+            <i class='bx bxs-user'></i>
+        </div>
+        <div class="input_box">
+            <input type="password" placeholder="Mot de passe" required>
+            <i class='bx bxs-lock-alt' ></i>
+        </div>
+        <div class="remember-forgot">
+            <label for="remember"><input type="checkbox" id="remember" value="oui"> souviens-toi de moi</label>
 
 
 
+            <a href="#">mot de passe oublier</a>
+        </div>
+        <button type="submit" class="btn">Login</button>
+        <Div class="register-link">
+            <p>Créer un compte <a href="#">register</a></p>
 
-  <!-- <div class="block-square-container-deux">
+        </Div>
+    </form>
 
-   <div class="ligne-un-container">
-
-     <div class="block-square vert"> </div>
-
-     <div class="block-square jaune">
-
-       <h2> top </h2>
-       <p>La meilleure façon <br>
-         de prédire  l’avenir <br>
-         est de le créer .</p>
-
-     </div>
-
-     <div class="block-square bleu"> </div>
-
-   </div>
-
-
-   <div class="ligne-deux-container">
-
-     <div class="block-square rouge">
-       <h2> top </h2>
-       <p>
-         Se réunir est un début, <br>
-         rester  ensemble est  <br>
-         un progrès, travailler  <br>
-         ensemble est la réussite.
-       </p>
-     </div>
-
-
-     <div class="block-square marron"></div>
-
-
-     <div class="block-square violet">
-       <h2>top</h2>
-       <p>
-         Se réunir est un début, <br>
-         rester  ensemble est  <br>
-         un progrès, travailler  <br>
-         ensemble est la réussite.
-       </p>
-     </div>
-
-   </div>
-
-
- </div>  -->
-
-
-
-
-  <nav th:fragment="navbar">
-
-      <div class="logo-amicale">
-          <a >
-              <img th:src="@{/images/logo-agi-removebg.png}" alt="logo_amicale">
-          </a>
-      </div>
-
-      <div class="menu-burger" id="menu-burger" onclick="toggleMenu()">
-          <i class="fa-solid fa-bars"></i>
-      </div>
-
-      <ul class="menu-nav" id="menu">
-          <li> <a th:href="@{/}"> Accueil </a> </li>
-          <li> <a th:href="@{/public/aboutus}"> À propos</a> </li>
-          <li><a th:href="@{/public/activites}"> Activités</a></li>
-          <li><a th:href="@{/public/historique/bureau}"> Historique</a></li>
-          <li><a th:href="@{/public/contact}" > Contact</a></li>
-      </ul>
-
-  </nav>
-
-
-
-
-
-
-
-
-
-
-
-  <script !src="">
-      function toggleMenu(){
-          const menu = document.getElementById("menu");
-          menu.classList.toggle("menu-active");
-      }
-  </script>
-
+</div>
 </body>
 </html>

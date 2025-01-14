@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" th:href="@{/css/navbarPresident.css}">
+
+    <script th:src="@{/js/navbarOffice.js}"></script>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Title</title>
+
+    <style>
+
+        body{
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container a{
+            cursor: pointer;
+        }
+
+        .containt-btn-add-mandat{
+            margin-bottom: 20px;
+            font-size: 15px;
+            padding: 10px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            background-color: darkgreen;
+            cursor: pointer;
+        }
+
+
+        .table-mandat{
+            border-collapse: collapse;
+            width: 80%;
+
+        }
+        .table-mandat th,.table-mandat td{
+            border: solid 1px white;
+        }
+        .table-mandat thead{
+            background-color: #2980b9;
+            text-align: center;
+            color: white;
+        }
+
+        .table-mandat tbody{
+            text-align: center;
+            background-color: rgb(236, 240, 241);
+        }
+
+        .table-mandat td{
+            padding: 15px;
+        }
+
+        .table-mandat th{
+            text-transform: uppercase;
+            padding: 15px 10px;
+            font-size: 20px;
+        }
+
+
+        .parent-container-modal-detail{
+            display: none;
+            height: 100%;
+            width: 100%;
+            background-color: rgb(0 ,0 ,0 ,0.2);
+            overflow: auto;
+            z-index: 1;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+
+        .container-modal-detail{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            top: 50%;
+            left: 50%;
+            position: fixed;
+            transform: translate(-50%,-50%);
+            width: 100%;
+            max-width: 340px;
+            padding: 20px 30px;
+            background-color: #f39c12;
+        }
+
+        .parent-container-modal-text{
+            width: 100%;
+            display: flex;
+            padding: 0 40px;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .close{
+            cursor: pointer;
+            font-size: 40px;
+            font-weight: bold;
+            float: right;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #800a0a;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-detail{
+            display: flex;
+            flex-direction: column;
+            font-size: 30px;
+            text-transform: uppercase;
+        }
+
+        .modal-detail input{
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+
+
+
+        .container-form-recherche-mandat{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin: 80px 0px;
+
+        }
+        .form-recherche-mandat:hover{
+            box-shadow: 0 11px 11px rgb(0 ,0 ,0 ,0.2);
+        }
+
+        .form-recherche-mandat{
+            background-color: rgb(234, 145, 47);
+            width: 440px;
+            height: 90px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 10px;
+        }
+
+        .form-recherche-mandat label{
+            font-size: 20px;
+        }
+        .form-recherche-mandat input{
+            margin: 0 10px;
+            padding:  5px 10px;
+            border: none;
+
+        }
+
+
+        .form-recherche-mandat button{
+            padding:  8px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-recherche-mandat button:hover{
+            color: white;
+            background-color: rgb(75, 30, 11);
+            border: none;
+        }
+
+
+
+        /* =================== pagination ======================== */
+        .pagination_container{
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+
+            margin-bottom: 35px;
+        }
+
+        .pagination {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .pagination li{
+            margin-right: 6px;
+        }
+
+        .pagination a {
+            color: black;
+            text-decoration: none;
+            padding: 4px 6px;
+            border: 1px rgb(75, 30, 11) solid;
+            border-radius: 3px;
+        }
+
+        .pagination a:hover{
+            color: white;
+            background-color: rgb(234, 145, 47);
+        }
+        /* =================== pagination ======================== */
+    </style>
+</head>
+
+
+<body>
+
+
+
+    <div th:replace="~{layout/navbar/navbarPresident :: navbar-office}" >  </div>
+
+
+    <div th:action="@{/president/mandat}" class="container-form-recherche-mandat" method="get">
+
+        <form class="form-recherche-mandat" action="">
+            <label for="datedebut">Année Mandature</label>
+            <input type="date" th:value="${datedebut}" name="datedebut" id="datedebut" >
+
+            <button type="submit">chercher</button>
+        </form>
+
+    </div>
+
+
+    <div class="container">
+
+        <a th:href="@{/president/mandat/form}" >
+            <button  type="submit" class="containt-btn-add-mandat" id="containt-btn-add-mandat">
+                Ajouter un Mandat
+            </button>
+
+        </a>
+
+
+        <table class="table-mandat">
+            <thead>
+                <tr>
+                    <td>President</td>
+                    <td>Date De Debut</td>
+                    <td>Date De Fin</td>
+                    <td>Details</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="mandat : ${mandats}">
+                    <td th:text="${mandat.president.nom}"> </td>
+                    <td th:text="${mandat.dateDebut}"> </td>
+                    <td th:text="${mandat.dateFin}"> </td>
+                    <td >
+                        <button class="btn-detail" type="submit"
+                                th:data-IdM="${mandat.id}"
+                                th:data-PName="${mandat.president.nom}"
+                                th:data-DD="${mandat.dateDebut}"
+                                th:dataF="${mandat.dateFin}">
+                            Details
+                        </button>
+                        <a th:href="@{ /president/mandat/{idMandat}/modification(idMandat=${mandat.id})} " >
+                            <button type="submit"> Modification</button>
+                        </a>
+
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+
+    <!-- Pagination -->
+    <div class="pagination_container">
+
+        <ul class="pagination">
+            <!-- Lien vers la page précédente -->
+            <li th:if="${currentPage > 1}">
+                <a th:href="@{/president/mandat(page=${currentPage - 1}, size=${6})}">Précédent</a>
+            </li>
+
+            <!-- Lien vers chaque page -->
+            <li th:each="i : ${#numbers.sequence(1, pages)}">
+                <a th:href="@{/president/mandat(page=${i}, size=${8})}"
+                   th:text="${i}"
+                   th:class="${currentPage == i} ? 'active' : ''"></a>
+            </li>
+
+            <!-- Lien vers la page suivante -->
+            <li th:if="${currentPage < pages }">
+                <a th:href="@{/president/mandat(page=${currentPage + 1}, size=${6})}">Suivant</a>
+            </li>
+        </ul>
+
+    </div>
+    <!-- Pagination -->
+
+
+
+
+    <div class="parent-container-modal-detail" id="parent-container-modal-detail">
+
+
+
+        <div class="container-modal-detail">
+
+            <div class="parent-container-modal-text">
+                <h2>Détails </h2>
+                <span class="close" id="close-modal-modification">&times;</span>
+            </div>
+
+           <form class="modal-detail" action="">
+
+               <label for="president">President</label>
+               <input type="text" name="president" id="president">
+
+
+               <label for="DateDebut">Date Debut</label>
+               <input type="date" name="DateDebut" id="Date_Debut">
+
+               <label for="DateFin">Date De Fin</label>
+               <input type="date" name="DateFin" id="DateFin">
+
+           </form>
+
+       </div>
+
+    </div>
+
+
+
+
+
+<script>
+
+    document.querySelectorAll('.btn-detail').forEach(button =>{
+        button.addEventListener('click',function (){
+
+            /* th:data-IdM="${mandat.id}"
+                                th:data-PName="${mandat.president.nom}"
+                                th:data-DD="${mandat.dateDebut}"
+                                th:dataF="${mandat.dateFin}">  */
+            const id_mandat = this.getAttribute('data-IdM');
+            const president_name = this.getAttribute('data-PName');
+            const date_debut = this.getAttribute('data-DD');
+            const data_Fin = this.getAttribute('dataF');
+
+
+            document.getElementById('president').value = president_name ;
+            document.getElementById('Date_Debut').value = date_debut ;
+            document.getElementById('DateFin').value = data_Fin ;
+
+
+            document.getElementById("parent-container-modal-detail").style.display ='block';
+        })
+    })
+
+
+    var close_modal= document.getElementById("close-modal-modification");
+    var modal = document.getElementById("parent-container-modal-detail");
+
+    function  close_Modal(){
+        modal.style.display='none';
+    }
+
+    close_modal.addEventListener('click',function (){
+        close_Modal();
+    })
+
+</script>
+
+</body>
+</html>

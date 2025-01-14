@@ -16,13 +16,16 @@ public interface MemberRepository extends JpaRepository<Member,Long> {
     List<Member> findMemberByRole(Role role);
     List<Member> findAllByActiveTrue();
     List<Member> findAll();
+    List<Member> findMemberByNomIgnoreCase(String nom);
 
 
     Page<Member> findAll(Pageable pageable);
     Page<Member> findByNomContaining(String nom, Pageable pageable);
 
 
+
     Member findMemberByNom(String nom);
+    Member findMemberByNomAndPrenoms(String nom, String prenoms);
     Member findMemberById(Long id);
 
 

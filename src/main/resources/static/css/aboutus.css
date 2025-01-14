@@ -86,6 +86,125 @@ body{
 }
 
 
+
+.agi-en-plus{
+    text-align: center;
+    font-size: 50px;
+    text-transform: uppercase;
+     margin-top: 60px;
+}
+
+.parent-container-divers{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    margin: 5% 0;
+   // background-color: #dd5012;
+}
+
+
+
+
+.divers-3{
+    width: 100%; /* Ajuste selon tes besoins */
+    //background-color: #5a1f91;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+
+.divers-3-1,.divers-3-2,.divers-3-3{
+    background-color: #247324;
+    height: 50vh;
+    width: 380px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    flex-direction: column;
+
+}
+.divers-3-1:hover,.divers-3-2:hover,.divers-3-3:hover{
+    box-shadow: 6px 11px 10px rgb(0,0,0,0.5);
+}
+
+.divers-3-1,.divers-3-2,.divers-3-3 a{
+    text-decoration: none;
+}
+.divers-3-1{
+    background-image: url("/images/agidance.jpg");
+    background-size: cover;
+    background-position: center;
+    //border: solid 4px rgb(182, 182, 65);
+}
+.divers-3-1-title{
+    font-size: 30px;
+    color: #ffffff;
+    font-weight: bold;
+}
+.divers-3-1-contenu{
+    width: 100%;
+    background-color: #247324;
+    text-align: center;
+}
+.divers-3-1-contenu p{
+    font-size: 20px;
+    color: white;
+}
+
+
+.divers-3-2{
+    background-image: url("/images/agifoot.jpg");
+    background-size: cover;
+    background-position: center;
+    border: solid 4px rgb(182, 182, 65);
+}
+.divers-3-2-title{
+    font-size: 30px;
+    color: #ffffff;
+    font-weight: bold;
+}
+.divers-3-2-contenu{
+    width: 100%;
+    background-color: #b6b641;
+    text-align: center;
+}
+.divers-3-2-contenu p{
+    font-size: 19px;
+    color: white;
+    padding: 0 10px;
+}
+
+
+.divers-3-3{
+    background-image: url("/images/liveagi.jpg");
+    background-size: cover;
+    background-position: center;
+    //border: solid 4px rgb(182, 182, 65);
+}
+.divers-3-3-title{
+    font-size: 30px;
+    color: #858282;
+    font-weight: bold;
+}
+.divers-3-3-contenu{
+    width: 100%;
+    background-color: #123f95;
+    text-align: center;
+}
+.divers-3-3-contenu p{
+    font-size: 20px;
+    color: white;
+}
+
+
+
 /* Media Query pour les écrans de largeur maximale 768px (tablette et mobile) */
 @media screen and (max-width: 768px) {
     .container {
@@ -119,6 +238,42 @@ body{
     .objectif p {
         font-size: 14px;
     }
+
+
+
+
+
+
+
+    .agi-en-plus{
+        text-align: center;
+        font-size: 35px;
+        text-transform: uppercase;
+        margin-top: 5%;
+    }
+
+    .parent-container-divers{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        margin-bottom: 0;
+        // background-color: #dd5012;
+    }
+
+    .divers-3{
+        gap: 0;
+    }
+
+    .divers-3-1,.divers-3-2,.divers-3-3{
+        width: 100%;
+    }
+    .divers-3-2{
+        border: none;
+    }
+
+
 
 
 

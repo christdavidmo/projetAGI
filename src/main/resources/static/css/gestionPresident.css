@@ -6,8 +6,11 @@ body{
 
 .container-1{
     display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     padding: 0 40px;
-    margin: 20px 0px;
+    margin: 20px 0;
+
 }
 .case{
     display: flex;
@@ -15,12 +18,18 @@ body{
     align-items: center;
     flex-direction: column;
     height: 50vh;
+
     border-radius: 5px;
+
+}
+
+.case:hover{
+    box-shadow: 0px 10px 11px rgb(0,0,0,0.2);
 }
 
 .case a{
     text-decoration: none;
-    color: black;
+    color: #ffffff;
 }
 .case p{
     font-size: 40px;
@@ -46,16 +55,60 @@ body{
 
 .container-utilisateur{
     flex: 1;
-    background-color: red;
+    background-color: #247324;
 }
-.container-utilisateur:hover{
-    box-shadow: 0px 10px 11px rgb(0,0,0,0.2);
-}
+
 .container-contenu{
     flex: 1;
     background-color: #b6b641;
 }
-.container-contenu:hover{
-    box-shadow: 0px 10px 11px rgb(0,0,0,0.2);
+
+
+
+
+.container-2{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0 40px;
+    margin: 20px 0;
+}
+
+.container-mandat{
+    background-color: rgb(18,69,149);
+    flex: 1;
+
+}
+
+.container-rien{
+    flex: 1;
+    background-color: #748f74;
+}
+
+
+@media (max-width: 768px) {
+
+    .container-1 , .container-2{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 20px;
+        margin: 20px 0px;
+    }
+
+    .case{
+        height: 30vh;
+        width: 25%;
+    }
+
+    .case p{
+        font-size: 30px;
+    }
+
+    .case button{
+        font-size: 20px;
+        padding: 4px 10px;
+        border: none;
+        border-radius: 5px;
+    }
 }
 

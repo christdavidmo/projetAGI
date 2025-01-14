@@ -1,11 +1,13 @@
 package com.example.amicale.web.controller;
 
+import com.example.amicale.Data.Entity.Mandat;
+import com.example.amicale.Security.Services.SecurityService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 
 public interface officeController {
 
@@ -14,10 +16,6 @@ public interface officeController {
 
     @GetMapping("/office/gestion")
     public String gestionoffice();
-
-
-
-
 
 
     @GetMapping("/president/accueil")
@@ -29,34 +27,57 @@ public interface officeController {
     @PostMapping("/president/modifier/member")
     public String Presidentmodifiermember(Model model,
                                           @RequestParam("id") Long id
-                                          ,@RequestParam("nom") String nom
-                                          ,@RequestParam("prenoms") String prenoms
-                                          ,@RequestParam("sexe") String sexe
-                                          ,@RequestParam("email") String email
-                                          ,@RequestParam("matricule") String matricule);
+            , @RequestParam("nom") String nom
+            , @RequestParam("prenoms") String prenoms
+            , @RequestParam("sexe") String sexe
+            , @RequestParam("email") String email
+            , @RequestParam("matricule") String matricule);
 
     @GetMapping("/president/gestion/detail")
-    public String Presidentgestiondetail(Model model
-                                        ,@RequestParam(defaultValue = "1") int page
-                                        ,@RequestParam(defaultValue = "8") int size
-                                        ,@RequestParam(required = false) String Nom );
+    public String PresidentgestionMember(Model model
+            , @RequestParam(defaultValue = "1") int page
+            , @RequestParam(defaultValue = "8") int size
+            , @RequestParam(required = false) String Nom);
 
     @PostMapping("/president/gestion/detail/save")
-    public String PresidentgestiondetailSave(Model model
-                                            ,@RequestParam("nom") String nom
-                                            ,@RequestParam("prenoms") String prenoms
-                                            ,@RequestParam("sexe") String sexe
-                                            ,@RequestParam("email") String email
-                                            ,@RequestParam("matricule") String matricule);
+    public String PresidentgestionSaveMember(Model model
+            , @RequestParam("nom") String nom
+            , @RequestParam("prenoms") String prenoms
+            , @RequestParam("sexe") String sexe
+            , @RequestParam("email") String email
+            , @RequestParam("matricule") String matricule);
 
     @PostMapping("/president/toogleblock/{id}")
     public String toogleMemberStatus(@PathVariable("id") Long id);
 
     @PostMapping("/president/delete/{id}")
-    public ResponseEntity <?> Presidentdelete(Model model, @PathVariable("id") Long id);
+    public ResponseEntity<?> Presidentdelete(Model model, @PathVariable("id") Long id);
 
     @GetMapping("/president/parametre")
     public String Presidentparametreoffice();
+
+
+    @GetMapping("/president/contenu/evenement")
+    public String PresidentcontenuEvensoffice(Model model,
+                                              @RequestParam(defaultValue = "1") int page,
+                                              @RequestParam(defaultValue = "6") int size,
+                                              @RequestParam(required = false) String name);
+
+    @GetMapping("/president/contenu/evenement/{idEvenement}/detail")
+    public String PresidentDetailcontenuEvensoffice(Model model, @PathVariable("idEvenement") Long id_evEnement);
+
+    @GetMapping("/president/mandat")
+    public String PresidentMandat(Model model,
+                                  @RequestParam(defaultValue = "1") int page,
+                                  @RequestParam(defaultValue = "6") int size,
+                                  @RequestParam(required = false) LocalDate datedebut);
+    @GetMapping("/president/mandat/form")
+    public String PresidentAddMandat(Model model);
+
+    @GetMapping("/president/mandat/{idMandat}/modification")
+    public String PresidentModificationMandat(Model model,@PathVariable("idMandat") Long idMandat);
+
+
 
 }
 

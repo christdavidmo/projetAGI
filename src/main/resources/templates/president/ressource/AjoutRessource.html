@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" th:href="@{/css/navbarPresident.css}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <title>Title</title>
+</head>
+
+<style>
+  body{
+    margin: 0;
+    padding: 0;
+  }
+
+  .container-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 20px 0;
+  }
+
+  .form-add-document{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 400px;
+    height: 45vh;
+    padding: 20px;
+
+    border-radius: 5px;
+
+    background-color: #247324;
+  }
+
+  .form-add-document label{
+    font-size: 30px;
+    color: white;
+
+
+  }
+
+  .form-add-document input{
+    padding: 16px;
+    font-size: 18px;
+    outline-color: #dd5012;
+  }
+
+  .form-add-document select{
+    padding: 7px 10px;
+    margin-bottom: 15px;
+    margin-top: 6px;
+  }
+
+  .form-add-document button{
+    padding: 8px 10px;
+    border: none;
+    margin-top: 10px;
+    border-radius: 50px;
+  }
+
+  .form-add-document button:hover{
+    background-color: #123f95;
+    color: white;
+    box-shadow: 0 10px 10px rgb(0,0,0,0.3);
+  }
+
+</style>
+
+<body>
+
+<div th:replace="~{layout/navbar/navbarPresident :: navbar-office}" ></div>
+
+  <div class="container-form">
+
+    <form class="form-add-document"  method="post" enctype="multipart/form-data">
+
+
+        <label for="TypeDocument">Type de document</label>
+        <select id="TypeDocument" name="TypeDocument">
+            <option value=""> choisissez une valeur</option>
+        <option th:each="TypeRessource :${TypeRessources} " th:value="${TypeRessource}"  th:text="${TypeRessource.label}"></option>
+        </select>
+
+
+        <label for="ecole">Ecole</label>
+        <select id="ecole" name="ecole">
+          <option value="">choisissez une ecole</option>
+          <option ></option>
+        </select>
+
+
+        <input type="file" name="file" id="file" accept="image/*" required />
+
+
+      <button type="submit">Télécharger le document</button>
+    </form>
+
+  </div>
+
+
+<script >
+
+</script>
+
+</body>
+</html>

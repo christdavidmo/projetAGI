@@ -29,4 +29,12 @@ public class MemberMandatRole {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;  // Rôle spécifique du membre dans ce mandat
+
+    // Constructor pour utiliser une chaîne de caractères
+    public MemberMandatRole( Member member,Mandat mandat, Role roleName) {
+        this.mandat = mandat;
+        this.member = member;
+        this.role = roleName;  // Créer un objet Role à partir du nom
+    }
+
 }

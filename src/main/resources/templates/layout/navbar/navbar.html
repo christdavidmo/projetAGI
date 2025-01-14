@@ -24,18 +24,28 @@
             </a>
         </div>
 
-        <div class="menu-overlay" id="menu-overlay" onclick="CloseMenu()"></div>
+           <div  class="btn-connexion">
+             <a th:href="@{/login}">
+                 <button type="submit">Connexion</button>
+             </a>
+         </div>
 
-        <div class="menu-burger" id="menu-burger" onclick="toggleMenu()">
-            <i class="fa-solid fa-bars"></i>
-        </div>
+         <div class="menu-overlay" id="menu-overlay" onclick="CloseMenu()"></div>
 
-        <ul class="menu-nav" id="menu">
-            <li> <a th:href="@{/}"> Accueil </a> </li>
-            <li> <a th:href="@{/public/aboutus}"> À propos</a> </li>
-            <li><a th:href="@{/public/activites}"> Activités</a></li>
-            <li><a th:href="@{/public/historique/bureau}"> Historique</a></li>
+         <div class="menu-burger" id="menu-burger" onclick="toggleMenu()">
+             <i class="fa-solid fa-bars"></i>
+         </div>
+
+
+
+         <ul class="menu-nav" id="menu">
+             <li> <a th:href="@{/}"> Accueil </a> </li>
+             <li> <a th:href="@{/public/aboutus}"> À propos</a> </li>
+             <!--      <li><a th:href="@{/public/activites}"> Activités</a></li> -->
+                 <li><a th:href="@{/public/ressource}" > Ressource </a> </li>
+          <!--      <li><a th:href="@{/public/historique/bureau}"> Historique</a></li> -->
             <li><a th:href="@{/public/contact}" > Contact</a></li>
+
         </ul>
 
     </nav>

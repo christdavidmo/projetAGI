@@ -1,12 +1,7 @@
 package com.example.amicale.web.controller.impl;
 
-import com.example.amicale.Data.Entity.Evenement;
-import com.example.amicale.Data.Entity.Mandat;
-import com.example.amicale.Data.Entity.Member;
-import com.example.amicale.Data.Entity.Photo;
-import com.example.amicale.Data.Services.EvenementService;
-import com.example.amicale.Data.Services.MandatService;
-import com.example.amicale.Data.Services.PhotoServices;
+import com.example.amicale.Data.Entity.*;
+import com.example.amicale.Data.Services.*;
 import com.example.amicale.web.controller.PublicController;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -25,6 +20,8 @@ public class PublicControllerImpl implements PublicController {
     private final EvenementService evenementService;
     private final MandatService mandatService;
     private final PhotoServices photoServices;
+    private final RessourceServices ressourceServices;
+    private final EcoleServices ecoleServices;
 
 
     @Override
@@ -37,6 +34,11 @@ public class PublicControllerImpl implements PublicController {
     public String aboutusView() {
         return "public/aboutus";
         // return "layout/navbar/navbar";
+    }
+
+    @Override
+    public String aboutusAgiEnPlusView() {
+        return "public/agienplus/agiDance";
     }
 
     @Override
@@ -65,7 +67,7 @@ public class PublicControllerImpl implements PublicController {
     public String detailactivitesView(Model model,
                                       @PathVariable Long id) {
 
-        List<Photo> AllImages = photoServices.getAllToEvenement(id);
+        List<Photo> AllImages = photoServices.getAllImagesToEvenement(id);
 
         model.addAttribute("nbrImages", AllImages.size());
         model.addAttribute("photos", AllImages);
@@ -105,11 +107,27 @@ public class PublicControllerImpl implements PublicController {
 
     @Override
     public String testView() {
-        return "public/test2";
+        return "public/cvcheryl";
     }
 
     @Override
     public String ErrorView() {
         return "error/error404";
+    }
+
+    @Override
+    public String ressourceView( Model model) {
+        List<Ecole> ecoles = ecoleServices.getEcoles();
+        model.addAttribute("ecoles", ecoles);
+        return "public/ressources/ressourceAcademique";
+    }
+
+    @Override
+    public String ressourceByEcoleView(Model model, String ecole) {
+
+       List<Ressources> ressources = ressourceServices.getAllRessourcesByEcole(ecole);
+       model.addAttribute("ressources", ressources);
+
+        return "public/ressources/ressourceIng";
     }
 }

@@ -13,6 +13,8 @@ public interface SecurityService {
 
     Role saveRole(Role  rolename);
     Role getRoleByName(String roleName);
+    Role getRoleById(Long  id);
+
     List<Role> getAllRoles();
 
     void EditRoleToUser(String username,String roleName);

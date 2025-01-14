@@ -66,6 +66,11 @@ public class SecurityServiceImpl implements SecurityService, UserDetailsService 
     }
 
     @Override
+    public Role getRoleById(Long id) {
+        return roleRepository.findById(id).get();
+    }
+
+    @Override
     public List<Role> getAllRoles() {
         return roleRepository.findAll();
     }

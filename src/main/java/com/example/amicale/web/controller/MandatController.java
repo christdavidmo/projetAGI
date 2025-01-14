@@ -4,6 +4,9 @@ import com.example.amicale.Data.Entity.Mandat;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Map;
 
 public interface MandatController {
 
@@ -12,5 +15,5 @@ public interface MandatController {
     public String FormulaireMandat(Model model);
 
     @PostMapping("/mandat/save")
-    public String enregistrementMandat(Model model, Mandat mandat);
+    public String enregistrementMandat(@RequestParam Map<String, String> formData);
 }
