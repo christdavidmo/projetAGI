@@ -7,4 +7,5 @@ import java.util.List;
 public interface EcoleServices {
 
     List<Ecole> getEcoles();
+    Ecole getEcole(Long id);
 }

@@ -17,7 +17,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
-//@Order(4)
+@Order(4)
 //@Component
 @RequiredArgsConstructor
 public class EvenementFixture implements CommandLineRunner {
@@ -64,7 +64,7 @@ public class EvenementFixture implements CommandLineRunner {
                     ev.setAuthor(member.getNom());
 
                     for(String p : photoName) {
-                        String photopath = "/images/"+p;
+                        String photopath = p;
                         Photo photo = new Photo(photopath,ev);
                         ev.getImages().add(photo);
 

@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
@@ -17,9 +18,11 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="ressources")
-public class Ressources extends Publication{
+public class Ressources extends AbstractEntity {
 
     private TypeRessource type;
+
+    @JoinColumn(nullable = true)
     private String Description;
 
     @ManyToMany
@@ -33,4 +36,17 @@ public class Ressources extends Publication{
 
     @Column(nullable = false)
     private String path;
+
+    @Column(nullable = false)
+    protected String title;
+
+    protected LocalDate datePublication ;
+
+
+    // Méthodes pour obtenir les dates formatées
+    public String getDatePublicationFormatted() {
+        return datePublication != null ? datePublication.toString() : null; // Utilisation de toString pour le format "yyyy-MM-dd"
+    }
+
+
 }

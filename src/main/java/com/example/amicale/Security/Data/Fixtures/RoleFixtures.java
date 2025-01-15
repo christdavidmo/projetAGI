@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 import java.util.List;
 
-//@Order(1)
+@Order(1)
 //@Component
 @RequiredArgsConstructor
 public class RoleFixtures implements CommandLineRunner {

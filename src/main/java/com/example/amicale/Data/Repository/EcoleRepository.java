@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface EcoleRepository extends JpaRepository<Ecole, Long> {
 
     Ecole findByEcoleName(String name);
+    Ecole findEcoleById(Long id);
 }

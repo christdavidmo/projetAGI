@@ -47,9 +47,15 @@
 
         border-radius: 5px;
     }
-    .batiment-case p{
+
+    .batiment-case-title{
         font-size: 40px;
         text-transform: uppercase;
+        font-weight: bold;
+    }
+    .batiment-case-voir-plus{
+        font-size: 25px;
+
     }
 
     .batiment-case a{
@@ -89,12 +95,15 @@
         color: white;
     }
 
+
     .batiment-ma{
-        color: white;
         background-color: #802525;
     }
     .batiment-ma a{
-        color: black;
+        color: #ffffff;
+    }
+    .batiment-ma .batiment-case-title{
+        font-size: 25px;
     }
 
 
@@ -104,7 +113,7 @@
 
             text-align: center;
             font-size: 20px;
-            padding: 0 45px;
+            padding: 0 40px;
 
             margin: 15% 0;
         }
@@ -114,7 +123,7 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 0;
-            margin: 0;
+            margin: 0 5%;
         }
 
         .batiment-case{
@@ -124,12 +133,18 @@
             flex-direction: column;
             width: 100%;
             height: 30vh;
-            border-radius: 0;
+            border-radius: 5px;
+            margin-bottom: 10%;
 
         }
-        .batiment-case p{
-            font-size: 40px;
+        .batiment-case-title{
+            font-size: 30px;
             text-transform: uppercase;
+            font-weight: bold;
+        }
+        .batiment-case-voir-plus{
+            font-size: 25px;
+
         }
 
 
@@ -149,30 +164,24 @@
             background-color: #123f95;
             color: white;
         }
+
+
         .batiment-droit{
-            color: white;
-            background-color: #247324;
+
         }
 
-        .batiment-madiba{
-            color: #151414;
-            background-color: #b6b641;
+        .batiment-madiba P{
+            font-size: 30px;
         }
 
-
-        .batiment-ing{
-            background-color: dodgerblue;
-        }
-        .batiment-ma{
-            color: white;
-            background-color: #802525;
-        }
-        .batiment-ma p{
+        .batiment-ing P{
             font-size: 27px;
         }
-        .batiment-ing P{
-            font-size: 35px;
+
+        .batiment-ma p{
+            font-size: 25px;
         }
+
     }
 </style>
 <body>
@@ -187,31 +196,30 @@
     <div class="container-batiment">
 
         <div class="batiment-droit batiment-case">
-
             <a th:href="@{/public/ressource/ecole(ecole=${'Droit'})}" >
-                <p>Droit</p>
-                <button type="submit">Voir plus</button>
+                <p class="batiment-case-title">Droit</p>
+                <p class="batiment-case-voir-plus"> <i class="fa-solid fa-arrow-right"> </i> Voir Plus </p>
             </a>
         </div>
 
         <div class="batiment-madiba batiment-case">
-            <a th:href="@{/public/ressource/ecole(ecole=${'Madiba'})}"  >
-                <p>Madiba</p>
-                <button type="submit">Voir plus</button>
+            <a th:href=" @{/public/ressource/ecole(ecole=${'Madiba'}) }">
+                <p class="batiment-case-title">Madiba</p>
+                <p class="batiment-case-voir-plus"> <i class="fa-solid fa-arrow-right"> </i> Voir Plus </p>
             </a>
         </div>
 
         <div class="batiment-ing batiment-case">
             <a th:href="@{/public/ressource/ecole(ecole=${'Ingenieur'})}" >
-                <p>Ingenieur</p>
-                <button type="submit">Voir plus</button>
+                <p class="batiment-case-title">Ingenieur</p>
+                <p class="batiment-case-voir-plus"> <i class="fa-solid fa-arrow-right"> </i> Voir Plus </p>
             </a>
         </div>
 
         <div class="batiment-ma batiment-case">
             <a th:href="@{/public/ressource/ecole(ecole=${'Management'})}" >
-                <p>Management</p>
-                <button type="submit">Voir plus</button>
+                <p class="batiment-case-title">Management</p>
+                <p class="batiment-case-voir-plus"> <i class="fa-solid fa-arrow-right"> </i> Voir Plus </p>
             </a>
         </div>
 

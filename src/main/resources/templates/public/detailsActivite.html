@@ -213,7 +213,8 @@
     <div  class="container-images">
 
         <div th:each="photo :${photos}"  class="contenu-container-images">
-            <img th:src="@{${photo.path}}" th:alt='image' class="real-photo" onclick="OpenModal(this)">
+
+            <img th:src="@{/images/{path}(path=${photo.path})}" th:alt='image' class="real-photo" onclick="OpenModal(this)">
         </div>
 
     </div>

@@ -221,8 +221,6 @@ public class officeControllerImpl implements officeController {
         model.addAttribute("AllMembers", AllMembers);
         model.addAttribute("membersWithRoles", membersWithRoles);
 
-
-
         return "president/modificationMandatPresident";
     }
 

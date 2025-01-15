@@ -18,4 +18,9 @@ public class EcoleServicesImpl implements EcoleServices {
     public List<Ecole> getEcoles() {
         return ecoleRepository.findAll();
     }
+
+    @Override
+    public Ecole getEcole(Long id) {
+        return ecoleRepository.findEcoleById(id);
+    }
 }

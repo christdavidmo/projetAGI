@@ -16,6 +16,25 @@
         padding: 0;
     }
 
+    .container-find-ressource {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 5% 0; }
+
+    .container-find-ressource form{
+        display: flex;
+
+        align-items: center;
+
+        background-color: #f39c12;
+        padding: 15px;
+        width: 340px;
+        max-width: 380px;
+        border-radius: 5px;
+
+        font-size: 30px;
+    }
 
     .container-btn-add-ressource{
         display: flex;
@@ -131,6 +150,17 @@
 <div th:replace="~{layout/navbar/navbarPresident :: navbar-office}" >  </div>
 
 
+
+    <div class="container-find-ressource">
+        <form th:action="@{/ressource}" method="get">
+            <label for="name-ressource">Titre </label>
+            <input type="text" th:value="${titleRessource}" id="name-ressource" placeholder="Entrez le titre le ressource">
+
+            <button type="submit">Cherchez</button>
+        </form>
+    </div>
+
+
     <div class="container-btn-add-ressource" >
         <a th:href="@{/ressource/Add}">
             <button type="submit">Ajouter une Ressource</button>
@@ -144,6 +174,7 @@
                 <tr>
                     <th>Titre</th>
                     <th>Date De publication</th>
+                    <th>Ecole</th>
                     <th>fichier</th>
                     <th>Details</th>
                 </tr>
@@ -153,6 +184,7 @@
                 <tr>
                     <td th:text="${ressource.title}"></td>
                     <td th:text="${ressource.datePublication}"></td>
+                    <td th:each="ecole  :${ressource.ecoles}" th:text="${ecole.ecoleName}"></td>
 
                     <!-- Lien pour ouvrir le PDF -->
                     <td>
@@ -164,32 +196,35 @@
                     <td>
                         <button class="btn-detail-ressource"  type="submit"
                                 th:data-id="${ressource.id}"
-                                th:data-author="${ressource.author}"
                                 th:data-description="${ressource.description}"
-                            >Details</button>
-                        <button type="submit">Modification</button>
-                    </td>
-                </tr>
-            </tbody>
 
-        </table>
-    </div>
+                                >Details</button>
+                        <!--  th:data-author="${ressource.author}" -->
 
 
+                  <button type="submit">Modification</button>
+              </td>
+          </tr>
+      </tbody>
+
+  </table>
+</div>
 
 
-    <div class="container-modal-detail-ressource" id="container-modal-detail-ressource">
-        <div class="child-modal-detail-ressource">
 
-            <div class="child-modal-detail-ressource-title">
-                <h2> Detail</h2>
-                <span class="close" id="close-detail-ressource">&times;</span>
-            </div>
 
-            <form class="form_detail_ressource" action="">
+<div class="container-modal-detail-ressource" id="container-modal-detail-ressource">
+  <div class="child-modal-detail-ressource">
 
-                <label for="nom_auteur"> Auteur</label>
-                <input type="text" name="nom_auteur" id="nom_auteur" readonly>
+      <div class="child-modal-detail-ressource-title">
+          <h2> Detail</h2>
+          <span class="close" id="close-detail-ressource">&times;</span>
+      </div>
+
+      <form class="form_detail_ressource" action="">
+
+          <!-- <label for="nom_auteur"> Auteur</label>
+           <input type="text" name="nom_auteur" id="nom_auteur" readonly>  -->
 
                 <label for="description">Description</label>
                 <textarea name="description" id="description" readonly rows="7" cols="18"> </textarea >
@@ -208,10 +243,10 @@
 
         button.addEventListener('click',function (){
             const id_ressource = this.getAttribute('data-id');
-            const author_ressource = this.getAttribute('data-author');
+           // const author_ressource = this.getAttribute('data-author');
             const description_ressource = this.getAttribute('data-description');
 
-            document.getElementById("nom_auteur").value = author_ressource;
+            //document.getElementById("nom_auteur").value = author_ressource;
             document.getElementById("description").value = description_ressource;
 
             document.getElementById("container-modal-detail-ressource").style.display = 'block';

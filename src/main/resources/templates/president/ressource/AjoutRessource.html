@@ -76,6 +76,7 @@
 
 <div th:replace="~{layout/navbar/navbarPresident :: navbar-office}" ></div>
 
+
   <div class="container-form">
 
     <form class="form-add-document"  method="post" enctype="multipart/form-data">
@@ -91,7 +92,7 @@
         <label for="ecole">Ecole</label>
         <select id="ecole" name="ecole">
           <option value="">choisissez une ecole</option>
-          <option ></option>
+            <option th:each="ecole :${ecoles}"  th:value="${ecole.id}" th:text="${ecole.ecoleName}"></option>
         </select>
 
 

@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    min-height: 100vh; /* Assure que le body prend au moins la hauteur de la fenêtre */
+
 }
 
 nav {
@@ -11,6 +11,7 @@ nav {
     background-color: rgba(250, 250, 239, 0.47);
     height: 90px;
     box-shadow: 0px 3px 2px rgba(49, 48, 48, 0.121); /* decalage horizontal decalage verticale flou couleur oppacité */
+
 }
 
 .logo-amicale img {
@@ -64,25 +65,22 @@ nav {
     color: rgb(234, 145, 47);
 }
 
-.btn-connexion{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 60%;
-}
 
-.btn-connexion button{
+
+.connexion-btn{
     font-size: 18px;
     border: none;
-    color: white;
     padding: 8px 8px;
     border-radius: 5px;
-    background-color: #123f95;
+    background-color:rgb(36, 115, 36) ;
 
 }
+.connexion-btn-container a{
+    color: white;
+}
 
-.btn-connexion button:hover{
-    background-color:rgb(36, 115, 36) ;
+.connexion-btn-container :hover {
+    background-color: #123f95;
 }
 
 
@@ -138,8 +136,8 @@ nav {
         cursor: pointer;
 
     }
-    /* Règles pour le mode paysage */
-    @media screen and (max-width: 768px) and (orientation: landscape) {
-    }
+
 
 }
+
+
