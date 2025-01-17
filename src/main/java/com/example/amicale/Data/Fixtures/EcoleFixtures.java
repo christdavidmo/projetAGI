@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @Order(5)
-//@Component
+@Component
 @RequiredArgsConstructor
 public class EcoleFixtures implements CommandLineRunner {
 

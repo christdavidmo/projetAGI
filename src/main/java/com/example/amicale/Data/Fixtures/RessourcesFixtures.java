@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Set;
 
 @Order(6)
-//@Component
+@Component
 @RequiredArgsConstructor
 public class RessourcesFixtures implements CommandLineRunner {
 
