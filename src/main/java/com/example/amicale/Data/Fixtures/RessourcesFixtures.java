@@ -14,8 +14,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
-@Order(6)
-@Component
+//@Order(6)
+//@Component
 @RequiredArgsConstructor
 public class RessourcesFixtures implements CommandLineRunner {
 

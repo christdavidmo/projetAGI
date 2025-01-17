@@ -20,7 +20,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
-@Order(3)
+//@Order(3)
 //@Component
 @AllArgsConstructor
 public class MandatFixture implements CommandLineRunner {

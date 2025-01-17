@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.Date;
 import java.time.LocalDate;
 
-@Order(2)
+//@Order(2)
 //@Component
 @RequiredArgsConstructor
 public class MemberFixtures implements CommandLineRunner {

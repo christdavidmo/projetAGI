@@ -20,6 +20,9 @@ import java.util.Set;
 @Table(name="ressources")
 public class Ressources extends AbstractEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Cette annotation permet à Hibernate de gérer l'auto-incrémentation
+    private Long id;
     private TypeRessource type;
 
     @JoinColumn(nullable = true)
