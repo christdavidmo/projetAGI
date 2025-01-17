@@ -33,7 +33,7 @@ public class RessourcesFixtures implements CommandLineRunner {
 
         //"droit_constitutionnelle.pdf" "Initiation-à-la-photographie.pdf"
         List<String> RESnames = List.of(
-                "angular_cours.pdf"
+                "cours-sql-sh.pdf"
                 ,"Excel_Debutant.pdf"
                 ,"pdfAlgo.pdf");
 

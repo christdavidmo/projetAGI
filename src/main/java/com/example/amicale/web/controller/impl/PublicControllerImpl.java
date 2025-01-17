@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -124,10 +125,45 @@ public class PublicControllerImpl implements PublicController {
     }
 
     @Override
-    public String ressourceByEcoleView(Model model, String ecole) {
+    public String ressourceByEcoleView(Model model,
+                                       @RequestParam(defaultValue = "1") int page ,
+                                       @RequestParam(defaultValue = "6") int size,
+                                       String ecole) {
 
-       List<Ressources> ressources = ressourceServices.getAllRessourcesByEcole(ecole);
-       model.addAttribute("ressources", ressources);
+        //System.out.println("l'ecole récupérée dans la vue : "+ecole);
+
+        Page<Ressources> ressourcesPage = ressourceServices.getAllRessourcesByEcole(PageRequest.of(page - 1, size), ecole);
+        model.addAttribute("ressources", ressourcesPage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("pages", ressourcesPage.getTotalPages());
+        model.addAttribute("ecoleCH", ecole);  // Passer le nom de l'école pour la pagination
+
+        // Créer une liste de pages à afficher (avec des points de suspension si nécessaire)
+        List<Integer> paginationPages = new ArrayList<>();
+        int totalPages = ressourcesPage.getTotalPages();
+
+        // Pages à afficher
+        if (totalPages <= 4) {
+            // Si le total des pages est <= 4, afficher toutes les pages
+            for (int i = 1; i <= totalPages; i++) {
+                paginationPages.add(i);
+            }
+        } else {
+            // Afficher la première page, la dernière page et les pages autour de la page courante
+            paginationPages.add(1); // première page
+
+            // Afficher 2 pages avant et après la page courante, si elles existent
+            if (page > 2) {
+                paginationPages.add(page - 1);
+            }
+            paginationPages.add(page);
+            if (page < totalPages - 1) {
+                paginationPages.add(page + 1);
+            }
+
+            paginationPages.add(totalPages); // dernière page
+        }
+        model.addAttribute("paginationPages", paginationPages);
 
         return "public/ressources/ressourceIng";
     }

@@ -13,11 +13,308 @@
 </head>
 <style>
 
+    body{
+        margin: 0;
+        padding: 0;
+    }
+
+
+
+    .Alerte-ressource-isEmpty{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .Alerte-ressource-isEmpty p{
+        font-size: 30px;
+        text-transform: uppercase;
+        background-color: #810e0e;
+        padding: 20px;
+        border-radius: 5px;
+        color: white;
+        box-shadow: 5px 10px 11px rgb(0,0,0,0.6);
+    }
+
+
+
+
+    .container-filter-ressource{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin: 3% 0;
+    }
+    .form-container-filter-ressource{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 5px;
+
+        background-color: #f39c12;
+        width: 400Px;
+        padding: 15px 10Px;
+        border-radius: 5px;
+        box-shadow: 3px 9px 10px rgb(0,0,0,0.4);
+    }
+    .form-container-filter-ressource label{
+        font-size: 30px;
+    }
+    .form-container-filter-ressource input{
+        border: none;
+        padding: 8px 10px;
+        font-size: 15px;
+        border-radius: 5px;
+        margin: 0 10px;
+    }
+    .form-container-filter-ressource button{
+        padding: 7px 10px ;
+        font-size: 18px;
+        border: none;
+        border-radius: 6px;
+    }
+    .form-container-filter-ressource button:hover{
+        background-color: #247324;
+        color: white;
+    }
+
+
+
+    .container-ressource{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin: 3% 0;
+    }
+
+    .ressources-table{
+        width: 60%;
+    }
+
+    .ressources-table thead,tbody{
+        text-align: center;
+    }
+
+    .ressources-table thead{
+        font-weight: bold;
+        text-transform: uppercase;
+        background-color: rgb(18, 63, 149);
+        color: white;
+    }
+    .ressources-table th{
+        padding: 10px 8px;
+        font-size: 25px;
+    }
+
+    .ressources-table tbody{
+        background-color: rgb(236, 240, 241);
+        text-align: center;
+        font-size: 20px;
+    }
+    .ressources-table td{
+        padding: 20px;
+    }
+
+
+
+    .container-ressources-mobile{
+        display: none;
+    }
+
+
+    <!-- /* pagination */-->
+
+    .pagination_container{
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+
+        margin-bottom: 35px;
+    }
+
+    .pagination {
+        display: flex;
+        list-style: none;
+        padding: 0;
+    }
+
+    .pagination li{
+        margin-right: 6px;
+    }
+
+    .pagination a {
+        color: black;
+        text-decoration: none;
+        padding: 4px 6px;
+        border: 1px rgb(75, 30, 11) solid;
+        border-radius: 3px;
+    }
+
+    .pagination a:hover{
+        color: white;
+        background-color: rgb(234, 145, 47);
+    }
+
+    <!-- /* pagination */-->
+
+
+
+
+    .container-modal-description{
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgb(0,0,0,0.3);
+        z-index: 1;
+    }
+
+    .child-modal-description{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        position: fixed;
+        width: 60%;
+        max-width: 65%; /* Assure que le modal n'ait pas une largeur trop grande */
+        padding: 15px 20px;
+        background-color: #f39c12;
+    }
+
+    .child-modal-description-title{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .close{
+        font-size: 50px;
+    }
+
+    .form-modal-description input{
+        font-size: 15px;
+        padding: 15px 10px;
+    }
+
+
     @media (max-width: 768px){
-        h1{
-            font-size: 20px;
-            padding: 50px;
+
+        .Alerte-ressource-isEmpty{
+            margin: 0 8%;
         }
+
+        .Alerte-ressource-isEmpty p{
+            font-size: 14px;
+            text-transform: uppercase;
+            background-color: #810e0e;
+            padding: 14px;
+            border-radius: 5px;
+            color: white;
+            box-shadow: 5px 10px 11px rgb(0,0,0,0.6);
+        }
+
+
+        .container-filter-ressource{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin: 8% 0;
+        }
+        .form-container-filter-ressource{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px;
+
+            background-color: #f39c12;
+            width: 290Px;
+            padding: 15px 10Px;
+            border-radius: 5px;
+        }
+        .form-container-filter-ressource label{
+            font-size: 25px;
+            margin-right: 6px;
+        }
+        .form-container-filter-ressource input{
+            border: none;
+            padding: 8px 10px;
+            font-size: 15px;
+            border-radius: 5px;
+        }
+        .form-container-filter-ressource button{
+            padding: 7px 10px ;
+            font-size: 18px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 6px;
+        }
+        .form-container-filter-ressource button:hover{
+            background-color: #247324;
+            color: white;
+        }
+
+
+
+
+        .container-ressource{
+            display: none;
+
+        }
+
+
+        .container-ressources-mobile{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin: 7% 0;
+            //background-color: #247324;
+
+
+        }
+
+        .table-ressources-mobile{
+            border-collapse: separate;  /* Permet aux bordures de la table d’être séparées pour appliquer border-radius */
+            border-spacing: 0; /* Supprimer l'espacement entre les cellules */
+            border: solid 2px rgb(236, 240, 241);
+            border-radius: 5px;
+           //box-shadow: 5px 10px 11px rgb(0,0,0,0.3);
+        }
+        .table-ressources-mobile thead{
+            font-weight: bold;
+            text-transform: uppercase;
+            background-color: rgb(167, 179, 182);
+            color: white;
+            text-align: center;
+
+        }
+
+        .table-ressources-mobile th{
+            padding: 13px 10px;
+            font-size: 15px;
+        }
+
+        .table-ressources-mobile tbody{
+            background-color: rgb(236, 240, 241);
+            text-align: center;
+        }
+        .table-ressources-mobile td{
+            padding: 14px 10px;
+        }
+        .table-ressources-mobile tr:hover{
+            background-color: rgb(167, 179, 182);
+        }
+
     }
 </style>
 <body>
@@ -25,7 +322,150 @@
 <div th:replace="~{layout/navbar/navbar :: navbar}"></div>
 
 
-<h1 style="text-align: center"> cette page n'est pas encore disponible , aucun corrrigé ni exercice n'est encore disponible</h1>
+
+
+    <div class="Alerte-ressource-isEmpty" th:if="${ressources.isEmpty()}" >
+        <p>
+            cette page n'est pas encore disponible, <br>
+            aucun corrrigé ni exercice n'est encore <br>
+            disponible pour votre batiment !!!
+        </p>
+    </div>
+
+
+    <div class="container-filter-ressource">
+        <form class="form-container-filter-ressource" action="" method="post">
+            <label for="TR">Titre</label>
+            <input type="text" value="" id="TR">
+
+            <button type="submit">Chercher</button>
+        </form>
+    </div>
+
+
+
+
+   <div class="container-ressource">
+       <table class="ressources-table">
+           <thead>
+           <tr>
+               <th>Titre</th>
+               <th>Description</th>
+               <th>Type</th>
+               <th>Fichier</th>
+
+           </tr>
+           </thead>
+
+           <tbody>
+               <tr th:each="r :${ressources}">
+                   <td th:text="${r.title}"></td>
+                   <td th:text="${r.description}"></td>
+                   <td th:text="${r.type}"></td>
+                   <td>
+                       <a th:href="@{/ressources/{path}(path=${r.path})}" > voir le fichier</a>
+                   </td>
+
+               </tr>
+
+           </tbody>
+       </table>
+   </div>
+
+
+<div class="container-ressources-mobile">
+    <table class="table-ressources-mobile">
+        <thead>
+            <tr>
+                <th>Titre </th>
+
+                <th> Fichier</th>
+                <th> Description</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="r :${ressources}">
+            <td th:text="${r.title}"></td>
+            <td >
+                <a th:href="@{/ressources/{path}(path=${r.path})}">lien</a>
+            </td>
+            <td >
+                <button class="btn-description" th:data-description="${r.description}" id="btn-description" type="submit">Voir plus</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+    <div class="container-modal-description" id="container-modal-description">
+
+        <div class="child-modal-description">
+
+            <div class="child-modal-description-title">
+                <h2> Description </h2>
+                <span class="close" id="close-description-ressource">&times;</span>
+            </div>
+
+            <form class="form-modal-description" action="" method="post">
+                <textarea name="description" value="" id="description-modal" readonly rows="10" cols="28"> </textarea >
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+<!-- Pagination -->
+<div class="pagination_container">
+    <ul class="pagination">
+        <!-- Lien vers la page précédente -->
+        <li th:if="${currentPage > 1}">
+            <a th:href="@{/public/ressource/{ecole}(ecole=${ecoleCH}, page=${currentPage - 1}, size=${6})}">Précédent</a>
+        </li>
+
+        <!-- Lien vers chaque page -->
+        <li th:each="i : ${paginationPages}">
+            <!-- Si c'est un "..." alors on l'affiche comme tel -->
+            <span th:if="${i == '...'}">...</span>
+            <!-- Si ce n'est pas un "..." alors c'est un numéro de page -->
+            <a th:unless="${i == '...'}" th:href="@{/public/ressource/{ecole}(ecole=${ecoleCH}, page=${i}, size=${6})}"
+               th:text="${i}"
+               th:class="${currentPage == i} ? 'active' : ''"></a>
+        </li>
+
+        <!-- Lien vers la page suivante -->
+        <li th:if="${currentPage < pages}">
+            <a th:href="@{/public/ressource/{ecole}(ecole=${ecoleCH}, page=${currentPage + 1}, size=${6})}">Suivant</a>
+        </li>
+    </ul>
+</div>
+<!-- Pagination -->
+
+
+<script>
+document.querySelectorAll(".btn-description").forEach(button =>{
+    button.addEventListener('click',function (){
+        const Rd = this.getAttribute('data-description') ;
+
+        document.getElementById("description-modal").value =Rd;
+
+        document.getElementById("container-modal-description").style.display = 'block';
+    })
+})
+
+
+var close_modal = document.getElementById("close-description-ressource");
+
+close_modal.addEventListener('click',function (){
+    document.getElementById("container-modal-description").style.display = 'none';
+})
+</script>
+
+
 
 </body>
 </html>

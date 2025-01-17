@@ -196,28 +196,28 @@
     <div class="container-batiment">
 
         <div class="batiment-droit batiment-case">
-            <a th:href="@{/public/ressource/ecole(ecole=${'Droit'})}" >
+            <a th:href="@{/public/ressource/{ecole}(ecole=${'Droit'})}" >
                 <p class="batiment-case-title">Droit</p>
                 <p class="batiment-case-voir-plus"> <i class="fa-solid fa-arrow-right"> </i> Voir Plus </p>
             </a>
         </div>
 
         <div class="batiment-madiba batiment-case">
-            <a th:href=" @{/public/ressource/ecole(ecole=${'Madiba'}) }">
+            <a th:href=" @{/public/ressource/{ecole}(ecole=${'Madiba'}) }">
                 <p class="batiment-case-title">Madiba</p>
                 <p class="batiment-case-voir-plus"> <i class="fa-solid fa-arrow-right"> </i> Voir Plus </p>
             </a>
         </div>
 
         <div class="batiment-ing batiment-case">
-            <a th:href="@{/public/ressource/ecole(ecole=${'Ingenieur'})}" >
+            <a th:href="@{/public/ressource/{ecole}(ecole=${'Ingenieur'})}" >
                 <p class="batiment-case-title">Ingenieur</p>
                 <p class="batiment-case-voir-plus"> <i class="fa-solid fa-arrow-right"> </i> Voir Plus </p>
             </a>
         </div>
 
         <div class="batiment-ma batiment-case">
-            <a th:href="@{/public/ressource/ecole(ecole=${'Management'})}" >
+            <a th:href="@{/public/ressource/{ecole}(ecole=${'Management'})}" >
                 <p class="batiment-case-title">Management</p>
                 <p class="batiment-case-voir-plus"> <i class="fa-solid fa-arrow-right"> </i> Voir Plus </p>
             </a>
@@ -225,6 +225,9 @@
 
 
     </div>
+
+
+
 
 
 <div th:replace="~{layout/footer/footer1 :: footer}"></div>

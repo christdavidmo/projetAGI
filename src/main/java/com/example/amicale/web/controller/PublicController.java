@@ -44,5 +44,8 @@ public interface PublicController {
     public String ressourceView(Model model );
 
     @GetMapping("/public/ressource/{ecole}")
-    public String ressourceByEcoleView(Model model,@PathVariable String ecole );
+    public String ressourceByEcoleView(Model model,
+                                       @RequestParam(defaultValue = "1") int page ,
+                                       @RequestParam(defaultValue = "6") int size,
+                                       @PathVariable String ecole );
 }

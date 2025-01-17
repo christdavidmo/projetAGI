@@ -47,14 +47,13 @@ public class RessourceServicesImpl implements RessourceServices {
     }
 
     @Override
-    public List<Ressources> getAllRessourcesByEcole(String ecole) {
+    public Page<Ressources> getAllRessourcesByEcole(Pageable pageable,String ecole) {
         Ecole ecole1 = ecolerepository.findByEcoleName(ecole);
 
         if(ecole1==null){
             return null;
         }
-        return null;
-       // return ressourcesrepository.findByEcoles(ecole1);
+       return ressourcesrepository.findByEcoles(pageable,ecole1);
     }
 
     @Override
