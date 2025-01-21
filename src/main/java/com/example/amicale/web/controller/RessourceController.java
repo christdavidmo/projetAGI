@@ -18,7 +18,8 @@ public interface RessourceController {
 
     @GetMapping("/ressource/Add")
     public String ressourceForm(Model model);
-//MultipartFile file, TypeRessource type,Long ecoleId
+
+    //MultipartFile file, TypeRessource type,Long ecoleId
     @PostMapping("/ressource/Add")
     public String ressourceSave(Model model,
                                 @RequestParam("file") MultipartFile file ,
