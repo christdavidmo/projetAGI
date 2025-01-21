@@ -388,7 +388,7 @@
         <tr th:each="r :${ressources}">
             <td th:text="${r.title}"></td>
             <td >
-                <a th:href="@{/ressources/{path}(path=${r.path})}">lien</a>
+                <a th:href="@{/ressources/path(path=${r.path})}">lien</a>
             </td>
             <td >
                 <button class="btn-description" th:data-description="${r.description}" id="btn-description" type="submit">Voir plus</button>
