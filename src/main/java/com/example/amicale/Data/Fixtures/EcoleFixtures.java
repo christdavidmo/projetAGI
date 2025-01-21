@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 
-@Order(5)
-@Component
+//@Order(5)
+//@Component
 @RequiredArgsConstructor
 public class EcoleFixtures implements CommandLineRunner {
 
