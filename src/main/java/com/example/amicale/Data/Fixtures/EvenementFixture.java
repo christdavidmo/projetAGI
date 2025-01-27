@@ -16,8 +16,8 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.util.List;
 
-@Order(4)
-@Component
+//@Order(4)
+//@Component
 @RequiredArgsConstructor
 public class EvenementFixture implements CommandLineRunner {
 

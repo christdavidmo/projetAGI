@@ -67,6 +67,7 @@
         font-size: 15px;
         border-radius: 5px;
         margin: 0 10px;
+        width: 60%;
     }
     .form-container-filter-ressource button{
         padding: 7px 10px ;
@@ -212,7 +213,7 @@
         }
 
         .Alerte-ressource-isEmpty p{
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
             background-color: #810e0e;
             padding: 14px;
@@ -335,10 +336,10 @@
 
     <div class="container-filter-ressource">
         <form class="form-container-filter-ressource" action="" method="post">
-            <label for="TR">Titre</label>
-            <input type="text" value="" id="TR">
 
+            <input type="text" value="" id="TR" placeholder="Entrez le nom de la ressource">
             <button type="submit">Chercher</button>
+
         </form>
     </div>
 
@@ -388,7 +389,7 @@
         <tr th:each="r :${ressources}">
             <td th:text="${r.title}"></td>
             <td >
-                <a >lien</a>
+                <a  >lien</a>
             </td>
             <td >
                 <button class="btn-description" th:data-description="${r.description}" id="btn-description" type="submit">Voir plus</button>

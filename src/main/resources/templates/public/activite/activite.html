@@ -18,6 +18,20 @@
 
     <style>
 
+        .NUM-PAGE{
+            position: fixed;
+            top: 20px;  /* Distance depuis le haut de la page */
+            right: 20px; /* Distance depuis la droite de la page */
+            background-color: rgba(0, 0, 0, 0.7);  /* Fond semi-transparent */
+            color: white;  /* Couleur du texte */
+            padding: 10px 20px;  /* Un peu d'espace autour du texte */
+            border-radius: 5px;  /* Coins arrondis */
+            font-size: 16px;  /* Taille du texte */
+            z-index: 1;  /* Assurer que cet élément soit toujours au-dessus des autres éléments */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Ombre pour le style */
+            font-weight: bold;
+        }
+
         .filter_container{
             display: flex;
             justify-content: center;
@@ -51,7 +65,7 @@
 
         .filter_container label{
             color: #090808;
-            font-size: 19px;
+            font-size: 23px;
             font-weight:  bold;
 
         }
@@ -81,9 +95,11 @@
             }
 
             .filter_container-one ,.filter_container-two{
-
+                margin: 0;
                 margin-bottom: 15px;
             }
+
+
         }
 
     </style>
@@ -92,22 +108,26 @@
 </head>
 <body>
 
+
+
 <div th:replace="~{layout/navbar/navbar :: navbar}"></div>
 
+
+    <div class="NUM-PAGE"> <strong>Page:</strong>  <span th:text="${currentPage }"></span> </div>
 
     <div class="filter_container">
 
         <form th:action="@{/public/activites}"  method="get" class="filter_form">
 
             <div class="filter_container-one ">
-                <label for="name"> Nom</label>
+                <!-- <label for="name"> Nom</label> -->
                 <input type="text" name="name" id="name" th:value="${name}" placeholder="Nom de l'activitée">
             </div>
 
-           <div class="filter_container-two ">
+          <!-- <div class="filter_container-two ">
                <label for="year">Année</label>
                <input type="number" name="year" id="year" th:value="${year}" placeholder="année de l'activitée">
-           </div>
+           </div> -->
 
             <button type="submit">Filtrer</button>
         </form>
@@ -128,6 +148,7 @@
             <a th:href="@{/public/activites/{id}/detail(id=${evenement.id})}">
                 <div class="title-activity" >
                     <strong>Titre:</strong> <span th:text="${evenement.title}"> </span> <br>
+                    <strong>Année:</strong> <span th:text="${evenement.datePublication}"> </span> <br>
                     <span  th:text="${evenement.description}"></span>
                 </div>
             </a>
@@ -139,28 +160,29 @@
 
 
 <!-- Pagination -->
+<!-- Pagination -->
 <div class="pagination_container">
-
     <ul class="pagination">
         <!-- Lien vers la page précédente -->
         <li th:if="${currentPage > 1}">
             <a th:href="@{/public/activites(page=${currentPage - 1}, size=${6})}">Précédent</a>
         </li>
 
-        <!-- Lien vers chaque page -->
-        <li th:each="i : ${#numbers.sequence(1, pages)}">
-            <a th:href="@{/public/activites(page=${i}, size=${6})}"
-               th:text="${i}"
-               th:class="${currentPage == i} ? 'active' : ''"></a>
+        <!-- Lien vers les pages avec gestion des "..." -->
+        <li th:each="page : ${pageList}">
+            <a th:if="${page == -1}" class="dots">...</a> <!-- Points de suspension -->
+            <a th:if="${page != -1}" th:href="@{/public/activites(page=${page}, size=${6})}"
+               th:text="${page}" th:class="${currentPage == page} ? 'active' : ''"></a>
         </li>
 
         <!-- Lien vers la page suivante -->
-        <li th:if="${currentPage < pages }">
+        <li th:if="${currentPage < pages}">
             <a th:href="@{/public/activites(page=${currentPage + 1}, size=${6})}">Suivant</a>
         </li>
     </ul>
-
 </div>
+<!-- Pagination -->
+
 <!-- Pagination -->
 
 

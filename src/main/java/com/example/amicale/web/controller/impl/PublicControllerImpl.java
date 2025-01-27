@@ -33,7 +33,7 @@ public class PublicControllerImpl implements PublicController {
 
     @Override
     public String aboutusView() {
-        return "public/aboutus";
+        return "public/us/aboutus";
         // return "layout/navbar/navbar";
     }
 
@@ -49,19 +49,58 @@ public class PublicControllerImpl implements PublicController {
                                 ,@RequestParam(required = false) String name) {
 
 
-        //recupère d'abord  tous les elements sosus forme d'une liste
+        //recupère d'abord tous les elements sosus forme d'une liste
         Page<Evenement> evenements = evenementService.getFilterEvenement(name , PageRequest.of(page -1,size));
         model.addAttribute("evenements", evenements.getContent());
 
         //le nombre total de page
-        model.addAttribute("pages", evenements.getTotalPages());
+        model.addAttribute("pages", page);
 
         //la page actuelle
         model.addAttribute("currentPage", page);
 
+
+        //le nom de l'evenement
         model.addAttribute("name",name);
 
-        return "public/activite";
+        //creer une liste pour recuperer la liste des pages à afficher
+        List<Integer> pageList = new ArrayList<>();
+
+
+        //recupere le nombre totale de page //
+        int totalesPages = evenements.getTotalPages();
+
+        if(totalesPages <= 4 ){
+            for(int i = 1; i <= totalesPages ; i++ ){
+                pageList.add(i);
+            }
+        }else{
+            pageList.add(1);
+            pageList.add(2);
+            pageList.add(3);
+            pageList.add(4);
+
+
+            // Si on est dans la dernière moitié des pages, afficher la page suivante (5, 6...)
+            if (page >= 4 && page < totalesPages- 1) {
+                pageList.add(page + 1);
+            }
+
+
+            if(page  < totalesPages -1 ){
+                pageList.add(-1);
+            }
+
+
+            pageList.add(totalesPages);
+
+
+        }
+
+        //le nombre total de page
+        model.addAttribute("pageList",  pageList);
+
+        return "public/activite/activite";
     }
 
     @Override
@@ -79,7 +118,7 @@ public class PublicControllerImpl implements PublicController {
 
     @Override
     public String contactView() {
-        return "public/contact";
+        return "public/contact/contact";
     }
 
     @Override
@@ -93,7 +132,7 @@ public class PublicControllerImpl implements PublicController {
 
         model.addAttribute("currentPage", page);
 
-        return "public/historique";
+        return "public/historique/historique";
     }
 
     @Override
@@ -102,7 +141,7 @@ public class PublicControllerImpl implements PublicController {
         List<Member> members = mandatService.GetMandatById(id);
         model.addAttribute("members", members);
 
-        return "public/detailsHistorique";
+        return "public/historique/detailsHistorique";
     }
 
 
@@ -134,8 +173,14 @@ public class PublicControllerImpl implements PublicController {
 
         Page<Ressources> ressourcesPage = ressourceServices.getAllRessourcesByEcole(PageRequest.of(page - 1, size), ecole);
         model.addAttribute("ressources", ressourcesPage.getContent());
+
+        // la page actuelle
         model.addAttribute("currentPage", page);
+
+        //le nombre total de page
         model.addAttribute("pages", ressourcesPage.getTotalPages());
+
+        //le nom de l'ecole
         model.addAttribute("ecoleCH", ecole);  // Passer le nom de l'école pour la pagination
 
         // Créer une liste de pages à afficher (avec des points de suspension si nécessaire)
