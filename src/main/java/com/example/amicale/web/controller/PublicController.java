@@ -43,6 +43,9 @@ public interface PublicController {
     @GetMapping("/public/ressource")
     public String ressourceView(Model model );
 
+    @GetMapping("/public/ressource/detail")
+    public String ressourceDetailView(Model model );
+
     @GetMapping("/public/ressource/Batiment/Droit")
     public String ressourceBatimentDroit(Model model,
                                          @RequestParam(defaultValue = "1") int page ,

@@ -165,6 +165,12 @@ public class PublicControllerImpl implements PublicController {
     }
 
     @Override
+    public String ressourceDetailView(Model model) {
+        return "public/ressources/ressourceAcademiquedetails";
+
+    }
+
+    @Override
     public String ressourceBatimentDroit(Model model, int page, int size) {
         String  name = "Droit" ;
         Page<Ressources> ressources = ressourceService.getAllRessourcesByEcole(PageRequest.of(page -1,size),name);
