@@ -78,67 +78,65 @@
 
   <div th:replace="~{layout/navbar/navbar :: navbar}"> </div>
 
-  <div class="Alerte-ressource-isEmpty" th:if="${ressources.isEmpty()}">
+  <div class="Alerte-ressource-isEmpty" >
     <p>
       cette page n'est pas encore disponible, <br>
       aucun corrrigé ni exercice n'est encore <br>
       disponible pour votre batiment !!!
     </p>
-
-
   </div>
 
-<div class="container-tab">
-  <table class="table">
-    <thead>
-    <tr>
+  <!-- <div class="container-tab" th:if="${ressources.isEmpty()}">
+    <table class="table">
+      <thead>
+      <tr>
 
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th scope="col">Publié Le</th>
-      <th scope="col">Lien</th>
-    </tr>
-    </thead>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Publié Le</th>
+        <th scope="col">Lien</th>
+      </tr>
+      </thead>
 
-    <tbody>
-    <tr th:each="ressource : ${ressources}">
+      <tbody>
+      <tr th:each="ressource : ${ressources}">
 
-      <td th:text="${ressource.title}"></td>
-      <td th:text="${ressource.description}"></td>
-      <td th:text="${ressource.datePublication}"></td>
-      <td >
-        <a th:href="@{'/ressources/' + ${ressource.path}}" target="_blank">lien</a>
-      </td>
-    </tr>
+        <td th:text="${ressource.title}"></td>
+        <td th:text="${ressource.description}"></td>
+        <td th:text="${ressource.datePublication}"></td>
+        <td >
+          <a th:href="@{'/ressources/' + ${ressource.path}}" target="_blank">lien</a>
+        </td>
+      </tr>
 
 
-    </tbody>
-  </table>
-</div>
+      </tbody>
+    </table>
+  </div>
 
-  <!-- <div class="container-tab-ressources">
-      <table class="tab-ressources">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Publié le</th>
-                <th>Lien</th>
-              </tr>
-            </thead>
+    <!-- <div class="container-tab-ressources">
+        <table class="tab-ressources">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Publié le</th>
+                  <th>Lien</th>
+                </tr>
+              </thead>
 
-            <tbody>
-              <tr th:each="ressource : ${ressources}">
-                <td th:text="${ressource.title}"></td>
-                <td th:text="${ressource.description}"></td>
-                <td th:text="${ressource.datePublication}"></td>
-                <td >
-                  <a th:href="@{'/ressources/' + ${ressource.path}}" target="_blank">lien</a>
-                </td>
-              </tr>
-            </tbody>
-      </table>
-  </div> -->
+              <tbody>
+                <tr th:each="ressource : ${ressources}">
+                  <td th:text="${ressource.title}"></td>
+                  <td th:text="${ressource.description}"></td>
+                  <td th:text="${ressource.datePublication}"></td>
+                  <td >
+                    <a th:href="@{'/ressources/' + ${ressource.path}}" target="_blank">lien</a>
+                  </td>
+                </tr>
+              </tbody>
+        </table>
+    </div> -->
 
 
   <div th:replace="~{layout/footer/footer1 :: footer}"></div>
