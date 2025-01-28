@@ -10,6 +10,8 @@
 
   <link rel="stylesheet" th:href="@{/css/footer1.css}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <title>Title</title>
 
   <style>
@@ -33,38 +35,22 @@
       box-shadow: 5px 10px 11px rgb(0,0,0,0.6);
     }
 
-    .container-tab-ressources{
+    .container-tab{
       display: flex;
       justify-content: center;
       align-items: center;
-
-      margin: 6% 0;
     }
 
-    .tab-ressources{
+    .table{
+
       width: 50%;
     }
 
-    .tab-ressources thead{
-      font-weight: bold;
-      text-transform: uppercase;
-      background-color: rgb(18, 63, 149);
-      color: white;
-    }
 
-    .tab-ressources tbody{
-      background-color: rgb(236, 240, 241);
-      text-align: center;
-    }
 
-    .tab-ressources td{
-      padding: 20px;
 
-    }
 
-    .tab-ressources th{
-      padding: 20px;
-    }
+
 
     @media (max-width: 768px) {
 
@@ -83,38 +69,7 @@
       }
 
 
-      .container-tab-ressources{
-        display: flex;
-        justify-content: center;
-        align-items: center;
 
-        margin: 6% 7%;
-      }
-
-      .tab-ressources{
-        width: 200px;
-      }
-
-      .tab-ressources thead{
-        font-weight: bold;
-        text-transform: uppercase;
-        background-color: rgb(18, 63, 149);
-        color: white;
-      }
-
-      .tab-ressources tbody{
-        background-color: rgb(236, 240, 241);
-        text-align: center;
-      }
-
-      .tab-ressources td{
-        padding: 8px;
-
-      }
-
-      .tab-ressources th{
-        padding: 8px;
-      }
 
     }
   </style>
@@ -130,10 +85,38 @@
       disponible pour votre batiment !!!
     </p>
 
+
   </div>
 
+<div class="container-tab">
+  <table class="table">
+    <thead>
+    <tr>
 
-  <div class="container-tab-ressources">
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Publié Le</th>
+      <th scope="col">Lien</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="ressource : ${ressources}">
+
+      <td th:text="${ressource.title}"></td>
+      <td th:text="${ressource.description}"></td>
+      <td th:text="${ressource.datePublication}"></td>
+      <td >
+        <a th:href="@{'/ressources/' + ${ressource.path}}" target="_blank">lien</a>
+      </td>
+    </tr>
+
+
+    </tbody>
+  </table>
+</div>
+
+  <!-- <div class="container-tab-ressources">
       <table class="tab-ressources">
             <thead>
               <tr>
@@ -155,7 +138,7 @@
               </tr>
             </tbody>
       </table>
-  </div>
+  </div> -->
 
 
   <div th:replace="~{layout/footer/footer1 :: footer}"></div>
