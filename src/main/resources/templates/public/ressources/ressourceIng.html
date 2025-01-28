@@ -364,7 +364,7 @@
                    <td th:text="${r.description}"></td>
                    <td th:text="${r.type}"></td>
                    <td>
-                       <a th:href="@{/ressources/{path}(path=${r.path})}" > voir le fichier</a>
+                       <a > voir le fichier</a>
                    </td>
 
                </tr>
@@ -391,7 +391,7 @@
             <td >
                 <a  >lien</a>
             </td>
-            <td >
+            <td>
                 <button class="btn-description" th:data-description="${r.description}" id="btn-description" type="submit">Voir plus</button>
             </td>
         </tr>
