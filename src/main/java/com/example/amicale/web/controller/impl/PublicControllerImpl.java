@@ -165,7 +165,16 @@ public class PublicControllerImpl implements PublicController {
     }
 
     @Override
-    public String ressourceDetailView(Model model) {
+    public String ressourceDetailView(Model model,
+                                      @RequestParam(defaultValue = "1") int page ,
+                                      @RequestParam(defaultValue = "6") int size) {
+        //recupere la liste des ressources en fonction des ressources
+        Page<Ressources> ressources = ressourceService.getAllRessources(PageRequest.of(page -1,size));
+        model.addAttribute("ressources", ressources.getContent());
+
+        // la page actuelle
+        model.addAttribute("currentPage", page);
+
         return "public/ressources/ressourceAcademiquedetails";
 
     }

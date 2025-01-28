@@ -57,6 +57,11 @@ public class RessourceServicesImpl implements RessourceServices {
     }
 
     @Override
+    public Page<Ressources> getAllRessources(Pageable pageable) {
+        return ressourcesrepository.findAll(pageable);
+    }
+
+    @Override
     public Ressources saveRessources(MultipartFile file, TypeRessource type,Long ecoleId)throws IOException {
 
         //cherche aussi l'ecole

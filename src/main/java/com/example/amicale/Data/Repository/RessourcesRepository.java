@@ -14,4 +14,6 @@ public interface RessourcesRepository extends JpaRepository <Ressources,Long>{
     Page<Ressources> findByEcole(Pageable pageable,Ecole ecole);
 
     Page<Ressources> findByTitleContaining(String title,Pageable pageable);
+
+    Page<Ressources> findAll(Pageable pageable);
 }
