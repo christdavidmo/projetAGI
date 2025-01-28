@@ -421,29 +421,30 @@
 
 
 <!-- Pagination -->
+<!-- Pagination -->
+<!-- Pagination -->
 <div class="pagination_container">
     <ul class="pagination">
         <!-- Lien vers la page précédente -->
         <li th:if="${currentPage > 1}">
-            <a th:href="@{/public/ressource/{ecole}(ecole=${ecoleCH}, page=${currentPage - 1}, size=${6})}">Précédent</a>
+            <a th:href="@{/ressource/Batiment/{ecoleName}(page=${currentPage - 1}, size=${6})}">Précédent</a>
         </li>
 
-        <!-- Lien vers chaque page -->
-        <li th:each="i : ${paginationPages}">
-            <!-- Si c'est un "..." alors on l'affiche comme tel -->
-            <span th:if="${i == '...'}">...</span>
-            <!-- Si ce n'est pas un "..." alors c'est un numéro de page -->
-            <a th:unless="${i == '...'}" th:href="@{/public/ressource/{ecole}(ecole=${ecoleCH}, page=${i}, size=${6})}"
-               th:text="${i}"
-               th:class="${currentPage == i} ? 'active' : ''"></a>
+        <!-- Lien vers les pages avec gestion des "..." -->
+        <li th:each="page : ${pageList}">
+            <a th:if="${page == -1}" class="dots">...</a> <!-- Points de suspension -->
+            <a th:if="${page != -1}" th:href="@{/public/activites(page=${page}, size=${6})}"
+               th:text="${page}" th:class="${currentPage == page} ? 'active' : ''"></a>
         </li>
 
         <!-- Lien vers la page suivante -->
         <li th:if="${currentPage < pages}">
-            <a th:href="@{/public/ressource/{ecole}(ecole=${ecoleCH}, page=${currentPage + 1}, size=${6})}">Suivant</a>
+            <a th:href="@{/ressource/Batiment/{ecoleName}(page=${currentPage + 1}, size=${6})}">Suivant</a>
         </li>
     </ul>
 </div>
+<!-- Pagination -->
+<!-- Pagination -->>
 <!-- Pagination -->
 
 

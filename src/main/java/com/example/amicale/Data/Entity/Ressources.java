@@ -23,19 +23,18 @@ public class Ressources extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // Cette annotation permet à Hibernate de gérer l'auto-incrémentation
     private Long id;
+
+
     private TypeRessource type;
 
     @JoinColumn(nullable = true)
     private String Description;
 
-    @ManyToMany
-    @JoinTable(
-            name = "ressources_ecoles",
-            joinColumns = @JoinColumn(name = "ressource_id"),
-            inverseJoinColumns = @JoinColumn(name = "ecole_id")
-    )
+    // Relation ManyToOne : une ressource appartient à une seule école
+    @ManyToOne
+    @JoinColumn(name = "ecole_id", nullable = false) // clé étrangère vers l'Ecole
+    private Ecole ecole;
 
-    private Set<Ecole> ecoles;
 
     @Column(nullable = false)
     private String path;

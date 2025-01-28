@@ -11,7 +11,7 @@ import java.util.List;
 public interface RessourcesRepository extends JpaRepository <Ressources,Long>{
 
 
-    Page<Ressources> findByEcoles(Pageable pageable,Ecole ecole);
+    Page<Ressources> findByEcole(Pageable pageable,Ecole ecole);
 
     Page<Ressources> findByTitleContaining(String title,Pageable pageable);
 }

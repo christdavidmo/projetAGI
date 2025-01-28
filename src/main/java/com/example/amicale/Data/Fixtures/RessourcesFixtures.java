@@ -50,7 +50,7 @@ public class RessourcesFixtures implements CommandLineRunner {
             ressources1.setTitle("Ressource " + i);
             ressources1.setDatePublication(LocalDate.parse("2023-03-19"));
             ressources1.setDescription("Ressource programme " + i);
-            ressources1.setEcoles(Set.of(ecole));
+            ressources1.setEcole(ecole);
 
 
 

@@ -43,9 +43,23 @@ public interface PublicController {
     @GetMapping("/public/ressource")
     public String ressourceView(Model model );
 
-    @GetMapping("/public/ressource/{ecole}")
-    public String ressourceByEcoleView(Model model,
-                                       @RequestParam(defaultValue = "1") int page ,
-                                       @RequestParam(defaultValue = "6") int size,
-                                       @PathVariable String ecole );
+    @GetMapping("/public/ressource/Batiment/Droit")
+    public String ressourceBatimentDroit(Model model,
+                                         @RequestParam(defaultValue = "1") int page ,
+                                         @RequestParam(defaultValue = "6") int size);
+
+    @GetMapping("/public/ressource/Batiment/Ingenieur")
+    public String ressourceBatimentIngenieur(Model model,
+                                             @RequestParam(defaultValue = "1") int page ,
+                                             @RequestParam(defaultValue = "6") int size);
+
+    @GetMapping("/public/ressource/Batiment/Madiba")
+    public String ressourceBatimentMadiba(Model model,
+                                             @RequestParam(defaultValue = "1") int page ,
+                                             @RequestParam(defaultValue = "6") int size);
+
+    @GetMapping("/public/ressource/Batiment/Management")
+    public String ressourceBatimentManagement(Model model,
+                                             @RequestParam(defaultValue = "1") int page ,
+                                             @RequestParam(defaultValue = "6") int size);
 }

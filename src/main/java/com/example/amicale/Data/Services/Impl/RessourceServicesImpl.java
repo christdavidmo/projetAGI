@@ -53,7 +53,7 @@ public class RessourceServicesImpl implements RessourceServices {
         if(ecole1==null){
             return null;
         }
-       return ressourcesrepository.findByEcoles(pageable,ecole1);
+       return ressourcesrepository.findByEcole(pageable,ecole1);
     }
 
     @Override
@@ -74,7 +74,7 @@ public class RessourceServicesImpl implements RessourceServices {
         Ressources ressources1 = new Ressources();
         ressources1.setPath(filename);
         ressources1.setType(type);
-        ressources1.setEcoles(Set.of(ecole));
+        ressources1.setEcole(ecole);
 
         return ressourcesrepository.save(ressources1);
     }

@@ -8,12 +8,16 @@ import com.example.amicale.Data.Repository.EvenementRepository;
 import com.example.amicale.Data.Repository.MemberRepository;
 import com.example.amicale.Data.Repository.UsersRepository;
 import com.example.amicale.Data.Services.EvenementService;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.OneToMany;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 //@Order(4)
@@ -26,60 +30,59 @@ public class EvenementFixture implements CommandLineRunner {
     private final MemberRepository memberRepository;
     private final UsersRepository usersRepository;
 
-    // Liste des images à ajouter aux événements
-    private final List<String> photoNames = List.of(
-            "student1.jpg", "student3.jpg", "equipe2.jpg", "equipe3.jpg",
-            "student.jpg", "student5.jpg", "student4.jpg"
-    );
 
     @Override
     public void run(String... args) throws Exception {
-        // Récupérer les utilisateurs ayant le rôle 'Responsable_Communication'
-        List<Users> usersWithRole = usersRepository.findByRole_Rolename("Responsable_Communication");
 
-        if (usersWithRole.isEmpty()) {
-            System.out.println("Aucun utilisateur avec le rôle Responsable_Communication trouvé.");
-        } else {
-            // Créer des événements pour chaque utilisateur ayant le rôle Responsable_Communication
-            usersWithRole.forEach(user -> createEvenementsForUser(user));
+
+        //liste des images
+        List<String> images = List.of(
+                "student1.jpg",
+                "student3.jpg",
+                "student4.jpg",
+                "student5.jpg");
+
+
+        for (int i = 1; i <=6 ; i++) {
+
+            List<Member> members =  memberRepository.findAll();
+
+            Evenement evenement = new Evenement();
+            evenement.setTitle("evenement"+i);
+            evenement.setDescription("description"+i);
+            evenement.setLieu("lieu"+i);
+            evenement.setDatePublication(LocalDate.now());
+
+            Member createur = members.get(i % members.size()); //prendre un membre au hasard
+            evenement.setCreateur(createur);
+            evenement.setAuthor(createur.getNom());
+
+
+            for (String image : images) {
+                Photo photo = new Photo();
+                photo.setPath(image);
+                photo.setEvenement(evenement);
+                evenement.getImages().add(photo);
+            }
+
+            evenementRepository.save(evenement);
         }
-    }
 
-    // Créer les événements pour un utilisateur
-    private void createEvenementsForUser(Users user) {
-        // Créer des événements pour ce membre
-        for (int i = 0; i <= 10; i++) {
-            Evenement evenement = buildEvenement(user, i);
-            saveEvenementWithPhotos(evenement);
-        }
-    }
 
-    // Construire un événement de manière générique
-    private Evenement buildEvenement(Users user, int index) {
-        Evenement evenement = new Evenement();
-        evenement.setTitle("AG de rentrée " + index);
-        evenement.setDatePublication(LocalDate.parse("2023-03-19"));
-        evenement.setLieu("Amphiteatre MADIBA");
-        evenement.setDescription("Discuter des prochaines échéances");
+       /* @Column(nullable = false)
+        protected String title;
 
-        // Associer le membre à l'événement
-        Member member = (Member) user; // Convertir Users en Member
-        evenement.setCreateur(member);
-        evenement.setAuthor(member.getNom());
+        @Column(nullable = false)
+        protected String author;
 
-        return evenement;
-    }
+        protected LocalDate datePublication ;
 
-    // Enregistrer l'événement avec les photos associées
-    private void saveEvenementWithPhotos(Evenement evenement) {
-        // Ajouter les photos à l'événement
-        photoNames.forEach(photoName -> {
-            Photo photo = new Photo(photoName, evenement);
-            evenement.getImages().add(photo);
-        });
+        private String Lieu;
 
-        // Sauvegarder l'événement
-        evenementService.saveEvenement(evenement);
-        System.out.println("Événement créé : " + evenement.getTitle());
+        private String Description;
+
+
+        @OneToMany(mappedBy = "evenement",cascade = CascadeType.ALL, orphanRemoval = true)
+        private List<Photo> images = new ArrayList<>() ;*/
     }
 }

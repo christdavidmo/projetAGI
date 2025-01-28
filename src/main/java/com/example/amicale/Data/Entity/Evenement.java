@@ -29,6 +29,7 @@ public class Evenement extends Publication {
     private List<Photo> images = new ArrayList<>() ;
 
     @ManyToOne (fetch = FetchType.LAZY)
+
     @JoinColumn(name = "createur_id", nullable = false)
     private Member createur; // le createur de l'evenement dans le bureau
 }

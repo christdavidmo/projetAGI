@@ -2,9 +2,7 @@ package com.example.amicale.Data.Entity;
 
 
 import com.example.amicale.Data.Enumeration.TypeEcole;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,7 +18,10 @@ import java.util.Set;
 @Table(name = "ecoles")
 public class Ecole extends AbstractEntity{
 
+    @Column(nullable = false)
     private String ecoleName;
-    @ManyToMany(mappedBy = "ecoles")
+
+    // Relation OneToMany avec Ressources : une école peut avoir plusieurs ressources
+    @OneToMany(mappedBy = "ecole", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Ressources> ressources;
 }

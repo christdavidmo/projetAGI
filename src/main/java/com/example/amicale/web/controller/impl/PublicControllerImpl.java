@@ -23,6 +23,7 @@ public class PublicControllerImpl implements PublicController {
     private final PhotoServices photoServices;
     private final RessourceServices ressourceServices;
     private final EcoleServices ecoleServices;
+    private final RessourceServices ressourceService;
 
 
     @Override
@@ -164,28 +165,24 @@ public class PublicControllerImpl implements PublicController {
     }
 
     @Override
-    public String ressourceByEcoleView(Model model,
-                                       @RequestParam(defaultValue = "1") int page ,
-                                       @RequestParam(defaultValue = "6") int size,
-                                       String ecole) {
+    public String ressourceBatimentDroit(Model model, int page, int size) {
+        String  name = "Droit" ;
+        Page<Ressources> ressources = ressourceService.getAllRessourcesByEcole(PageRequest.of(page -1,size),name);
 
-        //System.out.println("l'ecole récupérée dans la vue : "+ecole);
-
-        Page<Ressources> ressourcesPage = ressourceServices.getAllRessourcesByEcole(PageRequest.of(page - 1, size), ecole);
-        model.addAttribute("ressources", ressourcesPage.getContent());
+        model.addAttribute("ressources", ressources);
 
         // la page actuelle
         model.addAttribute("currentPage", page);
 
-        //le nombre total de page
-        model.addAttribute("pages", ressourcesPage.getTotalPages());
+        model.addAttribute("ecoleName", name);
 
-        //le nom de l'ecole
-        model.addAttribute("ecoleCH", ecole);  // Passer le nom de l'école pour la pagination
+        //le nombre total de page
+        model.addAttribute("pages",ressources.getTotalPages());
+
 
         // Créer une liste de pages à afficher (avec des points de suspension si nécessaire)
         List<Integer> paginationPages = new ArrayList<>();
-        int totalPages = ressourcesPage.getTotalPages();
+        int totalPages = ressources.getTotalPages();
 
         // Pages à afficher
         if (totalPages <= 4) {
@@ -210,6 +207,154 @@ public class PublicControllerImpl implements PublicController {
         }
         model.addAttribute("paginationPages", paginationPages);
 
+
+
         return "public/ressources/ressourceIng";
     }
+
+    @Override
+    public String ressourceBatimentIngenieur(Model model, int page, int size) {
+        String  name = "Ingenieur" ;
+        Page<Ressources> ressources = ressourceService.getAllRessourcesByEcole(PageRequest.of(page -1,size),name);
+
+        model.addAttribute("ressources", ressources);
+
+        // la page actuelle
+        model.addAttribute("currentPage", page);
+
+        model.addAttribute("ecoleName", name);
+
+        //le nombre total de page
+        model.addAttribute("pages",ressources.getTotalPages());
+
+
+        // Créer une liste de pages à afficher (avec des points de suspension si nécessaire)
+        List<Integer> paginationPages = new ArrayList<>();
+        int totalPages = ressources.getTotalPages();
+
+        // Pages à afficher
+        if (totalPages <= 4) {
+            // Si le total des pages est <= 4, afficher toutes les pages
+            for (int i = 1; i <= totalPages; i++) {
+                paginationPages.add(i);
+            }
+        } else {
+            // Afficher la première page, la dernière page et les pages autour de la page courante
+            paginationPages.add(1); // première page
+
+            // Afficher 2 pages avant et après la page courante, si elles existent
+            if (page > 2) {
+                paginationPages.add(page - 1);
+            }
+            paginationPages.add(page);
+            if (page < totalPages - 1) {
+                paginationPages.add(page + 1);
+            }
+
+            paginationPages.add(totalPages); // dernière page
+        }
+        model.addAttribute("paginationPages", paginationPages);
+
+
+
+        return "public/ressources/ressourceIng";
+    }
+
+    @Override
+    public String ressourceBatimentMadiba(Model model, int page, int size) {
+        String  name = "Madiba" ;
+        Page<Ressources> ressources = ressourceService.getAllRessourcesByEcole(PageRequest.of(page -1,size),name);
+
+        model.addAttribute("ressources", ressources);
+
+        // la page actuelle
+        model.addAttribute("currentPage", page);
+
+        model.addAttribute("ecoleName", name);
+
+        //le nombre total de page
+        model.addAttribute("pages",ressources.getTotalPages());
+
+
+        // Créer une liste de pages à afficher (avec des points de suspension si nécessaire)
+        List<Integer> paginationPages = new ArrayList<>();
+        int totalPages = ressources.getTotalPages();
+
+        // Pages à afficher
+        if (totalPages <= 4) {
+            // Si le total des pages est <= 4, afficher toutes les pages
+            for (int i = 1; i <= totalPages; i++) {
+                paginationPages.add(i);
+            }
+        } else {
+            // Afficher la première page, la dernière page et les pages autour de la page courante
+            paginationPages.add(1); // première page
+
+            // Afficher 2 pages avant et après la page courante, si elles existent
+            if (page > 2) {
+                paginationPages.add(page - 1);
+            }
+            paginationPages.add(page);
+            if (page < totalPages - 1) {
+                paginationPages.add(page + 1);
+            }
+
+            paginationPages.add(totalPages); // dernière page
+        }
+        model.addAttribute("paginationPages", paginationPages);
+
+
+
+        return "public/ressources/ressourceIng";
+    }
+
+    @Override
+    public String ressourceBatimentManagement(Model model, int page, int size) {
+        String  name = "Management" ;
+        Page<Ressources> ressources = ressourceService.getAllRessourcesByEcole(PageRequest.of(page -1,size),name);
+
+        model.addAttribute("ressources", ressources);
+
+        // la page actuelle
+        model.addAttribute("currentPage", page);
+
+        model.addAttribute("ecoleName", name);
+
+        //le nombre total de page
+        model.addAttribute("pages",ressources.getTotalPages());
+
+
+        // Créer une liste de pages à afficher (avec des points de suspension si nécessaire)
+        List<Integer> paginationPages = new ArrayList<>();
+        int totalPages = ressources.getTotalPages();
+
+        // Pages à afficher
+        if (totalPages <= 4) {
+            // Si le total des pages est <= 4, afficher toutes les pages
+            for (int i = 1; i <= totalPages; i++) {
+                paginationPages.add(i);
+            }
+        } else {
+            // Afficher la première page, la dernière page et les pages autour de la page courante
+            paginationPages.add(1); // première page
+
+            // Afficher 2 pages avant et après la page courante, si elles existent
+            if (page > 2) {
+                paginationPages.add(page - 1);
+            }
+            paginationPages.add(page);
+            if (page < totalPages - 1) {
+                paginationPages.add(page + 1);
+            }
+
+            paginationPages.add(totalPages); // dernière page
+        }
+        model.addAttribute("paginationPages", paginationPages);
+
+
+
+        return "public/ressources/ressourceIng";
+    }
+
+
 }

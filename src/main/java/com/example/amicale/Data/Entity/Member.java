@@ -26,6 +26,10 @@ public class Member extends Users{
     @Column(  nullable = false)
     private String nom ;
 
+    @ManyToOne
+    @JoinColumn(name = "ecole_id")
+    private Ecole ecole;
+
     @Column(name = "prenoms",nullable = false)
     private String prenoms;
 
