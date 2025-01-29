@@ -11,8 +11,8 @@ import java.util.List;
 public interface RessourcesRepository extends JpaRepository <Ressources,Long>{
 
 
+    Page<Ressources> findByEcoleAndTitleContainingIgnoreCase(Pageable pageable,Ecole ecole,String ressourceName);
     Page<Ressources> findByEcole(Pageable pageable,Ecole ecole);
-
     Page<Ressources> findByTitleContaining(String title,Pageable pageable);
 
     Page<Ressources> findAll(Pageable pageable);

@@ -14,7 +14,7 @@ public interface RessourceServices {
 
 
     Page<Ressources> getAllRessourcesPage(String titleRessource, Pageable pageable);
-    Page<Ressources> getAllRessourcesByEcole( Pageable pageable,String ecole);
+    Page<Ressources> getAllRessourcesByEcole( Pageable pageable,String ecole,String ressourceName);
     Page<Ressources> getAllRessources(Pageable pageable);
 
     public Ressources saveRessources(MultipartFile file, TypeRessource type, Long ecoleId)throws IOException;

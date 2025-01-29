@@ -51,20 +51,24 @@ public interface PublicController {
     @GetMapping("/public/ressource/Batiment/Droit")
     public String ressourceBatimentDroit(Model model,
                                          @RequestParam(defaultValue = "1") int page ,
-                                         @RequestParam(defaultValue = "6") int size);
+                                         @RequestParam(defaultValue = "6") int size,
+                                         @RequestParam(required = false) String searchQueryRessource);
 
     @GetMapping("/public/ressource/Batiment/Ingenieur")
     public String ressourceBatimentIngenieur(Model model,
                                              @RequestParam(defaultValue = "1") int page ,
-                                             @RequestParam(defaultValue = "6") int size);
+                                             @RequestParam(defaultValue = "6") int size,
+                                             @RequestParam(required = false) String searchQueryRessource);
 
     @GetMapping("/public/ressource/Batiment/Madiba")
     public String ressourceBatimentMadiba(Model model,
                                              @RequestParam(defaultValue = "1") int page ,
-                                             @RequestParam(defaultValue = "6") int size);
+                                             @RequestParam(defaultValue = "6") int size,
+                                          @RequestParam(required = false) String searchQueryRessource);
 
     @GetMapping("/public/ressource/Batiment/Management")
     public String ressourceBatimentManagement(Model model,
                                              @RequestParam(defaultValue = "1") int page ,
-                                             @RequestParam(defaultValue = "6") int size);
+                                             @RequestParam(defaultValue = "6") int size,
+                                              @RequestParam(required = false) String searchQueryRessource);
 }

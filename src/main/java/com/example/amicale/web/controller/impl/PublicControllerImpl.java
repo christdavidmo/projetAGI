@@ -180,9 +180,9 @@ public class PublicControllerImpl implements PublicController {
     }
 
     @Override
-    public String ressourceBatimentDroit(Model model, int page, int size) {
+    public String ressourceBatimentDroit(Model model, int page, int size, String searchQueryRessource) {
         String  name = "Droit" ;
-        Page<Ressources> ressources = ressourceService.getAllRessourcesByEcole(PageRequest.of(page -1,size),name);
+        Page<Ressources> ressources = ressourceService.getAllRessourcesByEcole(PageRequest.of(page -1,size),name, searchQueryRessource);
 
         model.addAttribute("ressources", ressources);
 
@@ -221,16 +221,21 @@ public class PublicControllerImpl implements PublicController {
             paginationPages.add(totalPages); // dernière page
         }
         model.addAttribute("paginationPages", paginationPages);
+        model.addAttribute("searchQueryRessource", searchQueryRessource);
 
 
 
-        return "public/ressources/ressourceIng";
+
+        return "public/ressources/ressourceDetailDroit";
     }
 
     @Override
-    public String ressourceBatimentIngenieur(Model model, int page, int size) {
+    public String ressourceBatimentIngenieur(Model model,
+                                             int page,
+                                             int size,
+                                             String searchQueryRessource) {
         String  name = "Ingenieur" ;
-        Page<Ressources> ressources = ressourceService.getAllRessourcesByEcole(PageRequest.of(page -1,size),name);
+        Page<Ressources> ressources = ressourceService.getAllRessourcesByEcole(PageRequest.of(page -1,size),name, searchQueryRessource);
 
         model.addAttribute("ressources", ressources);
 
@@ -269,16 +274,17 @@ public class PublicControllerImpl implements PublicController {
             paginationPages.add(totalPages); // dernière page
         }
         model.addAttribute("paginationPages", paginationPages);
+        model.addAttribute("searchQueryRessource", searchQueryRessource);
 
 
 
-        return "public/ressources/ressourceIng";
+        return "public/ressources/ressourceAcademiquedetails";
     }
 
     @Override
-    public String ressourceBatimentMadiba(Model model, int page, int size) {
+    public String ressourceBatimentMadiba(Model model, int page, int size,String searchQueryRessource) {
         String  name = "Madiba" ;
-        Page<Ressources> ressources = ressourceService.getAllRessourcesByEcole(PageRequest.of(page -1,size),name);
+        Page<Ressources> ressources = ressourceService.getAllRessourcesByEcole(PageRequest.of(page -1,size),name, searchQueryRessource);
 
         model.addAttribute("ressources", ressources);
 
@@ -317,16 +323,18 @@ public class PublicControllerImpl implements PublicController {
             paginationPages.add(totalPages); // dernière page
         }
         model.addAttribute("paginationPages", paginationPages);
+        model.addAttribute("searchQueryRessource", searchQueryRessource);
 
 
 
-        return "public/ressources/ressourceIng";
+        return "public/ressources/ressourceDetailMadiba";
     }
 
     @Override
-    public String ressourceBatimentManagement(Model model, int page, int size) {
+    public String ressourceBatimentManagement(Model model, int page, int size,String searchQueryRessource) {
         String  name = "Management" ;
-        Page<Ressources> ressources = ressourceService.getAllRessourcesByEcole(PageRequest.of(page -1,size),name);
+        Page<Ressources> ressources = ressourceService.getAllRessourcesByEcole(PageRequest.of(page -1,size)
+                ,name, searchQueryRessource);
 
         model.addAttribute("ressources", ressources);
 
@@ -365,10 +373,11 @@ public class PublicControllerImpl implements PublicController {
             paginationPages.add(totalPages); // dernière page
         }
         model.addAttribute("paginationPages", paginationPages);
+        model.addAttribute("searchQueryRessource", searchQueryRessource);
 
 
 
-        return "public/ressources/ressourceIng";
+        return "public/ressources/ressourceDetailManagement";
     }
 
 

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <script th:src="@{/js/navbarCommunity.js}"></script>
+
+    <link rel="stylesheet" th:href="@{/css/footer1.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Title</title>
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+
+        .Alerte-ressource-isEmpty{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .Alerte-ressource-isEmpty p{
+            font-size: 30px;
+            text-transform: uppercase;
+            background-color: #810e0e;
+            padding: 20px;
+            border-radius: 5px;
+            color: white;
+            box-shadow: 5px 10px 11px rgb(0,0,0,0.6);
+        }
+
+        .container-tab-ressources{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10%;
+        }
+
+        .tab-ressources{
+            width: 100%;
+        }
+
+        .tab-ressources thead{
+            font-weight: bold;
+            text-transform: uppercase;
+            background-color: rgb(18, 63, 149);
+            color: white;
+        }
+        .tab-ressources th{
+            padding: 10px 8px;
+            font-size: 20px;
+        }
+
+        .tab-ressources tbody{
+            background-color: rgb(236, 240, 241);
+            text-align: center;
+            font-size: 15px;
+        }
+        .tab-ressources td{
+            padding: 15px;
+        }
+
+        .container2{
+            display: none;
+        }
+
+
+
+
+
+
+
+        @media (max-width: 768px) {
+
+            .Alerte-ressource-isEmpty {
+                margin: 4% 8%;
+            }
+
+            .Alerte-ressource-isEmpty p {
+                font-size: 13px;
+                text-transform: uppercase;
+                background-color: #810e0e;
+                padding: 14px;
+                border-radius: 5px;
+                color: white;
+                box-shadow: 5px 10px 11px rgb(0, 0, 0, 0.6);
+            }
+
+            .container-tab-ressources{
+                display: none;
+            }
+
+            .container2 {
+                display: flex;
+                flex-wrap: wrap; /* Permet de "plier" les éléments sur plusieurs lignes */
+                justify-content: center; /* Centre les éléments horizontalement */
+                gap: 8px; /* Espace entre les éléments */
+                padding: 15px;
+            }
+
+
+            /* Chaque objectif individuel */
+            .objectif {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 45%; /* Chaque élément prend 45% de la largeur de l'écran */
+                background-color: #f9f9f9;
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                text-align: center;
+                box-sizing: border-box; /* Inclut padding et bordure dans la taille totale */
+            }
+
+            .icone {
+                font-size: 28px;
+                margin-bottom: 15px;
+                color: #333;
+            }
+
+            .objectif p {
+                font-size: 15px;
+                line-height: 1.3;
+            }
+
+        }
+    </style>
+</head>
+<body>
+
+<div th:replace="~{layout/navbar/navbar :: navbar}"> </div>
+
+<div class="Alerte-ressource-isEmpty" th:if="${ressources.isEmpty()}" >
+    <p>
+        cette page n'est pas encore disponible, <br>
+        aucun corrrigé ni exercice n'est encore <br>
+        disponible pour votre batiment !!!
+    </p>
+</div>
+
+
+<div class="container-tab-ressources">
+    <table class="tab-ressources">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Publié le</th>
+            <th>Lien</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="ressource : ${ressources}">
+            <td th:text="${ressource.title}"></td>
+            <td th:text="${ressource.description}"></td>
+            <td th:text="${ressource.datePublication}"></td>
+            <td >
+                <a th:href="@{'/ressources/' + ${ressource.path}}" target="_blank">lien</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="container2" >
+
+    <div class="objectif" th:each="ressource : ${ressources}">
+        <div class="icone">
+            <a th:href="@{'/ressources/' + ${ressource.path}}" target="_blank">
+                <i class="fa-solid fa-link"></i>
+            </a>
+        </div>
+        <p th:text="${ressource.title}"></p>
+        <p th:text="${ressource.description}"></p>
+        <p th:text="${ressource.datePublication}"></p>
+    </div>
+
+</div>
+
+
+
+
+<div th:replace="~{layout/footer/footer1 :: footer}"></div>
+
+
+</body>
+</html>

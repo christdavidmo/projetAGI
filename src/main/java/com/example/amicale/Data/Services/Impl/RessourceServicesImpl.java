@@ -47,13 +47,20 @@ public class RessourceServicesImpl implements RessourceServices {
     }
 
     @Override
-    public Page<Ressources> getAllRessourcesByEcole(Pageable pageable,String ecole) {
-        Ecole ecole1 = ecolerepository.findByEcoleName(ecole);
-
-        if(ecole1==null){
-            return null;
+    public Page<Ressources> getAllRessourcesByEcole(Pageable pageable,String ecole1,String ressourceName) {
+        Ecole ecole2 = ecolerepository.findByEcoleName(ecole1);
+        // Vérifier si l'école existe
+        if (ecole1 == null) {
+            return Page.empty(); // Retourne une page vide si l'école n'est pas trouvée
         }
-       return ressourcesrepository.findByEcole(pageable,ecole1);
+
+        // Si aucun nom de ressource n'est fourni, renvoyer toutes les ressources de l'école
+        if (ressourceName == null || ressourceName.isEmpty()) {
+            return ressourcesrepository.findByEcole(pageable, ecole2 );
+        }
+
+        // Sinon, on filtre les ressources par école et par nom de ressource
+        return ressourcesrepository.findByEcoleAndTitleContainingIgnoreCase(pageable, ecole2 , ressourceName);
     }
 
     @Override
