@@ -10,8 +10,6 @@
 
   <link rel="stylesheet" th:href="@{/css/footer1.css}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <title>Title</title>
 
   <style>
@@ -55,7 +53,7 @@
     @media (max-width: 768px) {
 
       .Alerte-ressource-isEmpty{
-        margin: 0 8%;
+        margin: 3% 8%;
       }
 
       .Alerte-ressource-isEmpty p{
@@ -68,6 +66,48 @@
         box-shadow: 5px 10px 11px rgb(0,0,0,0.6);
       }
 
+      .container-tab{
+        display:none ;
+      }
+
+
+
+      .container2{
+        display: flex;
+        flex-wrap: wrap; /* Permet de "plier" les éléments sur plusieurs lignes */
+        justify-content: center; /* Centre les éléments horizontalement */
+        gap: 8px; /* Espace entre les éléments */
+        padding: 15px;
+      }
+
+
+
+      /* Chaque objectif individuel */
+      .objectif {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 45%; /* Chaque élément prend 45% de la largeur de l'écran */
+        background-color: #f9f9f9;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        text-align: center;
+        box-sizing: border-box; /* Inclut padding et bordure dans la taille totale */
+      }
+
+      .icone {
+        font-size: 25px;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .objectif p {
+        font-size: 10px;
+        line-height: 1.6;
+      }
+
 
 
 
@@ -78,7 +118,7 @@
 
   <div th:replace="~{layout/navbar/navbar :: navbar}"> </div>
 
-  <div class="Alerte-ressource-isEmpty" >
+  <div class="Alerte-ressource-isEmpty" th:if="${ressources.isEmpty()}" >
     <p>
       cette page n'est pas encore disponible, <br>
       aucun corrrigé ni exercice n'est encore <br>
@@ -86,7 +126,7 @@
     </p>
   </div>
 
-  <!-- <div class="container-tab" th:if="${ressources.isEmpty()}">
+   <div class="container-tab" >
     <table class="table">
       <thead>
       <tr>
@@ -139,7 +179,31 @@
     </div> -->
 
 
-  <div th:replace="~{layout/footer/footer1 :: footer}"></div>
+
+
+
+
+
+
+
+
+  <div class="container2" >
+
+    <div class="objectif" th:each="ressource : ${ressources}">
+      <div class="icone">
+        <a th:href="@{'/ressources/' + ${ressource.path}}" target="_blank">
+          <i class="fa-solid fa-link"></i>
+       </a>
+      </div>
+      <p th:text="${ressource.title}"></p>
+      <p th:text="${ressource.description}"></p>
+      <p th:text="${ressource.datePublication}"></p>
+    </div>
+
+
+  </div>
+
+
 
 
 </body>
